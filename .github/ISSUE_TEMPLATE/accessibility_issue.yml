@@ -1,0 +1,52 @@
+name: Accessibility issue
+description: The app is hard or impossible to use with your assistive technology, keyboard, or other access need.
+title: "[A11y]: "
+labels: ["accessibility", "priority-high"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Accessibility issues are treated as high priority. Thank you for taking
+        the time to report this. Your lived experience is the most valuable
+        input we get.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What were you trying to do, and what blocked you?
+      placeholder: I was trying to drop my letter onto the page using my screen reader and...
+    validations:
+      required: true
+
+  - type: textarea
+    id: assistive-tech
+    attributes:
+      label: What assistive technology, settings, or input method are you using?
+      description: Screen reader and version, voice control, switch access, eye tracking, OS-level zoom or contrast settings, keyboard only, etc.
+      placeholder: NVDA 2024.1 on Firefox 130, Windows 11
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: How blocking is this for you?
+      options:
+        - Completely blocks me from using the feature
+        - Makes the feature very hard but I can work around it
+        - Minor friction, not blocking
+    validations:
+      required: true
+
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Workaround (if any)
+      description: If you got past it, how?
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: How would you like it to work?
+      description: If you have a suggested fix, we'd love to hear it. If not, that's fine.

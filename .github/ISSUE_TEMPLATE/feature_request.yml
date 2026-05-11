@@ -1,0 +1,46 @@
+name: Feature request
+description: Suggest a new feature or improvement.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the suggestion. Please check `docs/roadmap.md` to see if this
+        is already planned for a later milestone.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Whose problem? A CCDC member, an advocate, both? What do they do today instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed feature
+      description: What should it do?
+    validations:
+      required: true
+
+  - type: textarea
+    id: privacy
+    attributes:
+      label: Privacy implications
+      description: Does this require sending data anywhere? Storing anything on the device? See `docs/privacy.md`.
+    validations:
+      required: true
+
+  - type: textarea
+    id: accessibility
+    attributes:
+      label: Accessibility implications
+      description: How will this work with screen readers, keyboard only, cognitive accessibility? See `docs/accessibility.md`.
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What other approaches did you think about and reject?

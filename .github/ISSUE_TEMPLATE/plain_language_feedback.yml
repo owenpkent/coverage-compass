@@ -1,0 +1,44 @@
+name: Plain-language feedback
+description: A summary, explanation, or instruction in the app is unclear, confusing, condescending, or wrong.
+title: "[Plain language]: "
+labels: ["plain-language"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Plain language matters as much as accessibility. If something the app
+        says doesn't make sense, or feels like it talks down to the reader,
+        please tell us.
+
+  - type: textarea
+    id: which-string
+    attributes:
+      label: Which string or screen?
+      description: Quote the text. A screenshot helps.
+    validations:
+      required: true
+
+  - type: textarea
+    id: whats-wrong
+    attributes:
+      label: What's wrong with it?
+      description: Is it confusing? Condescending? Inaccurate? Too long?
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested rewrite
+      description: How would you say it?
+
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options:
+        - English
+        - Spanish
+        - Other
+    validations:
+      required: true

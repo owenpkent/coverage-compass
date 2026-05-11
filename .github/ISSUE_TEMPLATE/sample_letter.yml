@@ -1,0 +1,59 @@
+name: Anonymized sample letter
+description: I have a Medicaid letter (anonymized) that could help train the classifier.
+title: "[Sample]: "
+labels: ["sample-letter", "needs-anonymization-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Sample letters are how the classifier gets accurate. A few rules:
+
+        - **Do not paste the letter directly into this issue.** GitHub issues are public.
+        - **Email** the file to [Owenpkent@gmail.com](mailto:Owenpkent@gmail.com) with subject "[SAMPLE LETTER]". This issue is just to track it.
+        - **Anonymize first.** Redact or remove: names, addresses (street + ZIP), phone numbers, case numbers, member IDs, SSN, full dates of birth, provider names if uniquely identifying, specific dollar amounts that could re-identify, unusual diagnosis codes. See `research/README.md` for the full checklist.
+        - **Only share letters you have authority to share.** If the letter is for someone other than you, you need their consent. If it's from CCDC's archive, follow whatever data agreement CCDC sets.
+
+  - type: dropdown
+    id: letter-type
+    attributes:
+      label: What kind of letter is it?
+      options:
+        - Renewal request
+        - Procedural termination (failure to renew)
+        - Substantive denial
+        - Termination
+        - Rate change
+        - Exemption decision
+        - Redetermination
+        - Work-requirement notification
+        - Work-requirement non-compliance notice
+        - Fair hearing notice
+        - Service-plan change
+        - Other / not sure
+
+  - type: input
+    id: state
+    attributes:
+      label: State Medicaid program
+      description: Colorado in v0.1; other states later.
+      value: Colorado
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything notable about this letter?
+      description: Is it especially confusing? Common pattern? Edge case?
+
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have anonymized this letter per the checklist in `research/README.md`.
+          required: true
+        - label: I have the right to share this letter.
+          required: true
+        - label: I understand the letter will be used as test data and may be embedded (anonymized) in the public repository.
+          required: true

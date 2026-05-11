@@ -1,0 +1,121 @@
+# Colorado Medicaid letter classification.
+# Source documents this is based on:
+#   - HCPF FAQ: https://hcpf.colorado.gov/work-requirements-faqs
+#   - Health First Colorado member letters (samples pending; see docs/outreach.md)
+#
+# Schema (v0.0 draft):
+#   types:
+#     <type_id>:
+#       label: short human-readable label
+#       patterns:
+#         - regex or string fragments expected in the letter text
+#       plain_language:
+#         en: 6th-grade explanation
+#         es: 6th-grade explanation in Spanish (pending review)
+#       do_nothing_consequence:
+#         en: what happens if the user ignores this
+#         es: same in Spanish
+#       deadline:
+#         days_from_notice: integer (typical Colorado window)
+#         source: citation
+#       next_actions:
+#         - label: short imperative
+#           detail: when and how
+#           urgency: now | this-week | this-month
+
+version: "0.0.1"
+locale: en
+
+types:
+  renewal_request:
+    label: Renewal request
+    patterns:
+      - "time to renew"
+      - "renewal packet"
+      - "redetermine your eligibility"
+    plain_language:
+      en: "Colorado Medicaid needs you to confirm you still qualify. Send back the paperwork or do it on PEAK. If you don't, your coverage can end."
+    do_nothing_consequence:
+      en: "Your Health First Colorado coverage will end on the date in the letter."
+    deadline:
+      days_from_notice: 60
+      source: "HCPF (verify)"
+    next_actions:
+      - label: "Renew on PEAK or by mail"
+        detail: "Go to colorado.gov/peak or use the form in the letter."
+        urgency: this-month
+
+  procedural_termination:
+    label: Termination for paperwork
+    patterns:
+      - "did not return"
+      - "did not complete renewal"
+      - "failure to provide"
+    plain_language:
+      en: "Colorado Medicaid is ending your coverage because they didn't get the paperwork they asked for. You can usually fix this if you act fast."
+    do_nothing_consequence:
+      en: "Your Health First Colorado coverage will end on the date in the letter."
+    deadline:
+      days_from_notice: 60
+      source: "HCPF (verify)"
+    next_actions:
+      - label: "Call CCDC"
+        detail: "(303) 839-3056. They help with appeals."
+        urgency: now
+      - label: "Submit missing paperwork"
+        detail: "On PEAK or by mail."
+        urgency: this-week
+
+  work_requirement_notification:
+    label: Work-reporting notice (new starting August 2026)
+    patterns:
+      - "work requirement"
+      - "community engagement"
+      - "80 hours"
+    plain_language:
+      en: "Colorado has new rules. Some adults on Medicaid have to show they work 80 hours a month, or that they don't have to (called an exemption). Many disabled people don't have to. This letter tells you what Colorado thinks you need to do."
+    do_nothing_consequence:
+      en: "If the letter says you have to comply and you don't, you can lose coverage starting in 2027."
+    deadline:
+      days_from_notice: null
+      source: "Final CMS guidance pending (June 2026)"
+    next_actions:
+      - label: "Check if you're exempt"
+        detail: "SSDI, HCBS waiver, LTSS, Buy-In, or medically frail status all exempt you."
+        urgency: this-month
+      - label: "Call CCDC if unsure"
+        detail: "(303) 839-3056."
+        urgency: this-month
+
+  exemption_decision:
+    label: Exemption decision
+    patterns:
+      - "exempt"
+      - "exemption"
+      - "medically frail"
+    plain_language:
+      en: "Colorado made a decision about whether you have to follow the work-reporting rules. The letter says yes or no."
+    do_nothing_consequence:
+      en: "If you disagree, you have a limited time to appeal. Check the date on the letter."
+    deadline:
+      days_from_notice: 60
+      source: "HCPF (verify)"
+    next_actions:
+      - label: "If you disagree, call CCDC"
+        detail: "(303) 839-3056."
+        urgency: this-week
+
+  unknown:
+    label: Not sure what this is
+    patterns: []
+    plain_language:
+      en: "We're not sure what kind of letter this is. Call CCDC and they can help."
+    do_nothing_consequence:
+      en: "Don't ignore Medicaid letters. They usually have deadlines."
+    deadline:
+      days_from_notice: null
+      source: ""
+    next_actions:
+      - label: "Call CCDC"
+        detail: "(303) 839-3056."
+        urgency: this-week

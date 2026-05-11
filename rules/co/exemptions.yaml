@@ -1,0 +1,112 @@
+# Colorado Medicaid work-requirement exemption categories.
+# Source: HCPF FAQ (https://hcpf.colorado.gov/work-requirements-faqs)
+#         AAPD explainer (https://www.aapd.com/medicaid-work-requirements-explainer/)
+#         Final CMS guidance pending (June 2026)
+#
+# Schema (v0.0 draft):
+#   exemptions:
+#     <exemption_id>:
+#       label: short name
+#       summary: one-sentence description
+#       evidence:
+#         - name: human-readable document name
+#           document_type: identifier
+#           required: true | false
+#           notes: where the user typically gets this
+#       citation: source for the rule
+#       priority: integer (lower = check first)
+
+version: "0.0.1"
+
+exemptions:
+  ssdi:
+    label: SSDI recipient
+    summary: "You receive Social Security Disability Insurance benefits."
+    evidence:
+      - name: "SSA award letter or annual COLA letter"
+        document_type: ssa_award_letter
+        required: true
+        notes: "From the Social Security Administration. The annual cost-of-living letter (December) works too."
+    citation: "HCPF FAQ"
+    priority: 1
+
+  hcbs_waiver:
+    label: HCBS waiver enrollee
+    summary: "You are enrolled in a Colorado Home and Community-Based Services waiver."
+    evidence:
+      - name: "Waiver enrollment letter"
+        document_type: hcbs_enrollment_letter
+        required: true
+        notes: "From HCPF or your case management agency. Covers EBD, SLS, CES, CIH, CMHS, BI, DD, CHCBS."
+    citation: "HCPF FAQ (verify)"
+    priority: 2
+
+  ltss:
+    label: LTSS program participant
+    summary: "You receive long-term services and supports through Medicaid."
+    evidence:
+      - name: "Service plan or case management documentation"
+        document_type: ltss_service_plan
+        required: true
+        notes: "Overlaps with HCBS in practice."
+    citation: "HCPF FAQ (verify)"
+    priority: 3
+
+  buy_in:
+    label: Buy-In Program for Working Adults With Disabilities
+    summary: "You buy in to Medicaid through Colorado's program for working disabled adults."
+    evidence:
+      - name: "Buy-In enrollment letter"
+        document_type: buy_in_enrollment_letter
+        required: true
+        notes: "From HCPF. Separate from regular Medicaid enrollment."
+    citation: "HCPF Buy-In: https://hcpf.colorado.gov/buy-in-program-working-adults-disabilities"
+    priority: 4
+
+  medically_frail:
+    label: Medically frail
+    summary: "You meet CMS's medically frail definition: blind or disabled, substance use disorder, disabling mental disorder, physical or intellectual or developmental disability that significantly impairs activities of daily living, or serious or complex medical condition."
+    evidence:
+      - name: "Diagnosis letter from a licensed clinician"
+        document_type: diagnosis_letter
+        required: true
+        notes: "From your doctor, psychiatrist, or other licensed provider."
+      - name: "Functional assessment (if available)"
+        document_type: functional_assessment
+        required: false
+        notes: "ADL/IADL assessment if you have one."
+    citation: "CMS definition; AAPD explainer"
+    priority: 5
+
+  caregiver:
+    label: Caregiver
+    summary: "You are a caregiver for a child or dependent adult (specifics depend on state implementation)."
+    evidence:
+      - name: "Documentation of caregiving relationship"
+        document_type: caregiver_documentation
+        required: true
+        notes: "TBD. Watch for HCPF guidance after June 2026 CMS final rule."
+    citation: "Pending state implementation"
+    priority: 6
+
+  pregnancy:
+    label: Pregnancy or postpartum
+    summary: "You are pregnant or in the postpartum period."
+    evidence:
+      - name: "Prenatal or postpartum care documentation"
+        document_type: prenatal_documentation
+        required: true
+        notes: "From your obstetrician or midwife."
+    citation: "HCPF FAQ"
+    priority: 7
+
+  age_outside_range:
+    label: Under 19 or over 64
+    summary: "The work-reporting requirement applies to adults ages 19 to 64."
+    evidence:
+      - name: "Date of birth documentation"
+        document_type: date_of_birth_doc
+        required: true
+        notes: "Driver's license, state ID, or birth certificate."
+    citation: "HCPF FAQ"
+    priority: 8

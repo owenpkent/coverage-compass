@@ -1,0 +1,80 @@
+name: Bug report
+description: Something is broken or behaving incorrectly.
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Please do not include personal
+        information from your Medicaid letter, tax return, or any other document.
+        We need to be able to reproduce the issue, not see your private data.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, and what did you see?
+      placeholder: I dropped a PDF into the dropzone and got an error...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+      placeholder: I expected to see a plain-language summary of the letter...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the app.
+        2. ...
+        3. ...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Edge
+        - Other (please specify in "What happened")
+    validations:
+      required: true
+
+  - type: dropdown
+    id: device
+    attributes:
+      label: Device type
+      options:
+        - Desktop / laptop (Windows)
+        - Desktop / laptop (Mac)
+        - Desktop / laptop (Linux)
+        - Chromebook
+        - iPhone / iPad
+        - Android phone / tablet
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: assistive-tech
+    attributes:
+      label: Assistive technology used (if any)
+      description: Screen reader, voice control, switch access, magnification, etc.
+      placeholder: NVDA on Firefox, or "none"
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Anything else?
+      description: Screenshots (anonymized), console errors, etc.

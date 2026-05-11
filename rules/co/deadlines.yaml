@@ -1,0 +1,43 @@
+# Colorado Medicaid deadline reference.
+# All values DRAFT until verified by a CCDC advocate or attorney.
+#
+# Schema:
+#   deadlines:
+#     <action_id>:
+#       label: human description
+#       days_from_notice: integer
+#       source: citation
+#       notes: gotchas
+
+version: "0.0.1"
+
+deadlines:
+  fair_hearing_request:
+    label: Request a fair hearing after an adverse action
+    days_from_notice: 60
+    source: "TBD (verify with CCDC)"
+    notes: "Federal Medicaid floor; CO may match."
+
+  continuation_of_benefits:
+    label: Request continuation of benefits during appeal
+    days_from_notice: 10
+    source: "TBD (verify with CCDC)"
+    notes: "Critical for people on HCBS or LTSS; missing this can mean a gap in services even if you win the appeal."
+
+  renewal_response:
+    label: Respond to a renewal request
+    days_from_notice: 60
+    source: "TBD (verify with HCPF)"
+    notes: "May vary based on renewal type (passive vs full)."
+
+  redetermination_response:
+    label: Respond to an off-cycle redetermination
+    days_from_notice: null
+    source: "TBD"
+    notes: "Look at the date on the letter."
+
+  work_requirement_initial_response:
+    label: Initial response to work-requirement notification
+    days_from_notice: null
+    source: "Pending June 2026 CMS guidance"
+    notes: "First letters go out August 2026."

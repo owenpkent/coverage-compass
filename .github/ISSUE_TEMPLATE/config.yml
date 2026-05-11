@@ -1,0 +1,18 @@
+blank_issues_enabled: false
+contact_links:
+  - name: I need help with my own Medicaid case
+    url: https://ccdconline.org/
+    about: |
+      This is a software project, not a legal-help line. For real help with a
+      Medicaid case in Colorado, please contact CCDC at (303) 839-3056 or visit
+      ccdconline.org. Their advocates can help with appeals, individual advocacy,
+      and civil rights legal support.
+  - name: Security or privacy vulnerability
+    url: https://github.com/owenpkent/ccdc-medicaid-tool/security/policy
+    about: |
+      Please do NOT report security or privacy issues in a public issue.
+      See SECURITY.md for the responsible disclosure process.
+  - name: Question about the project
+    url: https://github.com/owenpkent/ccdc-medicaid-tool/discussions
+    about: |
+      For open-ended questions, please use Discussions rather than Issues.
