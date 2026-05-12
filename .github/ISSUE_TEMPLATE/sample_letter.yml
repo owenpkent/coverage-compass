@@ -9,7 +9,7 @@ body:
         Thank you. Sample letters are how the classifier gets accurate. A few rules:
 
         - **Do not paste the letter directly into this issue.** GitHub issues are public.
-        - **Email** the file to [Owenpkent@gmail.com](mailto:Owenpkent@gmail.com) with subject "[SAMPLE LETTER]". This issue is just to track it.
+        - **Do not attach the file here either.** A private submission channel is being set up. For now, open this issue with the metadata below and a maintainer will follow up with instructions for sending the letter privately.
         - **Anonymize first.** Redact or remove: names, addresses (street + ZIP), phone numbers, case numbers, member IDs, SSN, full dates of birth, provider names if uniquely identifying, specific dollar amounts that could re-identify, unusual diagnosis codes. See `research/README.md` for the full checklist.
         - **Only share letters you have authority to share.** If the letter is for someone other than you, you need their consent. If it's from CCDC's archive, follow whatever data agreement CCDC sets.
 

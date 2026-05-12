@@ -19,7 +19,8 @@ The attached one-pager has the full proposal. No funding ask, no revenue model, 
 Thanks for everything CCDC does.
 
 Owen Kent
-[Owenpkent@gmail.com](mailto:Owenpkent@gmail.com)
+<your-email>
+LinkedIn: [linkedin.com/in/owenpkent](https://www.linkedin.com/in/owenpkent)
 CCDC member
 Prior work: [reclaimhealth.ai](https://github.com/owenpkent/reclaimhealth.ai)
 
@@ -46,7 +47,8 @@ Could I get one hour with whoever leads CCDC appeals or advocacy work, plus a fr
 Thanks for everything CCDC does.
 
 Owen Kent
-[Owenpkent@gmail.com](mailto:Owenpkent@gmail.com)
+<your-email>
+LinkedIn: [linkedin.com/in/owenpkent](https://www.linkedin.com/in/owenpkent)
 CCDC member
 Prior work: [reclaimhealth.ai](https://github.com/owenpkent/reclaimhealth.ai)
 

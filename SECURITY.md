@@ -16,8 +16,10 @@ is in [`docs/privacy.md`](docs/privacy.md).
 **Please do not open a public GitHub issue for security or privacy
 vulnerabilities.**
 
-Email [Owenpkent@gmail.com](mailto:Owenpkent@gmail.com) with subject line
-prefixed `[SECURITY]`. We aim to respond within 7 days.
+Use GitHub's [private vulnerability reporting][gh-private-vuln] on this
+repository to submit a confidential report. We aim to respond within 7 days.
+
+[gh-private-vuln]: https://github.com/owenpkent/ccdc-medicaid-tool/security/advisories/new
 
 Include:
 

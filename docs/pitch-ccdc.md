@@ -1,7 +1,7 @@
 # A tool to help CCDC members keep their Medicaid
 
 **For:** CCDC leadership and advocacy staff
-**From:** Owen Kent, CCDC member and software engineer ([Owenpkent@gmail.com](mailto:Owenpkent@gmail.com))
+**From:** Owen Kent, CCDC member and software engineer ([LinkedIn](https://www.linkedin.com/in/owenpkent))
 
 ## The problem
 
