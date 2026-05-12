@@ -2,9 +2,12 @@
 
 Working notes, prior-art surveys, and anonymized sample letters.
 
-## What goes here
+## What's here
 
-- `prior-art.md`: survey of existing tools (CfA Safety Net Innovation Lab, NHeLP, Justice in Aging, NDRN, Stanford Legal Design Lab).
+- [`prior-art.md`](prior-art.md): **complete (2026-05-11).** Survey of existing tools and policy material across Code for America, NHeLP, Justice in Aging, NDRN and state P&As, AAPD, The Arc, KFF, Urban Institute, CBPP, Georgetown CCF, SHVS, Stanford Legal Design Lab, and adjacent appeal-generator tools. Read this before scoping or build work.
+
+## Planned
+
 - `policy-notes.md`: notes from reading HCPF, CMS, and AAPD source material.
 - `ccdc-conversations.md`: notes from CCDC scoping calls (anonymize specifics; keep takeaways).
 - `samples/`: anonymized sample letters from CCDC. **Gitignored.** Bring fixtures used in tests into `web/src/__fixtures__/` after thorough anonymization review.

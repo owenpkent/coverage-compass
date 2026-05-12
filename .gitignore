@@ -15,10 +15,12 @@ build/
 # Editor
 .vscode/
 .idea/
+.claude/
 *.swp
 *~
 .DS_Store
 Thumbs.db
+*.stackdump
 
 # Logs
 npm-debug.log*

@@ -6,10 +6,13 @@ Dates are anchored to the [Colorado work-requirements rollout](colorado-rules.md
 
 - [x] Brainstorm and direction (2026-05-11)
 - [x] Scaffold repo
+- [x] CCDC outreach pitch drafted (2026-05-11; `docs/pitch-ccdc.md`, `docs/pitch-ccdc-email.md`)
+- [x] Survey of prior art (2026-05-11; `research/prior-art.md`)
+- [x] CfA outreach pitch drafted (2026-05-11; `docs/pitch-cfa.md`)
 - [ ] Scoping conversation with CCDC appeals/advocacy staff (see `outreach.md`)
-- [ ] Survey of prior art (CfA Safety Net Innovation Lab, NHeLP, Justice in Aging, NDRN)
+- [ ] CCDC pitch sent
+- [ ] CfA pitch sent
 - [ ] License decision (Apache 2.0 vs AGPLv3)
-- [ ] Initial outreach to Code for America (Colorado brigade or national Safety Net Innovation Lab)
 - [ ] First 10 anonymized sample letters from CCDC
 - [ ] Plain-language review process established with CCDC
 

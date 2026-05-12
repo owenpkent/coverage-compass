@@ -36,7 +36,7 @@ Owen is a CCDC member. The likely path is:
 
 Drafted: see [`pitch-ccdc.md`](pitch-ccdc.md). Covers the problem (procedural disenrollment risk under work requirements), the tool ("Before / After" framing), the privacy posture, the ask (one-hour scoping conversation), and the offer (free volunteer work, CCDC owns the direction). References [reclaimhealth.ai](https://github.com/owenpkent/reclaimhealth.ai) as prior work to establish credibility.
 
-## Phase 2: Code for America outreach (July 2026 onward)
+## Phase 2: Code for America outreach (pitch drafted 2026-05-11; sending TBD)
 
 ### Goal
 Connect with whoever at CfA is working on Medicaid administrative burden, learn what already exists, find out if there's interest in collaboration or knowledge-sharing.
@@ -46,24 +46,28 @@ Connect with whoever at CfA is working on Medicaid administrative burden, learn 
 - **Colorado brigade** (Code for Denver / Code for Colorado, if still active). Local volunteers and possible co-builders.
 - **The CfA Summit / events.** If there's one between now and the build kicking off, attend.
 
+### One-page pitch
+Drafted: see [`pitch-cfa.md`](pitch-cfa.md).
+
 ### Questions to bring
-1. What does CfA currently have in flight on Medicaid administrative burden, work requirements, or procedural disenrollment?
-2. Are there reusable components from GetCalFresh, the Safety Net Innovation Lab, or unwinding-era work that we should be building on instead of reinventing?
-3. Is there a state coalition or 501(c)(3) infrastructure CfA recommends for civic-tech tools that need an institutional home?
-4. Who else is building in this space? National Health Law Program (NHeLP), Justice in Aging, NDRN, state-level coalitions in other states?
+1. Is the CfA team that built [`codeforamerica/work-requirements-self-advocacy-tool`](https://github.com/codeforamerica/work-requirements-self-advocacy-tool) (SNAP, NC, hosted) open to a conversation before we duplicate screener content for Medicaid in CO? See `research/prior-art.md` section 2.1. This is now the most important Phase 2 question.
+2. Is the Medicaid-vs-SNAP split in that tool intentional and durable, or is a Medicaid version planned?
+3. License clarification: the work-requirements-self-advocacy-tool repo lists license "Other" (NOASSERTION). What are the actual reuse terms?
+4. Are there reusable components from GetCalFresh, the Safety Net Innovation Lab, or unwinding-era work that we should build on instead of reinventing?
+5. Is there a state coalition or 501(c)(3) infrastructure CfA recommends for civic-tech tools that need an institutional home?
+6. Who else is building in this space? NHeLP, Justice in Aging, NDRN, state-level coalitions in other states?
 
-## Phase 3: Prior-art survey (parallel with Phase 1)
+## Phase 3: Prior-art survey (completed 2026-05-11)
 
-Don't build what already exists. Spend a day on:
-- Code for America blog, GitHub orgs, and Safety Net Innovation Lab output.
-- NHeLP's Medicaid materials.
-- Justice in Aging's appeal templates.
-- NDRN.
-- Other state disability coalitions' tools.
-- Academic / KFF / Urban Institute writeups on Medicaid administrative burden.
-- Existing OCR-based notice-translator tools (Stanford Legal Design Lab has done work in this space).
+Output written to [`research/prior-art.md`](../research/prior-art.md). Covers Code for America, NHeLP, Justice in Aging, NDRN and state P&As, AAPD, The Arc, KFF / Urban / CBPP / Georgetown CCF, SHVS, Stanford Legal Design Lab, adjacent appeal-generator tools, and HCPF.
 
-Output: a short writeup in `research/prior-art.md` listing what exists, what's reusable, and what the gap is.
+Headline findings:
+- **Closest analogue:** CfA's `work-requirements-self-advocacy-tool` (SNAP, NC, hosted). Pattern overlap is high; talk to CfA before duplicating screener content. See Phase 2 questions above.
+- **Substantive backbone for the rules library:** NHeLP's November 2025 "Technical Guide to Reduce Procedural Terminations."
+- **Appeal-template starting point:** Justice in Aging's February 2026 template letter with seven mitigation principles.
+- **Exemption-evidence reference:** SHVS medical-frailty toolkit with ICD-10 / CPT crosswalk.
+- **Clearest gap:** No one has shipped a Medicaid-specific, client-side, advocate-in-the-loop tool with an advocate-readable rules library.
+- **Correction to this plan:** the original Phase 3 list referenced "Stanford Legal Design Lab OCR-based notice translator." The survey could not find a specific shipped Stanford project matching that description. Confirm with the Lab directly or treat it as methodological prior art only.
 
 ## Contact log
 
