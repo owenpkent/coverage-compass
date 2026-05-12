@@ -1,0 +1,38 @@
+# Default: text files are normalized to LF in the repo and the
+# working copy, regardless of the contributor's core.autocrlf setting.
+* text=auto eol=lf
+
+# Explicit text types (defensive; the line above already handles them)
+*.md       text eol=lf
+*.txt      text eol=lf
+*.yml      text eol=lf
+*.yaml     text eol=lf
+*.json     text eol=lf
+*.ts       text eol=lf
+*.tsx      text eol=lf
+*.js       text eol=lf
+*.jsx      text eol=lf
+*.mjs      text eol=lf
+*.cjs      text eol=lf
+*.css      text eol=lf
+*.scss     text eol=lf
+*.html     text eol=lf
+*.svg      text eol=lf
+*.sh       text eol=lf
+.gitignore     text eol=lf
+.gitattributes text eol=lf
+
+# Binary files (never normalize, never diff as text)
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.webp  binary
+*.pdf   binary
+*.zip   binary
+*.gz    binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
