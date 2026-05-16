@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coverage Compass — Fill in the letter (mockup A5, document-first)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .page-toolbar {
+      max-width: 8.5in;
+      margin: 0 auto 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .page-toolbar .left, .page-toolbar .right {
+      display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;
+    }
+    .meta-pill {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.3rem 0.7rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .sheet {
+      max-width: 8.5in;
+      margin: 0 auto;
+      background: #ffffff;
+      color: #14181d;
+      padding: 0.75in 0.85in;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 8px 30px rgba(0,0,0,0.10);
+      border-radius: 4px;
+      font-size: 1.02rem;
+      line-height: 1.6;
+    }
+    .sheet a { color: #1c3faa; }
+    .sheet h1 { font-size: 1.5rem; margin: 0 0 0.4rem; }
+    .sheet .meta { color: #3d434b; margin: 0 0 1.25rem; }
+    .sheet h2 {
+      font-size: 1.05rem;
+      margin: 1.25rem 0 0.5rem;
+      padding-bottom: 0.2rem;
+      border-bottom: 1px solid #c9ced6;
+    }
+
+    /* Filled and blank slots */
+    .slot {
+      display: inline;
+      background: rgba(28, 63, 170, 0.12);
+      border-bottom: 2px solid #1c3faa;
+      padding: 0 2px;
+      border-radius: 2px;
+    }
+    .slot.empty {
+      background: #fff4d6;
+      border-bottom: 2px dashed #b07a00;
+      color: #6a4900;
+      font-style: italic;
+      cursor: pointer;
+    }
+    .slot.empty:focus, .slot.empty:hover {
+      background: #ffe69e;
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+    .slot[aria-current="true"] {
+      background: #d2e2ff;
+      outline: 3px solid #1c3faa;
+      outline-offset: 2px;
+    }
+
+    /* Inline question popover, mocked open in-line under the current slot */
+    .popover {
+      display: block;
+      margin: 0.75rem 0 1rem;
+      padding: 1rem 1.15rem;
+      background: var(--accent-bg);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      color: var(--text);
+      max-width: 100%;
+    }
+    .popover h3 { margin: 0 0 0.4rem; font-size: 1rem; }
+    .popover label { display: block; font-weight: 600; margin: 0.5rem 0 0.3rem; }
+    .popover input, .popover textarea {
+      width: 100%;
+      min-height: var(--tap-min);
+      padding: 0.6rem 0.85rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-strong);
+      background: var(--bg); color: var(--text); font: inherit;
+    }
+    .popover textarea { min-height: 90px; resize: vertical; }
+    .popover .actions { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.6rem; }
+    .popover .meta { color: var(--text-muted); margin: 0; font-size: 0.92rem; }
+
+    .footer-note {
+      max-width: 8.5in;
+      margin: 1rem auto 0;
+      color: var(--text-soft);
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    @page { size: Letter; margin: 0.5in; }
+    @media print {
+      .site-header, .site-footer, .page-toolbar, .popover, .footer-note { display: none !important; }
+      .case-banner { display: none !important; }
+      body { background: #fff; }
+      .sheet { box-shadow: none; padding: 0; max-width: 100%; }
+      .slot.empty { background: transparent; color: #6a4900; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a class="brand" href="appeals-index.html">
+        <span class="brand-mark" aria-hidden="true">CC</span>
+        Coverage Compass
+        <span class="brand-sub">fill in the letter</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" aria-pressed="true">English</button>
+        <button type="button" aria-pressed="false">Espanol</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+
+    <!-- Persistent dual-clock banner -->
+    <section class="case-banner" role="region" aria-label="Important deadlines" style="max-width: 8.5in; margin: 0 auto 1.25rem;">
+      <div class="clock">
+        <span class="urgent">Most urgent</span>
+        <span class="label">Keep coverage during appeal</span>
+        <span class="value">9 days left</span>
+        <span class="sub">Ask by May 25, 2026</span>
+      </div>
+      <div class="clock">
+        <span class="label">File the appeal itself</span>
+        <span class="value">59 days left</span>
+        <span class="sub">By July 14, 2026</span>
+      </div>
+      <a class="btn" href="#current-slot">Keep my coverage now</a>
+    </section>
+
+    <div class="page-toolbar" aria-label="Document actions">
+      <div class="left">
+        <span class="meta-pill">3 of 7 blanks filled</span>
+        <span class="meta-pill">Saved on this device</span>
+      </div>
+      <div class="right">
+        <button type="button" class="btn btn-secondary">Print preview</button>
+        <button type="button" class="btn">Send to a CCDC advocate</button>
+      </div>
+    </div>
+
+    <article class="sheet" aria-label="Appeal letter draft. Click a yellow blank to answer.">
+      <h1>Request for hearing and appeal of termination notice</h1>
+      <p class="meta">Draft. Not yet sent. A CCDC advocate will review before anything is filed.</p>
+
+      <p>
+        To: Office of Administrative Courts, Colorado<br />
+        From:
+        <span class="slot" tabindex="0">Jane M.</span>,
+        Case #<span class="slot" tabindex="0">1234567890</span><br />
+        Date: <span class="slot" tabindex="0">May 16, 2026</span>
+      </p>
+
+      <h2>What I am appealing</h2>
+      <p>
+        I am appealing the notice dated
+        <span class="slot" tabindex="0">May 15, 2026</span>
+        that my Health First Colorado coverage will end on
+        <span class="slot" tabindex="0">June 30, 2026</span>.
+      </p>
+
+      <h2>Why I disagree</h2>
+      <p>
+        The notice says the state did not receive the verification documents
+        requested in the notice dated March 28, 2026. In fact,
+        <span class="slot empty" id="current-slot" tabindex="0" aria-current="true" aria-describedby="cur-q">
+          [click to tell us what you sent and when]
+        </span>.
+      </p>
+
+      <div class="popover" id="cur-q" role="group" aria-label="Question for the current blank">
+        <h3>Tell us what you sent and when</h3>
+        <p class="meta">A short, plain answer is best. A date and how you sent it is enough.</p>
+        <form onsubmit="return false;">
+          <label for="sent-what">What did you send?</label>
+          <input id="sent-what" type="text" placeholder="Example: my renewal form and pay stubs" />
+          <label for="sent-when">When did you send it?</label>
+          <input id="sent-when" type="text" placeholder="Example: April 10, 2026" />
+          <label for="sent-how">How did you send it?</label>
+          <input id="sent-how" type="text" placeholder="Example: mailed from the post office on Colfax" />
+          <div class="actions">
+            <button type="button" class="btn btn-secondary">Skip for now</button>
+            <button type="button" class="btn">Fill the blank</button>
+          </div>
+        </form>
+      </div>
+
+      <p>
+        I qualify for Medicaid because
+        <span class="slot empty" tabindex="0">[click to add your exemption reason]</span>.
+        I have these documents to prove it:
+        <span class="slot empty" tabindex="0">[click to pick from your documents]</span>.
+      </p>
+
+      <h2>What I am asking the state to do</h2>
+      <p>
+        Please reverse the termination and continue my coverage. I am also
+        requesting that my benefits continue during this appeal, under my
+        right to a pre-termination hearing.
+      </p>
+
+      <h2>How to reach me</h2>
+      <p>
+        <span class="slot empty" tabindex="0">[click to add your phone or email]</span>
+      </p>
+
+      <p style="margin-top: 1.5rem;">Sincerely,<br />
+        <span class="slot" tabindex="0">Jane M.</span>
+      </p>
+    </article>
+
+    <p class="footer-note">
+      <span>Yellow blanks are still empty. Blue text is what you have filled in. Nothing here is sent until a CCDC advocate reviews it.</span>
+      <span>Saved on your device only.</span>
+    </p>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">
+      <div class="trust-row">
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Saved on your device only</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Goes to a CCDC advocate, never to the state</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Free forever</span>
+      </div>
+      <span>Made with <a href="https://ccdconline.org/">CCDC</a>.</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coverage Compass — One-page summary (mockup 5, print-first)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .page-toolbar {
+      max-width: 8.5in;
+      margin: 0 auto 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .page-toolbar .left {
+      display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;
+    }
+    .page-toolbar .right {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+    }
+
+    /* The "sheet" is meant to look like an 8.5x11 page on screen. */
+    .sheet {
+      max-width: 8.5in;
+      margin: 0 auto;
+      background: #ffffff;
+      color: #14181d;
+      padding: 0.75in 0.85in;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 8px 30px rgba(0,0,0,0.10);
+      border-radius: 4px;
+    }
+    .sheet a { color: #1c3faa; }
+
+    /* Print: hide chrome, drop shadows, edge-to-edge. */
+    @page { size: Letter; margin: 0.5in; }
+    @media print {
+      .site-header, .site-footer, .page-toolbar { display: none !important; }
+      body { background: #fff; }
+      .sheet { box-shadow: none; padding: 0; max-width: 100%; }
+    }
+
+    .sheet-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 2px solid #14181d;
+      margin-bottom: 1.25rem;
+    }
+    .sheet-head .title { font-size: 1.6rem; font-weight: 800; margin: 0 0 0.2rem; }
+    .sheet-head .sub { color: #3d434b; margin: 0; }
+    .sheet-head .mark {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-weight: 700;
+    }
+    .sheet-head .mark .square {
+      width: 28px; height: 28px; border-radius: 6px;
+      background: #1c3faa; color: #fff;
+      display: grid; place-items: center; font-size: 0.85rem;
+    }
+    .sheet-head .right {
+      text-align: right; color: #3d434b; font-size: 0.95rem;
+    }
+
+    .big-deadline {
+      border: 3px solid #b07a00;
+      background: #fff4d6;
+      color: #4a3300;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: baseline;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .big-deadline .label {
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+    .big-deadline .date { font-size: 2rem; font-weight: 800; }
+    .big-deadline .days { font-size: 1rem; font-weight: 600; }
+
+    .sheet h2 {
+      font-size: 1.15rem;
+      margin: 1.25rem 0 0.5rem;
+      padding-bottom: 0.25rem;
+      border-bottom: 1px solid #c9ced6;
+    }
+    .sheet p, .sheet li { font-size: 1.02rem; }
+
+    .what-if {
+      background: #fbeaea;
+      border-left: 4px solid #8a1a1a;
+      color: #5a0e0e;
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      margin: 0.5rem 0 0;
+    }
+
+    .steps {
+      list-style: none;
+      counter-reset: step;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.6rem;
+    }
+    .steps li {
+      counter-increment: step;
+      padding: 0.7rem 0.85rem 0.7rem 2.5rem;
+      border: 1px solid #c9ced6;
+      border-radius: 6px;
+      position: relative;
+    }
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0.7rem; top: 0.7rem;
+      width: 1.4rem; height: 1.4rem;
+      border-radius: 50%;
+      background: #1c3faa;
+      color: #fff;
+      font-weight: 700;
+      display: grid; place-items: center;
+      font-size: 0.9rem;
+    }
+    .steps li strong { display: block; margin-bottom: 0.1rem; }
+    .steps li .meta { color: #3d434b; font-size: 0.95rem; }
+
+    .docs-needed {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+    .docs-needed li {
+      padding: 0.55rem 0.75rem;
+      border: 1px dashed #9aa0a8;
+      border-radius: 6px;
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+    .docs-needed .check {
+      width: 18px; height: 18px;
+      border: 2px solid #14181d;
+      border-radius: 3px;
+      margin-top: 3px;
+      flex: 0 0 auto;
+    }
+
+    .sheet-foot {
+      margin-top: 1.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid #c9ced6;
+      color: #3d434b;
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* In dark mode the on-screen "sheet" stays light because it is meant to look like paper. */
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">CC</span>
+        Coverage Compass
+        <span class="brand-sub">free, private, made with CCDC</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" aria-pressed="true">English</button>
+        <button type="button" aria-pressed="false">Espanol</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="page-toolbar" aria-label="Page actions">
+      <div class="left">
+        <button type="button" class="btn">Save as PDF</button>
+        <button type="button" class="btn btn-secondary" onclick="window.print()">Print</button>
+        <button type="button" class="btn btn-secondary">Large print</button>
+      </div>
+      <div class="right">
+        <button type="button" class="btn btn-ghost">Read another letter</button>
+      </div>
+    </div>
+
+    <article class="sheet" aria-label="One-page summary of your letter">
+      <header class="sheet-head">
+        <div>
+          <div class="mark">
+            <span class="square" aria-hidden="true">CC</span>
+            Coverage Compass summary
+          </div>
+          <h1 class="title">Renew your Medicaid by June 17</h1>
+          <p class="sub">This is what your letter from Health First Colorado is asking for.</p>
+        </div>
+        <div class="right">
+          <div>For: Jane M.</div>
+          <div>Prepared: May 16, 2026</div>
+          <div>Letter type: Renewal request</div>
+        </div>
+      </header>
+
+      <div class="big-deadline" role="group" aria-label="Deadline">
+        <div>
+          <div class="label">Send by</div>
+          <div class="date">
+            <time datetime="2026-06-17">Wed, June 17, 2026</time>
+          </div>
+        </div>
+        <div>
+          <div class="label">Time left</div>
+          <div class="days">32 days</div>
+        </div>
+        <div>
+          <div class="label">If you do nothing</div>
+          <div class="days">Coverage ends July 1, 2026</div>
+        </div>
+      </div>
+
+      <h2>What this letter says, in plain words</h2>
+      <p>
+        Colorado Medicaid wants to check that you still qualify for coverage.
+        You renew once a year. The state needs your renewal form by
+        <strong>June 17, 2026</strong>.
+      </p>
+      <p class="what-if">
+        <strong>If you do nothing:</strong>
+        your Medicaid will end on July 1, 2026, even if you still qualify.
+        Most people who lose coverage at renewal lose it for paperwork
+        reasons, not because they no longer qualify.
+      </p>
+
+      <h2>What to do next</h2>
+      <ol class="steps">
+        <li>
+          <strong>Renew online at PEAK</strong>
+          <span class="meta">peak.colorado.gov. Fastest way. Takes about 20 minutes.</span>
+        </li>
+        <li>
+          <strong>Or call Health First Colorado</strong>
+          <span class="meta">1-800-221-3943, Monday to Friday, 7:30am to 5:15pm.</span>
+        </li>
+        <li>
+          <strong>Need help? Call CCDC</strong>
+          <span class="meta">303-839-1775. CCDC is free and on your side.</span>
+        </li>
+      </ol>
+
+      <h2>What to have ready</h2>
+      <ul class="docs-needed">
+        <li><span class="check" aria-hidden="true"></span><span>Your case number from the letter (top right).</span></li>
+        <li><span class="check" aria-hidden="true"></span><span>Most recent pay stubs, if you work.</span></li>
+        <li><span class="check" aria-hidden="true"></span><span>Your Social Security award letter, if you get SSDI or SSI.</span></li>
+        <li><span class="check" aria-hidden="true"></span><span>HCBS waiver paperwork, if you have a waiver.</span></li>
+      </ul>
+
+      <footer class="sheet-foot">
+        <span>Made with Coverage Compass. Free. Made with CCDC.</span>
+        <span>This page is a summary, not legal advice.</span>
+      </footer>
+    </article>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">
+      <div class="trust-row">
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Nothing leaves your device</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>No account, no tracking</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Free forever</span>
+      </div>
+      <span>Made with <a href="https://ccdconline.org/">CCDC</a>.</span>
+    </div>
+  </footer>
+</body>
+</html>

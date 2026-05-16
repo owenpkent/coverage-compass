@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coverage Compass — Appeal workflow mockups</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .intro { max-width: 760px; margin: 0 auto 2rem; }
+    .grid {
+      display: grid; gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 720px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .mock-card {
+      display: flex; flex-direction: column; gap: 0.5rem;
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      box-shadow: var(--shadow-card);
+      color: var(--text); text-decoration: none;
+    }
+    .mock-card:hover { border-color: var(--accent); }
+    .mock-card h2 { margin: 0; font-size: 1.15rem; }
+    .mock-card .why { color: var(--text-muted); }
+    .mock-card .trade { color: var(--text-soft); font-size: 0.95rem; }
+    .pill {
+      align-self: flex-start;
+      font-size: 0.8rem; font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: var(--accent-bg); color: var(--accent);
+    }
+    .scene {
+      max-width: 760px; margin: 0 auto 1.5rem;
+      padding: 1.25rem 1.5rem;
+      border-left: 4px solid var(--accent);
+      background: var(--bg-elev);
+      border-radius: var(--radius);
+    }
+    .legend {
+      max-width: 760px; margin: 2.5rem auto 0;
+      padding: 1.25rem 1.5rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+    .legend ul { padding-left: 1.1rem; margin: 0.25rem 0 0; }
+    .back-link { display: inline-block; margin-bottom: 1.5rem; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">CC</span>
+        Coverage Compass
+        <span class="brand-sub">appeal brainstorm, May 2026</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" aria-pressed="true">English</button>
+        <button type="button" aria-pressed="false">Espanol</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <a href="index.html" class="back-link">&larr; Back to all mockups</a>
+
+    <section class="intro">
+      <h1>Five ways to help someone file an appeal</h1>
+      <p>
+        The appeal flow (v0.3) is structurally different from notice triage.
+        Triage is one sitting; appeals can take days. Triage explains a letter;
+        appeals build an artifact. And the output is always a draft for a CCDC
+        advocate, never a direct filing with the state.
+      </p>
+    </section>
+
+    <section class="scene" aria-labelledby="scene-h">
+      <h2 id="scene-h" style="margin: 0 0 0.5rem;">The scenario all five mockups use</h2>
+      <p style="margin: 0 0 0.5rem;">
+        Jane M. (HCBS waiver, SSDI) got a procedural termination letter dated
+        May 15, 2026. Her coverage ends June 30, 2026. She has 10 days to
+        request continuation of benefits and 60 days to file the appeal.
+        Today is May 16, 2026.
+      </p>
+      <p style="margin: 0; color: var(--text-soft); font-size: 0.95rem;">
+        The two-clock urgent banner is the same across all five so you can
+        focus on the shape of the workflow.
+      </p>
+    </section>
+
+    <section aria-labelledby="grid-h">
+      <h2 id="grid-h" class="visually-hidden">Appeal mockups</h2>
+      <div class="grid">
+
+        <a class="mock-card" href="a01-progress-tracker.html">
+          <span class="pill">A1</span>
+          <h2>Progress tracker, linear stages</h2>
+          <p class="why">Six steps. Save and come back. One screen at a time.</p>
+          <p class="trade">Legible, screen-reader-easy. Can feel like a tax form on a bad day.</p>
+        </a>
+
+        <a class="mock-card" href="a02-dashboard.html">
+          <span class="pill">A2</span>
+          <h2>"Your case" dashboard</h2>
+          <p class="why">Cards for each part. Do them in any order. Progress visible at a glance.</p>
+          <p class="trade">Matches multi-sitting reality. Needs local persistence to be real.</p>
+        </a>
+
+        <a class="mock-card" href="a03-advocate-conversation.html">
+          <span class="pill">A3</span>
+          <h2>Writing to a CCDC advocate</h2>
+          <p class="why">Short guided conversation. The draft fills in as you answer.</p>
+          <p class="trade">Honest about who is filing. Live regions need care for screen readers.</p>
+        </a>
+
+        <a class="mock-card" href="a04-two-pane.html">
+          <span class="pill">A4</span>
+          <h2>Letter and draft, side by side</h2>
+          <p class="why">Denial on the left, growing appeal draft on the right.</p>
+          <p class="trade">Great for advocate-and-member pairs. Hard on small screens.</p>
+        </a>
+
+        <a class="mock-card" href="a05-document-first.html">
+          <span class="pill">A5</span>
+          <h2>Fill in the letter</h2>
+          <p class="why">The draft is the UI. Click a blank to answer the question for it.</p>
+          <p class="trade">Concrete and motivating. Inline editing is hard to do well accessibly.</p>
+        </a>
+
+      </div>
+    </section>
+
+    <aside class="legend" aria-labelledby="how-h">
+      <h2 id="how-h">What is the same across all five</h2>
+      <ul>
+        <li>The two-clock banner at the top: continuation-of-benefits clock first, appeal-deadline clock second.</li>
+        <li>Output is a draft sent to a CCDC advocate. The app never files anything with the state.</li>
+        <li>Saved on the user's device only. No account, no telemetry.</li>
+        <li>Plain English target. Legal phrasing is the advocate's job.</li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">
+      <div class="trust-row">
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Saved on your device only</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Goes to a CCDC advocate, never to the state</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Free forever</span>
+      </div>
+      <span>Made with <a href="https://ccdconline.org/">CCDC</a>.</span>
+    </div>
+  </footer>
+</body>
+</html>

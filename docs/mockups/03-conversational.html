@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coverage Compass — Talk it through (mockup 3, conversational)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .convo {
+      max-width: 720px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1.5rem;
+    }
+    .bubble {
+      max-width: 100%;
+      padding: 1.1rem 1.25rem;
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-card);
+    }
+    .from-app {
+      border-top-left-radius: 4px;
+    }
+    .from-app h2 { font-size: 1.25rem; margin: 0 0 0.35rem; }
+    .from-you {
+      align-self: end;
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      border-top-right-radius: 4px;
+      max-width: 80%;
+      justify-self: end;
+    }
+    .from-you a { color: #fff; text-decoration: underline; }
+    .choice-stack {
+      display: grid;
+      gap: 0.6rem;
+      margin-top: 0.85rem;
+    }
+    .pick {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      min-height: 56px;
+      padding: 0 1.25rem;
+      background: var(--bg);
+      border: 2px solid var(--border-strong);
+      border-radius: var(--radius);
+      color: var(--text);
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+    }
+    .pick:hover { border-color: var(--accent); background: var(--accent-bg); }
+    .pick .arrow { font-weight: 400; opacity: 0.65; }
+    .quick-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    .quick {
+      min-height: 44px;
+      padding: 0 0.9rem;
+      border-radius: 999px;
+      background: var(--bg-elev);
+      border: 1px solid var(--border-strong);
+      color: var(--text);
+      font: inherit;
+      cursor: pointer;
+    }
+    .quick:hover { background: var(--accent-bg); border-color: var(--accent); }
+    .meta-line {
+      color: var(--text-soft);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .input-bar {
+      position: sticky;
+      bottom: 0;
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 0.85rem 1rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      max-width: 720px;
+      margin: 1.5rem auto 0;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+    }
+    .input-bar input[type="text"] {
+      flex: 1;
+      min-height: var(--tap-min);
+      padding: 0 0.9rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-strong);
+      background: var(--bg);
+      color: var(--text);
+      font: inherit;
+    }
+    .icon-btn {
+      min-width: var(--tap-min);
+      min-height: var(--tap-min);
+      border-radius: var(--radius);
+      background: var(--bg-elev);
+      border: 1px solid var(--border-strong);
+      cursor: pointer;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">CC</span>
+        Coverage Compass
+        <span class="brand-sub">free, private, made with CCDC</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" aria-pressed="true">English</button>
+        <button type="button" aria-pressed="false">Espanol</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <p style="text-align:center; color: var(--text-soft); margin-bottom: 1rem;">
+      Mockup view: a short conversation, not a long chat. Most people are done in three turns.
+    </p>
+
+    <div class="convo" role="log" aria-live="polite" aria-label="Conversation with Coverage Compass">
+
+      <!-- Opening prompt -->
+      <article class="bubble from-app" aria-label="Coverage Compass said">
+        <h2>Hi. I am here to help.</h2>
+        <p style="margin-bottom: 0.25rem;">What is going on?</p>
+        <div class="choice-stack" role="group" aria-label="Pick what is happening">
+          <button class="pick" type="button">
+            <span>I got a letter I do not understand</span>
+            <span class="arrow" aria-hidden="true">&rsaquo;</span>
+          </button>
+          <button class="pick" type="button">
+            <span>I got a denial or termination</span>
+            <span class="arrow" aria-hidden="true">&rsaquo;</span>
+          </button>
+          <button class="pick" type="button">
+            <span>I am helping someone else</span>
+            <span class="arrow" aria-hidden="true">&rsaquo;</span>
+          </button>
+          <button class="pick" type="button">
+            <span>I just want to know what is coming in 2027</span>
+            <span class="arrow" aria-hidden="true">&rsaquo;</span>
+          </button>
+        </div>
+      </article>
+
+      <article class="bubble from-you" aria-label="You said">
+        I got a letter I do not understand.
+      </article>
+
+      <article class="bubble from-app" aria-label="Coverage Compass said">
+        <p>Got it. Do you have the letter on you?</p>
+        <div class="quick-row">
+          <button class="quick" type="button">Upload a PDF</button>
+          <button class="quick" type="button">Take a photo</button>
+          <button class="quick" type="button">I will type the words</button>
+          <button class="quick" type="button">I do not have it</button>
+        </div>
+      </article>
+
+      <article class="bubble from-you" aria-label="You said">
+        <span aria-hidden="true">PDF</span> renewal-letter.pdf
+      </article>
+
+      <article class="bubble from-app" aria-label="Coverage Compass said">
+        <h2>Here is what it says</h2>
+        <p>
+          This is a <strong>renewal request</strong>. Colorado Medicaid wants
+          to check that you still qualify. You have time, but not a lot.
+        </p>
+
+        <div class="card deadline" style="margin: 0.75rem 0;" role="group" aria-label="Deadline">
+          <span class="date">
+            <time datetime="2026-06-17">June 17, 2026</time>
+          </span>
+          <span class="days">32 days from today</span>
+        </div>
+
+        <p style="margin: 0 0 0.5rem;"><strong>What to do next:</strong></p>
+        <ol style="padding-left: 1.2rem; margin: 0 0 0.85rem;">
+          <li>Renew online at <a href="#">peak.colorado.gov</a>. Fastest.</li>
+          <li>Or call Health First Colorado at 1-800-221-3943.</li>
+          <li>Need help? Call CCDC at 303-839-1775.</li>
+        </ol>
+
+        <div class="quick-row">
+          <button class="quick" type="button">Walk me through PEAK</button>
+          <button class="quick" type="button">Save this as a PDF</button>
+          <button class="quick" type="button">I have a different letter</button>
+        </div>
+      </article>
+    </div>
+
+    <form class="input-bar" onsubmit="return false;" aria-label="Type a question">
+      <label for="ask" class="visually-hidden">Type a question</label>
+      <input id="ask" type="text" placeholder="Type a question, or pick an answer above" />
+      <button type="button" class="icon-btn" aria-label="Attach a file">+</button>
+      <button type="submit" class="btn">Send</button>
+    </form>
+
+    <p class="meta-line">
+      Nothing you type is sent anywhere. The conversation lives only in this browser tab.
+    </p>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">
+      <div class="trust-row">
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Nothing leaves your device</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>No account, no tracking</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Free forever</span>
+      </div>
+      <span>Made with <a href="https://ccdconline.org/">CCDC</a>.</span>
+    </div>
+  </footer>
+</body>
+</html>

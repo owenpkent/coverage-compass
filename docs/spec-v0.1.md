@@ -79,3 +79,7 @@ Downloadable (optional):
 - Sample letters from CCDC for training the letter-type classifier (see `outreach.md`).
 - The CO rule library (`rules/co/letter-types.yaml`) populated for the most common letter types.
 - Plain-language explanation strings reviewed by a CCDC advocate.
+
+## UI shape
+
+Five static HTML archetypes for this flow live in [`mockups/`](mockups/) and are summarized in [`ui-brainstorm.md`](ui-brainstorm.md). No archetype is picked yet; the working recommendation is single-screen upload with a print-first one-pager result, pending the CCDC scoping conversation.

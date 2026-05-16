@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coverage Compass — Letter and draft, side by side (mockup A4)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .panes {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 980px) {
+      .panes { grid-template-columns: 1fr 1.05fr; align-items: start; }
+    }
+    .pane {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+    .pane-head {
+      padding: 0.85rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-elev);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .pane-head h2 { margin: 0; font-size: 1.05rem; }
+    .pane-head .meta { color: var(--text-soft); font-size: 0.9rem; }
+    .pane-body { padding: 1.1rem 1.25rem; }
+    .toolbar {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      padding: 0.85rem 1.1rem;
+      border-top: 1px solid var(--border);
+      background: var(--bg-elev);
+    }
+
+    /* Left: paper letter */
+    .letter-stage { background: var(--bg-elev); padding: 1.25rem; }
+    .letter-paper {
+      background: #fff; color: #111;
+      max-width: 460px; margin: 0 auto;
+      padding: 1.5rem 1.5rem 2rem;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15), 0 6px 20px rgba(0,0,0,0.10);
+      font-family: "Times New Roman", Times, serif;
+      font-size: 0.9rem; line-height: 1.45;
+    }
+    .letter-paper header {
+      display: flex; justify-content: space-between; gap: 1rem;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem; margin-bottom: 1rem;
+    }
+    .letter-paper .seal {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #003366; color: #fff;
+      display: grid; place-items: center;
+      font-size: 0.7rem; font-weight: 700;
+      font-family: var(--font-sans);
+    }
+    .letter-paper .meta-block { font-size: 0.78rem; color: #333; text-align: right; }
+    .letter-paper .case { font-family: var(--font-mono); }
+    .letter-paper h1 {
+      font-family: var(--font-sans);
+      font-size: 1rem; margin: 0 0 0.75rem;
+      letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .letter-paper p { margin: 0 0 0.6rem; }
+    .letter-paper .highlight { background: #fff4a3; padding: 0 2px; }
+    .letter-paper mark.live { background: #d2e2ff; padding: 0 2px; outline: 2px solid #1c3faa; outline-offset: 1px; }
+
+    /* Right: draft + interview drawer */
+    .draft {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.15rem;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      min-height: 280px;
+    }
+    .draft .filled { background: rgba(28, 63, 170, 0.10); padding: 0 2px; border-radius: 2px; }
+    .draft .blank {
+      color: var(--text-soft); font-style: italic;
+      background: var(--warn-bg);
+      padding: 0 4px; border-radius: 3px;
+    }
+
+    .ask {
+      margin-top: 1rem;
+      padding: 1rem 1.15rem;
+      background: var(--accent-bg);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+    }
+    .ask h3 { margin: 0 0 0.5rem; }
+    .ask label { display: block; font-weight: 600; margin-bottom: 0.35rem; }
+    .ask input, .ask textarea {
+      width: 100%;
+      min-height: var(--tap-min);
+      padding: 0.6rem 0.85rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-strong);
+      background: var(--bg); color: var(--text); font: inherit;
+    }
+    .ask textarea { min-height: 90px; resize: vertical; }
+    .ask .row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.6rem; }
+    .ask .meta { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a class="brand" href="appeals-index.html">
+        <span class="brand-mark" aria-hidden="true">CC</span>
+        Coverage Compass
+        <span class="brand-sub">side by side</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" aria-pressed="true">English</button>
+        <button type="button" aria-pressed="false">Espanol</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section style="max-width: 1100px; margin: 0 auto 1.25rem;">
+      <h1>Your letter and your draft, side by side</h1>
+      <p style="color: var(--text-muted); font-size: 1.1rem; margin: 0;">
+        On the left is the letter you got. On the right is the draft we are
+        building with you. As you answer, the draft fills in.
+      </p>
+    </section>
+
+    <!-- Persistent dual-clock banner -->
+    <section class="case-banner" role="region" aria-label="Important deadlines" style="max-width: 1100px; margin: 0 auto 1.25rem;">
+      <div class="clock">
+        <span class="urgent">Most urgent</span>
+        <span class="label">Keep coverage during appeal</span>
+        <span class="value">9 days left</span>
+        <span class="sub">Ask by May 25, 2026</span>
+      </div>
+      <div class="clock">
+        <span class="label">File the appeal itself</span>
+        <span class="value">59 days left</span>
+        <span class="sub">By July 14, 2026</span>
+      </div>
+      <a class="btn" href="#draft-h">Keep my coverage now</a>
+    </section>
+
+    <div class="panes">
+
+      <!-- LEFT: letter -->
+      <section class="pane" aria-labelledby="letter-h">
+        <div class="pane-head">
+          <h2 id="letter-h">Your letter</h2>
+          <span class="meta">Termination notice</span>
+        </div>
+        <div class="letter-stage">
+          <article class="letter-paper" aria-label="Letter preview; the plain-language version is in the right panel.">
+            <header>
+              <div>
+                <div class="seal" aria-hidden="true">CO</div>
+                <div style="font-size: 0.72rem; margin-top: 0.25rem;">
+                  Department of Health Care<br />Policy and Financing
+                </div>
+              </div>
+              <div class="meta-block">
+                <div>Date: May 15, 2026</div>
+                <div class="case">Case #: 1234567890</div>
+                <div>Page 1 of 2</div>
+              </div>
+            </header>
+            <h1>Notice of Discontinuation</h1>
+            <p>Dear Member,</p>
+            <p>
+              Your Health First Colorado coverage will end on
+              <span class="highlight">June 30, 2026</span> because we did not
+              receive the verification documents we requested in our notice
+              dated <mark class="live">March 28, 2026</mark>.
+            </p>
+            <p>
+              You have the right to appeal this decision. You must request
+              a hearing within <span class="highlight">60 days</span> of the
+              date of this notice. To keep your benefits during the appeal,
+              you must request a hearing within <span class="highlight">10 days</span>.
+            </p>
+            <p>
+              To request a hearing, call 1-800-221-3943 or write to the
+              Office of Administrative Courts at the address below.
+            </p>
+          </article>
+        </div>
+        <div class="toolbar">
+          <button type="button" class="btn btn-secondary">See plain summary</button>
+          <button type="button" class="btn btn-ghost">Download original</button>
+        </div>
+      </section>
+
+      <!-- RIGHT: draft + ask -->
+      <section class="pane" aria-labelledby="draft-h">
+        <div class="pane-head">
+          <h2 id="draft-h">Your draft appeal</h2>
+          <span class="meta">Updates as you answer</span>
+        </div>
+        <div class="pane-body">
+          <div class="draft" aria-live="polite">
+<p>To: Office of Administrative Courts</p>
+<p>From: <span class="filled">Jane M.</span>, Case #<span class="filled">1234567890</span></p>
+<p>Date: <span class="filled">May 16, 2026</span></p>
+<p>Re: Appeal of termination notice dated <span class="filled">May 15, 2026</span></p>
+<p>I am appealing the notice that my Health First Colorado coverage will end on <span class="filled">June 30, 2026</span>. The notice says the state did not receive the verification documents requested on <span class="filled">March 28, 2026</span>.</p>
+<p><span class="blank">[I need you to add: what you actually sent and when]</span></p>
+<p>I qualify for Medicaid because <span class="blank">[the advocate will add legal references for SSDI and HCBS waiver]</span>.</p>
+<p>I am also requesting that my benefits continue during this appeal.</p>
+          </div>
+
+          <div class="ask" aria-labelledby="ask-h">
+            <h3 id="ask-h">One question to fill the next blank</h3>
+            <p class="meta">Plain English is fine. A CCDC advocate will smooth it out.</p>
+            <form onsubmit="return false;">
+              <label for="sent">What did you send to the state, and when?</label>
+              <textarea id="sent" placeholder="Example: I mailed my renewal form on April 10, 2026 from the post office on Colfax."></textarea>
+              <div class="row">
+                <button type="button" class="btn btn-secondary">Skip this question</button>
+                <button type="button" class="btn">Add to draft</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="toolbar">
+          <button type="button" class="btn">Send to a CCDC advocate</button>
+          <button type="button" class="btn btn-secondary">Edit the whole draft</button>
+          <span style="margin-left:auto; color: var(--text-soft); font-size: 0.9rem; align-self:center;">
+            Saved on your device a moment ago
+          </span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">
+      <div class="trust-row">
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Saved on your device only</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Goes to a CCDC advocate, never to the state</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Free forever</span>
+      </div>
+      <span>Made with <a href="https://ccdconline.org/">CCDC</a>.</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -5,6 +5,8 @@ All notable changes to this project are recorded here. The project is in pre-v0.
 ## [Unreleased]
 
 ### Added
+- `docs/ui-brainstorm.md`: write-up of the two UI brainstorms (v0.1 notice triage and v0.3 appeal workflow), including the working recommendations and what was not decided.
+- `docs/mockups/`: ten self-contained HTML mockups plus a shared stylesheet. Five archetypes for the v0.1 notice-triage flow (`01-single-screen`, `02-linear-wizard`, `03-conversational`, `04-two-pane`, `05-print-first`) and five for the v0.3 appeal workflow (`a01-progress-tracker`, `a02-dashboard`, `a03-advocate-conversation`, `a04-two-pane`, `a05-document-first`). `index.html` and `appeals-index.html` link them with one-line trade-offs. `shared.css` encodes WCAG 2.2 AA tokens, dark / reduced-motion / high-contrast support, a 48px tap-target floor, and an appeals-specific dual-clock urgency banner that surfaces continuation-of-benefits and appeal-deadline clocks together.
 - `docs/pitch-cfa.md`: one-page pitch for Code for America (Safety Net Innovation Lab and brigade-facing).
 - `research/prior-art.md`: prior-art survey covering Code for America, NHeLP, Justice in Aging, NDRN and state P&As, AAPD, The Arc, KFF, Urban Institute, CBPP, Georgetown CCF, SHVS, Stanford Legal Design Lab, and adjacent appeal-generator tools.
 - `CHANGELOG.md` (this file).

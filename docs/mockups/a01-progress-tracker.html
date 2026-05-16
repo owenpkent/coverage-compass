@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coverage Compass — Appeal, step by step (mockup A1)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .shell { max-width: 760px; margin: 0 auto; display: grid; gap: 1.25rem; }
+    .step-rail {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      padding: 0.75rem 1rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 0.9rem;
+    }
+    .step-rail ol { list-style: none; padding: 0; margin: 0; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .step-rail li { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--text-soft); }
+    .step-rail li[aria-current="step"] { color: var(--accent); font-weight: 700; }
+    .step-rail li.done { color: var(--success); }
+    .step-rail .sep { color: var(--border-strong); }
+    .interview label { display: block; font-weight: 600; margin-bottom: 0.35rem; }
+    .interview textarea,
+    .interview input[type="text"] {
+      width: 100%;
+      min-height: var(--tap-min);
+      padding: 0.7rem 0.85rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-strong);
+      background: var(--bg);
+      color: var(--text);
+      font: inherit;
+    }
+    .interview textarea { min-height: 130px; resize: vertical; }
+    .field { margin-bottom: 1rem; }
+    .checks { display: grid; gap: 0.5rem; }
+    .check-row {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      padding: 0.7rem 0.9rem;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      background: var(--bg);
+    }
+    .check-row input { width: 22px; height: 22px; margin-top: 0.15rem; }
+    .nav-row { display: flex; gap: 0.75rem; justify-content: space-between; flex-wrap: wrap; margin-top: 0.5rem; }
+    .save-hint { color: var(--text-soft); font-size: 0.9rem; }
+    .mockup-note { text-align: center; color: var(--text-soft); margin: 0 0 1.25rem; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a class="brand" href="appeals-index.html">
+        <span class="brand-mark" aria-hidden="true">CC</span>
+        Coverage Compass
+        <span class="brand-sub">appeal helper, mockup</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" aria-pressed="true">English</button>
+        <button type="button" aria-pressed="false">Espanol</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <p class="mockup-note">
+      Mockup view: all six stages shown stacked. In the real app, only one is on screen at a time.
+    </p>
+
+    <div class="shell">
+
+      <!-- Persistent dual-clock banner -->
+      <section class="case-banner" role="region" aria-label="Important deadlines">
+        <div class="clock">
+          <span class="urgent">Most urgent</span>
+          <span class="label">Keep your coverage during the appeal</span>
+          <span class="value">9 days left</span>
+          <span class="sub">Ask by May 25, 2026</span>
+        </div>
+        <div class="clock">
+          <span class="label">File the appeal itself</span>
+          <span class="value">59 days left</span>
+          <span class="sub">By July 14, 2026</span>
+        </div>
+        <a class="btn" href="#stage-2">Keep my coverage now</a>
+      </section>
+
+      <!-- Step rail -->
+      <nav class="step-rail" aria-label="Appeal stages">
+        <ol>
+          <li class="done">1. Read letter</li><span class="sep" aria-hidden="true">/</span>
+          <li class="done">2. Keep coverage</li><span class="sep" aria-hidden="true">/</span>
+          <li aria-current="step">3. Tell your story</li><span class="sep" aria-hidden="true">/</span>
+          <li>4. Gather proof</li><span class="sep" aria-hidden="true">/</span>
+          <li>5. Review draft</li><span class="sep" aria-hidden="true">/</span>
+          <li>6. Send to CCDC</li>
+        </ol>
+      </nav>
+
+      <!-- STAGE 1 -->
+      <section class="stage" id="stage-1" aria-labelledby="s1-h">
+        <div class="stage-head">
+          <h2 id="s1-h">1. What does this letter say?</h2>
+          <span class="stage-status done">Done</span>
+        </div>
+        <p style="margin: 0;">
+          This is a <strong>procedural termination</strong> from Health First Colorado.
+          They are ending your coverage on <strong>June 30, 2026</strong> because they say
+          they did not get the paperwork they asked for.
+        </p>
+        <p style="margin: 0; color: var(--text-muted);">
+          This is one of the most common appeal types. Most procedural terminations
+          get reversed when the paperwork shows up.
+        </p>
+        <div class="nav-row">
+          <button type="button" class="btn btn-ghost">See the letter</button>
+          <button type="button" class="btn btn-secondary">Change letter</button>
+        </div>
+      </section>
+
+      <!-- STAGE 2 -->
+      <section class="stage" id="stage-2" aria-labelledby="s2-h">
+        <div class="stage-head">
+          <h2 id="s2-h">2. Keep your coverage while you appeal</h2>
+          <span class="stage-status done">Done</span>
+        </div>
+        <p style="margin: 0;">
+          You asked Health First Colorado to keep your coverage during the appeal.
+          They confirmed on May 17, 2026. Your benefits continue until the hearing decision.
+        </p>
+        <p style="margin: 0; color: var(--text-muted);">
+          This is the most important thing in an appeal and you already did it. Nice work.
+        </p>
+      </section>
+
+      <!-- STAGE 3 -->
+      <section class="stage" id="stage-3" aria-labelledby="s3-h">
+        <div class="stage-head">
+          <h2 id="s3-h">3. Tell your story</h2>
+          <span class="stage-status doing">You are here</span>
+        </div>
+        <p style="margin: 0;">
+          A CCDC advocate will read this. You do not need to use legal words.
+          Plain English is best.
+        </p>
+        <form class="interview" onsubmit="return false;">
+          <div class="field">
+            <label for="why">What do you think went wrong?</label>
+            <textarea id="why" placeholder="Example: I mailed the renewal in April but it looks like they did not get it."></textarea>
+          </div>
+          <div class="field">
+            <label for="when">When did you first hear something was wrong?</label>
+            <input id="when" type="text" placeholder="Example: I got this letter on May 15." />
+          </div>
+          <div class="field">
+            <label for="harm">What will happen if you lose coverage?</label>
+            <textarea id="harm" placeholder="Example: I will lose my home health attendant and I cannot get out of bed without help."></textarea>
+          </div>
+        </form>
+        <p class="save-hint" aria-live="polite">Saved on your device a moment ago.</p>
+        <div class="nav-row">
+          <button type="button" class="btn btn-secondary">Save and finish later</button>
+          <button type="button" class="btn">Next: gather proof</button>
+        </div>
+      </section>
+
+      <!-- STAGE 4 -->
+      <section class="stage" id="stage-4" aria-labelledby="s4-h">
+        <div class="stage-head">
+          <h2 id="s4-h">4. Gather proof</h2>
+          <span class="stage-status todo">Not started</span>
+        </div>
+        <p style="margin: 0;">Pick anything you have. Skip what you do not.</p>
+        <div class="checks">
+          <label class="check-row"><input type="checkbox" /> <span>The letter you got from the state</span></label>
+          <label class="check-row"><input type="checkbox" /> <span>A copy of what you mailed or uploaded</span></label>
+          <label class="check-row"><input type="checkbox" /> <span>Proof of mailing (receipt, tracking, photo)</span></label>
+          <label class="check-row"><input type="checkbox" /> <span>SSA award letter (if you get SSDI or SSI)</span></label>
+          <label class="check-row"><input type="checkbox" /> <span>HCBS waiver papers (if you have a waiver)</span></label>
+          <label class="check-row"><input type="checkbox" /> <span>A short note from your doctor about your needs</span></label>
+        </div>
+        <div class="nav-row">
+          <button type="button" class="btn btn-secondary">Back</button>
+          <button type="button" class="btn">Next: review draft</button>
+        </div>
+      </section>
+
+      <!-- STAGE 5 -->
+      <section class="stage" id="stage-5" aria-labelledby="s5-h">
+        <div class="stage-head">
+          <h2 id="s5-h">5. Review your draft</h2>
+          <span class="stage-status todo">Not started</span>
+        </div>
+        <p style="margin: 0;">
+          We turn your answers into a draft appeal letter. You can change anything.
+          You do not send this. It goes to a CCDC advocate next.
+        </p>
+        <article style="background: var(--bg-elev); border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem 1.25rem; font-family: var(--font-mono); font-size: 0.95rem;">
+          <p style="margin: 0 0 0.6rem;">To: Office of Administrative Courts</p>
+          <p style="margin: 0 0 0.6rem;">From: Jane M., Case #1234567890</p>
+          <p style="margin: 0 0 0.6rem;">Date: May 16, 2026</p>
+          <p style="margin: 0 0 0.6rem;">Re: Appeal of termination notice dated May 15, 2026</p>
+          <p style="margin: 0;">I am appealing the notice that my Health First Colorado coverage will end on June 30, 2026. The notice says I did not return paperwork that was requested. I did return that paperwork on April 10, 2026...</p>
+        </article>
+        <div class="nav-row">
+          <button type="button" class="btn btn-secondary">Edit my answers</button>
+          <button type="button" class="btn">Send to a CCDC advocate</button>
+        </div>
+      </section>
+
+      <!-- STAGE 6 -->
+      <section class="stage" id="stage-6" aria-labelledby="s6-h">
+        <div class="stage-head">
+          <h2 id="s6-h">6. A CCDC advocate reviews it</h2>
+          <span class="stage-status todo">Not started</span>
+        </div>
+        <div class="handoff">
+          <h2>
+            <span class="avatar" aria-hidden="true">CC</span>
+            CCDC advocate review
+          </h2>
+          <p style="margin: 0 0 0.5rem;">
+            A CCDC advocate will read your draft, suggest changes, and tell you
+            what to file with the state. You and the advocate file it together.
+            <strong>This app never sends anything to the state.</strong>
+          </p>
+          <p style="margin: 0; color: var(--text-muted);">
+            Typical reply time: 1 to 2 business days. If your case is urgent,
+            call CCDC at 303-839-1775.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">
+      <div class="trust-row">
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Saved on your device only</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Goes to a CCDC advocate, never to the state</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Free forever</span>
+      </div>
+      <span>Made with <a href="https://ccdconline.org/">CCDC</a>.</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coverage Compass — UI mockups</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .intro {
+      max-width: 760px;
+      margin: 0 auto 2rem;
+    }
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 720px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .mock-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      box-shadow: var(--shadow-card);
+      color: var(--text);
+      text-decoration: none;
+    }
+    .mock-card:hover { border-color: var(--accent); }
+    .mock-card h2 { margin: 0; font-size: 1.15rem; }
+    .mock-card .why { color: var(--text-muted); }
+    .mock-card .trade { color: var(--text-soft); font-size: 0.95rem; }
+    .pill {
+      align-self: flex-start;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: var(--accent-bg);
+      color: var(--accent);
+    }
+    .legend {
+      max-width: 760px;
+      margin: 2.5rem auto 0;
+      padding: 1.25rem 1.5rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+    .legend ul { padding-left: 1.1rem; margin: 0.25rem 0 0; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">CC</span>
+        Coverage Compass
+        <span class="brand-sub">UI brainstorm, May 2026</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" aria-pressed="true">English</button>
+        <button type="button" aria-pressed="false">Espanol</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="intro">
+      <h1>UI brainstorms</h1>
+      <p>
+        Two brainstorms so far. Below are five takes on the v0.1
+        <strong>notice triage</strong> flow. For the v0.3 <strong>appeal</strong>
+        workflow brainstorm, see
+        <a href="appeals-index.html">appeals-index.html</a>.
+      </p>
+      <p>
+        These five are about the same v0.1 letter triage flow: same letter,
+        same plain-language output, same trust posture. The only difference
+        is the shape of the interaction. Open each one and pretend you just
+        got the letter.
+      </p>
+      <p>
+        All five share <a href="shared.css">shared.css</a> so the visual
+        language stays consistent. The shared sheet aims at WCAG 2.2 AA with
+        AAA contrast on body text, respects <code>prefers-reduced-motion</code>,
+        <code>prefers-color-scheme</code>, and <code>prefers-contrast</code>,
+        keeps tap targets at 48px or more, and uses semantic HTML.
+      </p>
+    </section>
+
+    <section aria-labelledby="grid-title">
+      <h2 id="grid-title" class="visually-hidden">Mockups</h2>
+      <div class="grid">
+
+        <a class="mock-card" href="01-single-screen.html">
+          <span class="pill">1</span>
+          <h2>Single screen drop target</h2>
+          <p class="why">The whole viewport is a drop zone. Result renders below in place.</p>
+          <p class="trade">Lowest cognitive load. Hardest to surface secondary inputs.</p>
+        </a>
+
+        <a class="mock-card" href="02-linear-wizard.html">
+          <span class="pill">2</span>
+          <h2>Linear wizard</h2>
+          <p class="why">One question per step. Big buttons. Clear progress.</p>
+          <p class="trade">Excellent for screen readers and stressed users. Feels slow for repeat use.</p>
+        </a>
+
+        <a class="mock-card" href="03-conversational.html">
+          <span class="pill">3</span>
+          <h2>Conversational</h2>
+          <p class="why">Short interview with large choice buttons, not a freeform chat.</p>
+          <p class="trade">Lowers fear, sets up v0.3 appeals nicely. Live-region churn is risky.</p>
+        </a>
+
+        <a class="mock-card" href="04-two-pane.html">
+          <span class="pill">4</span>
+          <h2>Letter and translation, side by side</h2>
+          <p class="why">Original letter on the left, plain-language meaning on the right.</p>
+          <p class="trade">Best for advocate-and-member pairs. Letter image itself is not accessible content.</p>
+        </a>
+
+        <a class="mock-card" href="05-print-first.html">
+          <span class="pill">5</span>
+          <h2>Print-first one-pager</h2>
+          <p class="why">Output looks like a printable document from the start. Save, print, hand to family.</p>
+          <p class="trade">Matches paper-based mental model. Large print and sharing come for free.</p>
+        </a>
+
+      </div>
+    </section>
+
+    <aside class="legend" aria-labelledby="how-title">
+      <h2 id="how-title">How to evaluate these</h2>
+      <ul>
+        <li>Open each mockup in a new tab. Try them with the keyboard only (Tab, Shift+Tab, Enter, Space).</li>
+        <li>Switch your OS to dark mode and reload. All five should remain readable.</li>
+        <li>Turn on "reduce motion" in your OS. Nothing should animate.</li>
+        <li>Zoom to 200% in the browser. Layout should not break.</li>
+        <li>Run a screen reader (NVDA, VoiceOver, or TalkBack) for a minute on each.</li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">
+      <div class="trust-row">
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Nothing leaves your device</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>No account, no tracking</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Free forever</span>
+      </div>
+      <span>Made with <a href="https://ccdconline.org/">CCDC</a>.</span>
+    </div>
+  </footer>
+</body>
+</html>

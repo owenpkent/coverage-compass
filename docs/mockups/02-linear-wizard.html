@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coverage Compass — Step by step (mockup 2, linear wizard)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .wizard-shell {
+      max-width: 720px;
+      margin: 0 auto;
+      display: grid;
+      gap: 2.5rem;
+    }
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-card);
+    }
+    .progress {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+    .progress .dots { display: inline-flex; gap: 0.35rem; }
+    .progress .dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--border-strong);
+    }
+    .progress .dot.active { background: var(--accent); }
+    .progress .dot.done {
+      background: var(--success);
+      position: relative;
+    }
+    .step-card h2 { font-size: 1.6rem; margin-bottom: 0.25rem; }
+    .step-help {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    .choice-grid {
+      display: grid;
+      gap: 0.75rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 540px) {
+      .choice-grid.three { grid-template-columns: repeat(3, 1fr); }
+    }
+    .choice {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.35rem;
+      min-height: 110px;
+      padding: 1.1rem 1.25rem;
+      background: var(--bg);
+      border: 2px solid var(--border-strong);
+      border-radius: var(--radius);
+      color: var(--text);
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+    .choice:hover { border-color: var(--accent); background: var(--accent-bg); }
+    .choice strong { font-size: 1.1rem; }
+    .choice .meta { color: var(--text-soft); font-size: 0.95rem; }
+    .nav-row {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+    }
+    .reassure {
+      margin-top: 1rem;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      max-width: none;
+    }
+    .file-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .file-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 0.9rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+    }
+    .file-pill .x {
+      min-height: 32px; min-width: 32px;
+      border-radius: 50%;
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">CC</span>
+        Coverage Compass
+        <span class="brand-sub">free, private, made with CCDC</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" aria-pressed="true">English</button>
+        <button type="button" aria-pressed="false">Espanol</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <p style="text-align:center; color: var(--text-soft); margin-bottom: 2rem;">
+      Mockup view: all three steps shown stacked. In the real app, only one is on screen at a time.
+    </p>
+
+    <div class="wizard-shell">
+
+      <!-- STEP 1 -->
+      <section class="step-card" aria-labelledby="s1-title">
+        <div class="progress" aria-label="Step 1 of 3">
+          <span class="dots" aria-hidden="true">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+          </span>
+          <span>Step 1 of 3</span>
+        </div>
+        <h2 id="s1-title">What do you have?</h2>
+        <p class="step-help">Pick the one that fits. There is no wrong answer.</p>
+
+        <div class="choice-grid three" role="group" aria-label="Choose what you have">
+          <button type="button" class="choice">
+            <strong>A PDF file</strong>
+            <span class="meta">From PEAK or your email.</span>
+          </button>
+          <button type="button" class="choice">
+            <strong>A paper letter</strong>
+            <span class="meta">Take a photo of it.</span>
+          </button>
+          <button type="button" class="choice">
+            <strong>Just the words</strong>
+            <span class="meta">Type or paste what it says.</span>
+          </button>
+        </div>
+
+        <div class="nav-row">
+          <span aria-hidden="true"></span>
+          <button type="button" class="btn btn-ghost">I do not have the letter</button>
+        </div>
+      </section>
+
+      <!-- STEP 2 -->
+      <section class="step-card" aria-labelledby="s2-title">
+        <div class="progress" aria-label="Step 2 of 3">
+          <span class="dots" aria-hidden="true">
+            <span class="dot done"></span>
+            <span class="dot active"></span>
+            <span class="dot"></span>
+          </span>
+          <span>Step 2 of 3</span>
+        </div>
+        <h2 id="s2-title">Add your letter</h2>
+        <p class="step-help">It stays on your device. Nothing gets uploaded anywhere.</p>
+
+        <div>
+          <label class="btn btn-lg" for="wiz-file">
+            Choose a PDF
+            <input id="wiz-file" type="file" accept="application/pdf" style="position:absolute; opacity:0; pointer-events:none;" />
+          </label>
+          <button type="button" class="btn btn-secondary btn-lg" style="margin-left: 0.5rem;">
+            Take a photo
+          </button>
+        </div>
+
+        <div class="file-row" aria-live="polite">
+          <span class="file-pill">
+            <span aria-hidden="true">PDF</span>
+            <span>renewal-letter.pdf</span>
+            <button type="button" class="x" aria-label="Remove renewal-letter.pdf">x</button>
+          </span>
+        </div>
+
+        <p class="reassure">
+          We do not save your letter. When you close the tab, it is gone.
+        </p>
+
+        <div class="nav-row">
+          <button type="button" class="btn btn-secondary">Back</button>
+          <button type="button" class="btn">Read this letter</button>
+        </div>
+      </section>
+
+      <!-- STEP 3 -->
+      <section class="step-card" aria-labelledby="s3-title">
+        <div class="progress" aria-label="Step 3 of 3">
+          <span class="dots" aria-hidden="true">
+            <span class="dot done"></span>
+            <span class="dot done"></span>
+            <span class="dot active"></span>
+          </span>
+          <span>Step 3 of 3</span>
+        </div>
+        <h2 id="s3-title">Here is what your letter says</h2>
+        <p class="step-help">Take a breath. You have time.</p>
+
+        <div class="card deadline" style="margin-bottom: 1rem;" role="group" aria-label="Deadline">
+          <span class="date">
+            <time datetime="2026-06-17">June 17, 2026</time>
+          </span>
+          <span class="days">32 days from today</span>
+        </div>
+
+        <p style="font-size: 1.1rem;">
+          This is a <strong>renewal request</strong>. Colorado Medicaid wants to
+          check that you still qualify. You need to send your renewal by
+          <strong>June 17, 2026</strong>.
+        </p>
+
+        <h3 style="margin-top: 1.5rem;">What to do next</h3>
+        <ol class="actions-list">
+          <li>
+            <span class="num" aria-hidden="true">1</span>
+            <span class="body">
+              <strong>Renew online at PEAK</strong>
+              <span class="meta">Fastest. peak.colorado.gov.</span>
+            </span>
+          </li>
+          <li>
+            <span class="num" aria-hidden="true">2</span>
+            <span class="body">
+              <strong>Call Health First Colorado</strong>
+              <span class="meta">1-800-221-3943.</span>
+            </span>
+          </li>
+          <li>
+            <span class="num" aria-hidden="true">3</span>
+            <span class="body">
+              <strong>Call CCDC if you need help</strong>
+              <span class="meta">303-839-1775.</span>
+            </span>
+          </li>
+        </ol>
+
+        <div class="nav-row">
+          <button type="button" class="btn btn-secondary">Read another letter</button>
+          <button type="button" class="btn">Save this as a PDF</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">
+      <div class="trust-row">
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Nothing leaves your device</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>No account, no tracking</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Free forever</span>
+      </div>
+      <span>Made with <a href="https://ccdconline.org/">CCDC</a>.</span>
+    </div>
+  </footer>
+</body>
+</html>

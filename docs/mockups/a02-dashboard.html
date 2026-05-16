@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coverage Compass — Your case (mockup A2, dashboard)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .case-head {
+      max-width: 1000px;
+      margin: 0 auto 1.25rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+    .case-head h1 { margin: 0 0 0.2rem; }
+    .case-head .sub { color: var(--text-muted); margin: 0; }
+    .case-head .meta { color: var(--text-soft); font-size: 0.9rem; }
+
+    .shell { max-width: 1000px; margin: 0 auto; display: grid; gap: 1rem; }
+
+    .progress-strip {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 0.85rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .progress-strip .label { font-weight: 600; }
+    .progress-strip .bar {
+      flex: 1 1 240px;
+      min-width: 200px;
+      height: 12px;
+      background: var(--bg);
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-strip .fill {
+      display: block;
+      width: 42%;
+      height: 100%;
+      background: var(--accent);
+    }
+    .progress-strip .pct { font-weight: 700; min-width: 3em; text-align: right; }
+
+    .cards {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 760px) {
+      .cards { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .card-action {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin-top: 0.25rem;
+    }
+    .preview {
+      background: var(--bg-elev);
+      border: 1px dashed var(--border-strong);
+      border-radius: var(--radius);
+      padding: 0.75rem 0.9rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-style: italic;
+    }
+    .checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.35rem; }
+    .checklist li { display: flex; align-items: center; gap: 0.5rem; }
+    .checklist li .box { width: 18px; height: 18px; border: 2px solid var(--text); border-radius: 4px; flex: 0 0 auto; }
+    .checklist li.done .box { background: var(--success); border-color: var(--success); }
+    .checklist li.done { color: var(--text-soft); text-decoration: line-through; }
+    .small-meta { color: var(--text-soft); font-size: 0.9rem; }
+    .case-foot {
+      max-width: 1000px;
+      margin: 1rem auto 0;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a class="brand" href="appeals-index.html">
+        <span class="brand-mark" aria-hidden="true">CC</span>
+        Coverage Compass
+        <span class="brand-sub">your case</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" aria-pressed="true">English</button>
+        <button type="button" aria-pressed="false">Espanol</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="case-head">
+      <div>
+        <p class="meta">Appeal in progress</p>
+        <h1>Your termination notice from May 15, 2026</h1>
+        <p class="sub">Take it one card at a time. We saved everything on this device.</p>
+      </div>
+      <div class="meta">Started May 16. Last saved a moment ago.</div>
+    </section>
+
+    <div class="shell">
+
+      <!-- Persistent two-clock banner -->
+      <section class="case-banner" role="region" aria-label="Important deadlines">
+        <div class="clock">
+          <span class="urgent">Most urgent</span>
+          <span class="label">Keep coverage during appeal</span>
+          <span class="value">9 days left</span>
+          <span class="sub">Ask by May 25, 2026</span>
+        </div>
+        <div class="clock">
+          <span class="label">File the appeal itself</span>
+          <span class="value">59 days left</span>
+          <span class="sub">By July 14, 2026</span>
+        </div>
+        <a class="btn" href="#card-coverage">Keep my coverage now</a>
+      </section>
+
+      <!-- Progress strip -->
+      <div class="progress-strip" role="group" aria-label="Overall progress">
+        <span class="label">Your appeal so far</span>
+        <span class="bar" aria-hidden="true"><span class="fill"></span></span>
+        <span class="pct" aria-label="42 percent complete">42%</span>
+      </div>
+
+      <!-- Cards: any order -->
+      <div class="cards">
+
+        <article class="stage" id="card-letter" aria-labelledby="c1-h">
+          <div class="stage-head">
+            <h2 id="c1-h">What the letter says</h2>
+            <span class="stage-status done">Done</span>
+          </div>
+          <p style="margin: 0;">
+            Procedural termination. They say you did not send paperwork they asked for.
+            Coverage would end <strong>June 30, 2026</strong>.
+          </p>
+          <div class="card-action">
+            <button type="button" class="btn btn-secondary">See plain summary</button>
+            <button type="button" class="btn btn-ghost">See the letter</button>
+          </div>
+        </article>
+
+        <article class="stage" id="card-coverage" aria-labelledby="c2-h">
+          <div class="stage-head">
+            <h2 id="c2-h">Keep coverage during appeal</h2>
+            <span class="stage-status urgent">Do this first</span>
+          </div>
+          <p style="margin: 0;">
+            If you ask within 10 days, your benefits keep going until the hearing.
+            We will help you make the call or send the form.
+          </p>
+          <ul class="checklist">
+            <li><span class="box" aria-hidden="true"></span>Call Health First Colorado at 1-800-221-3943</li>
+            <li><span class="box" aria-hidden="true"></span>Or use the prefilled form below</li>
+          </ul>
+          <div class="card-action">
+            <button type="button" class="btn">Open the prefilled form</button>
+            <button type="button" class="btn btn-secondary">Mark as done</button>
+          </div>
+        </article>
+
+        <article class="stage" id="card-story" aria-labelledby="c3-h">
+          <div class="stage-head">
+            <h2 id="c3-h">Tell your story</h2>
+            <span class="stage-status doing">In progress, 2 of 3</span>
+          </div>
+          <p style="margin: 0;" class="small-meta">Short, plain answers. A CCDC advocate will read them.</p>
+          <div class="preview">
+            "I mailed the renewal in April but it looks like they did not get it..."
+          </div>
+          <div class="card-action">
+            <button type="button" class="btn">Keep going</button>
+            <button type="button" class="btn btn-secondary">See what you wrote</button>
+          </div>
+        </article>
+
+        <article class="stage" id="card-proof" aria-labelledby="c4-h">
+          <div class="stage-head">
+            <h2 id="c4-h">Gather proof</h2>
+            <span class="stage-status doing">3 of 6 added</span>
+          </div>
+          <ul class="checklist">
+            <li class="done"><span class="box" aria-hidden="true"></span>The letter you got</li>
+            <li class="done"><span class="box" aria-hidden="true"></span>SSA award letter</li>
+            <li class="done"><span class="box" aria-hidden="true"></span>HCBS waiver paperwork</li>
+            <li><span class="box" aria-hidden="true"></span>Proof of mailing</li>
+            <li><span class="box" aria-hidden="true"></span>Copy of what you sent</li>
+            <li><span class="box" aria-hidden="true"></span>Note from a doctor (optional)</li>
+          </ul>
+          <div class="card-action">
+            <button type="button" class="btn">Add a document</button>
+          </div>
+        </article>
+
+        <article class="stage" id="card-draft" aria-labelledby="c5-h">
+          <div class="stage-head">
+            <h2 id="c5-h">Your draft appeal letter</h2>
+            <span class="stage-status todo">Waiting on story and proof</span>
+          </div>
+          <div class="preview">
+            We will turn your answers into a draft. You will see it here and you
+            can change anything before it goes to an advocate.
+          </div>
+          <div class="card-action">
+            <button type="button" class="btn btn-secondary" disabled aria-disabled="true">Preview draft</button>
+          </div>
+        </article>
+
+        <article class="stage handoff" id="card-handoff" aria-labelledby="c6-h">
+          <div class="stage-head">
+            <h2 id="c6-h">
+              <span class="avatar" aria-hidden="true">CC</span>
+              Send to a CCDC advocate
+            </h2>
+            <span class="stage-status todo">Last step</span>
+          </div>
+          <p style="margin: 0;">
+            A CCDC advocate reviews your draft, suggests changes, and helps
+            you file it. <strong>The app never sends anything to the state.</strong>
+          </p>
+          <p class="small-meta" style="margin: 0;">Typical reply: 1 to 2 business days. Urgent? Call 303-839-1775.</p>
+          <div class="card-action">
+            <button type="button" class="btn" disabled aria-disabled="true">Send to CCDC</button>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+
+    <div class="case-foot">
+      <button type="button" class="btn btn-ghost">Start a new case</button>
+      <span class="small-meta">Everything you see is saved only on this device. Close the tab to keep working later.</span>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">
+      <div class="trust-row">
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Saved on your device only</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Goes to a CCDC advocate, never to the state</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Free forever</span>
+      </div>
+      <span>Made with <a href="https://ccdconline.org/">CCDC</a>.</span>
+    </div>
+  </footer>
+</body>
+</html>

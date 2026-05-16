@@ -60,6 +60,8 @@ please reach out on [LinkedIn](https://www.linkedin.com/in/owenpkent) or open an
 |   |-- architecture.md        how the tool is built
 |   |-- privacy.md             what we do and don't collect, and why
 |   |-- accessibility.md       accessibility standard and testing approach
+|   |-- ui-brainstorm.md       ten HTML mockups across both flows, with trade-offs
+|   |-- mockups/               openable static HTML mockups (drop into a browser)
 |   |-- glossary.md            plain definitions of SSDI, HCBS, CDASS, LTSS, PEAK, etc.
 |   |-- colorado-rules.md      Colorado exemption categories, deadlines, and sources
 |   |-- outreach.md            CCDC and Code for America contact plan

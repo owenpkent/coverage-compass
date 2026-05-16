@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coverage Compass — Drop your letter (mockup 1, single screen)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* Minimal top bar: a small wordmark and a calm language switch.
+       Inspired by github.com/copilot-billing-preview which has no app chrome. */
+    .minibar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.25rem 1.5rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+    .minibar .word {
+      color: var(--text-soft);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .minibar .lang { color: var(--text-soft); }
+    .minibar .lang a {
+      color: var(--text-soft);
+      text-decoration: none;
+      padding: 0.35rem 0.5rem;
+      border-radius: 4px;
+    }
+    .minibar .lang a[aria-current="true"] {
+      color: var(--text);
+      font-weight: 700;
+    }
+    .minibar .lang .sep { color: var(--border-strong); margin: 0 0.15rem; }
+
+    /* Centered narrow column. The whole page is one axis. */
+    .column {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 4rem;
+      text-align: center;
+    }
+
+    .mark {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.2rem;
+      display: inline-grid;
+      place-items: center;
+      margin: 0 auto 1.25rem;
+    }
+
+    .column h1 {
+      font-size: 2.6rem;
+      letter-spacing: -0.015em;
+      margin: 0 0 1rem;
+    }
+    .column .body {
+      font-size: 1.1rem;
+      color: var(--text);
+      max-width: 56ch;
+      margin: 0 auto 1rem;
+      line-height: 1.6;
+    }
+    .column .body strong { font-weight: 700; }
+
+    .calm-link {
+      display: inline-block;
+      margin: 1rem 0 2rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .calm-link:hover { text-decoration: underline; }
+
+    /* Drop card. Confident and self-contained. */
+    .drop {
+      border: 2px dashed var(--border-strong);
+      border-radius: var(--radius-lg);
+      background: var(--bg-elev);
+      padding: 2.5rem 1.5rem;
+      margin: 0 0 0.75rem;
+      transition: border-color 120ms, background 120ms;
+    }
+    .drop:focus-within {
+      border-color: var(--accent);
+      background: var(--accent-bg);
+    }
+    .drop .icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-strong);
+      display: grid;
+      place-items: center;
+      margin: 0 auto 0.85rem;
+      color: var(--text-muted);
+      font-size: 1.3rem;
+    }
+    .drop h2 {
+      font-size: 1.3rem;
+      margin: 0 0 0.5rem;
+      font-weight: 700;
+    }
+    .drop .hint {
+      color: var(--text-soft);
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      margin: 0;
+    }
+    .file-input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .drop label {
+      display: block;
+      cursor: pointer;
+    }
+    .accepted {
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      margin: 0 0 1.5rem;
+    }
+
+    /* Trust card. Information, not action. Concrete, falsifiable claims. */
+    .trust {
+      text-align: left;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--bg-card);
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow-card);
+    }
+    .trust h2 {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1.05rem;
+      margin: 0 0 0.75rem;
+      color: var(--success);
+    }
+    .trust h2 .lock {
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      background: var(--success);
+      color: #fff;
+      display: inline-grid;
+      place-items: center;
+      font-size: 0.85rem;
+    }
+    .trust ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.5rem;
+    }
+    .trust li {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+      color: var(--text);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+    .trust li::before {
+      content: "*";
+      color: var(--text-soft);
+      flex: 0 0 auto;
+      font-family: var(--font-mono);
+      line-height: 1.55;
+    }
+
+    /* "After you drop a letter" preview state, kept below the fold. */
+    .after-divider {
+      max-width: 640px;
+      margin: 3.5rem auto 1rem;
+      padding: 0 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--text-soft);
+      font-size: 0.9rem;
+    }
+    .after-divider::before,
+    .after-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .result {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      display: grid;
+      gap: 1rem;
+    }
+    .result-header {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .summary p { font-size: 1.1rem; }
+    .what-if {
+      background: var(--danger-bg);
+      border: 1px solid var(--danger);
+      color: var(--danger);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+    }
+    @media (prefers-color-scheme: dark) {
+      .what-if { color: #ffdada; }
+    }
+
+    /* Tiny disclaimer footer, lifted from Copilot's "Actual bills may differ" + escape hatch. */
+    .tiny-foot {
+      max-width: 640px;
+      margin: 3rem auto 0;
+      padding: 1.5rem 1.25rem 2.5rem;
+      color: var(--text-soft);
+      font-size: 0.88rem;
+      text-align: center;
+      line-height: 1.6;
+    }
+    .tiny-foot p { margin: 0 0 0.25rem; max-width: none; }
+    .tiny-foot a { color: var(--text-soft); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="minibar" role="banner">
+    <a class="word" href="index.html">Coverage Compass</a>
+    <nav class="lang" aria-label="Language">
+      <a href="#en" aria-current="true" lang="en">English</a>
+      <span class="sep" aria-hidden="true">|</span>
+      <a href="#es" lang="es">Espanol</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="column" aria-labelledby="page-title">
+      <div class="mark" aria-hidden="true">CC</div>
+
+      <h1 id="page-title">Coverage Compass</h1>
+
+      <p class="body">
+        Got a letter from <strong>Health First Colorado</strong> or
+        <strong>PEAK</strong>? Drop it here. We will tell you what it means
+        in plain English, when you need to act, and what to do next.
+      </p>
+      <p class="body">
+        Built with the <strong>Colorado Cross-Disability Coalition</strong>.
+        Free. Your letter never leaves this browser tab.
+      </p>
+
+      <a class="calm-link" href="#learn">Learn how Medicaid renewals work &rarr;</a>
+
+      <form class="drop" aria-labelledby="drop-title" onsubmit="return false;">
+        <label for="file">
+          <span class="icon" aria-hidden="true">&uarr;</span>
+          <h2 id="drop-title">Drop your letter here or click to browse</h2>
+          <p class="hint">Renewal_Request_*.pdf, Notice_of_Discontinuation_*.pdf, photo of a paper letter</p>
+          <input id="file" class="file-input" type="file" accept="application/pdf,image/*" />
+        </label>
+      </form>
+
+      <p class="accepted">Accepted: PDF files or photos (JPG, PNG, HEIC)</p>
+
+      <aside class="trust" aria-labelledby="trust-title">
+        <h2 id="trust-title">
+          <span class="lock" aria-hidden="true">&#x1F512;</span>
+          Your information stays on your device
+        </h2>
+        <ul>
+          <li>All reading and explaining happens in this browser tab. Your letter is never uploaded anywhere.</li>
+          <li>Nothing is stored, cached, or sent over the network.</li>
+          <li>When you close this tab, your letter is gone.</li>
+          <li>This page makes zero external network requests with your data.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <!-- Preview of the after-upload state, kept below the fold so reviewers can see both. -->
+    <p class="after-divider"><span>After you drop a letter, this appears below</span></p>
+
+    <section class="result" aria-labelledby="result-title" aria-live="polite">
+      <div class="result-header">
+        <h2 id="result-title">Here is what your letter says</h2>
+        <span class="badge">Renewal request</span>
+      </div>
+
+      <div class="card deadline" role="group" aria-label="Deadline">
+        <span class="date">
+          <time datetime="2026-06-17">June 17, 2026</time>
+        </span>
+        <span class="days">32 days from today</span>
+      </div>
+
+      <div class="card summary">
+        <h3>What this means</h3>
+        <p>
+          <strong>Colorado Medicaid</strong> wants to check that you still
+          qualify for coverage. You need to send your renewal by
+          <strong>June 17, 2026</strong>.
+        </p>
+        <div class="what-if" role="note">
+          <strong>If you do nothing:</strong>
+          your Medicaid will end on July 1, 2026.
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>What to do next</h3>
+        <ol class="actions-list">
+          <li>
+            <span class="num" aria-hidden="true">1</span>
+            <span class="body">
+              <strong>Renew online at PEAK</strong>
+              <span class="meta">Fastest. Sign in at peak.colorado.gov.</span>
+            </span>
+          </li>
+          <li>
+            <span class="num" aria-hidden="true">2</span>
+            <span class="body">
+              <strong>Call Health First Colorado</strong>
+              <span class="meta">1-800-221-3943, Monday to Friday, 7:30am to 5:15pm.</span>
+            </span>
+          </li>
+          <li>
+            <span class="num" aria-hidden="true">3</span>
+            <span class="body">
+              <strong>Call CCDC if you need help</strong>
+              <span class="meta">303-839-1775. They are free and on your side.</span>
+            </span>
+          </li>
+        </ol>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.25rem;">
+          <button type="button" class="btn">Save as PDF</button>
+          <button type="button" class="btn btn-secondary">Print</button>
+          <button type="button" class="btn btn-ghost">Read another letter</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tiny disclaimer + human escape hatch, mirroring the Copilot page's footer. -->
+    <footer class="tiny-foot" role="contentinfo">
+      <p>This is a summary to help you understand a letter. It is not legal advice. Actual deadlines and rules may vary.</p>
+      <p>Something looks wrong? Call <a href="tel:13038391775">CCDC at 303-839-1775</a> or <a href="https://github.com/owenpkent/ccdc-medicaid-tool/issues">submit an issue</a>.</p>
+    </footer>
+  </main>
+</body>
+</html>

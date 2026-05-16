@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coverage Compass — Side by side (mockup 4, two-pane)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .panes {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 900px) {
+      .panes { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: start; }
+    }
+    .pane {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+    }
+    .pane-head {
+      padding: 0.85rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      background: var(--bg-elev);
+    }
+    .pane-head h2 { font-size: 1.05rem; margin: 0; }
+    .pane-head .meta { color: var(--text-soft); font-size: 0.9rem; }
+
+    .letter-stage {
+      background: var(--bg-elev);
+      padding: 1.25rem;
+      min-height: 460px;
+    }
+    .letter-paper {
+      background: #fff;
+      color: #111;
+      max-width: 460px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 2rem;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15), 0 6px 20px rgba(0,0,0,0.10);
+      font-family: "Times New Roman", Times, serif;
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+    .letter-paper header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .letter-paper .seal {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #003366; color: #fff;
+      display: grid; place-items: center;
+      font-size: 0.7rem; font-weight: 700;
+      font-family: var(--font-sans);
+    }
+    .letter-paper .meta-block { font-size: 0.78rem; color: #333; text-align: right; }
+    .letter-paper .case { font-family: var(--font-mono); }
+    .letter-paper h1 {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      margin: 0 0 0.75rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .letter-paper p { margin: 0 0 0.6rem; }
+    .letter-paper .highlight {
+      background: #fff4a3;
+      padding: 0 2px;
+    }
+
+    .pane-body { padding: 1.25rem; }
+    .pane-body .badge { margin-bottom: 0.5rem; }
+    .toolbar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      padding: 0.85rem 1.1rem;
+      border-top: 1px solid var(--border);
+      background: var(--bg-elev);
+    }
+
+    .zoom {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .zoom button {
+      min-width: 36px; min-height: 36px;
+      border-radius: 6px;
+      background: var(--bg);
+      border: 1px solid var(--border-strong);
+      cursor: pointer;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">CC</span>
+        Coverage Compass
+        <span class="brand-sub">free, private, made with CCDC</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" aria-pressed="true">English</button>
+        <button type="button" aria-pressed="false">Espanol</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section style="max-width: 880px; margin: 0 auto 1.5rem;">
+      <h1>Your letter, side by side</h1>
+      <p style="color: var(--text-muted); font-size: 1.1rem;">
+        On the left is your letter. On the right is what it means and what to do.
+      </p>
+    </section>
+
+    <div class="panes">
+      <!-- LEFT: letter -->
+      <section class="pane" aria-labelledby="letter-title">
+        <div class="pane-head">
+          <h2 id="letter-title">Your letter</h2>
+          <div class="zoom" role="group" aria-label="Zoom">
+            <button type="button" aria-label="Zoom out">-</button>
+            <span aria-live="polite">100%</span>
+            <button type="button" aria-label="Zoom in">+</button>
+          </div>
+        </div>
+        <div class="letter-stage">
+          <article class="letter-paper" aria-label="Letter preview, image only. The plain-language version is in the right panel.">
+            <header>
+              <div>
+                <div class="seal" aria-hidden="true">CO</div>
+                <div style="font-size: 0.72rem; margin-top: 0.25rem;">
+                  Department of Health Care<br />Policy and Financing
+                </div>
+              </div>
+              <div class="meta-block">
+                <div>Date: May 16, 2026</div>
+                <div class="case">Case #: 1234567890</div>
+                <div>Page 1 of 2</div>
+              </div>
+            </header>
+            <h1>Action Required: Renew Your Health First Colorado Coverage</h1>
+            <p>Dear Member,</p>
+            <p>
+              It is time to renew your Health First Colorado (Colorado's
+              Medicaid program) coverage. To keep your benefits, you must
+              complete your annual redetermination
+              <span class="highlight">by June 17, 2026</span>.
+            </p>
+            <p>
+              If we do not receive your renewal by the date above, your
+              coverage will end on <span class="highlight">July 1, 2026</span>.
+            </p>
+            <p>
+              You can renew at peak.colorado.gov, by phone at 1-800-221-3943,
+              or by mailing the enclosed form to the address on the envelope.
+            </p>
+            <p style="color: #555; font-size: 0.78rem; margin-top: 1.25rem;">
+              Para recibir esta carta en espanol, llame al 1-800-221-3943.
+            </p>
+          </article>
+        </div>
+        <div class="toolbar">
+          <button type="button" class="btn btn-secondary">Replace this letter</button>
+          <button type="button" class="btn btn-ghost">Download original</button>
+        </div>
+      </section>
+
+      <!-- RIGHT: plain language -->
+      <section class="pane" aria-labelledby="plain-title">
+        <div class="pane-head">
+          <h2 id="plain-title">What this means</h2>
+          <span class="meta">In plain English</span>
+        </div>
+        <div class="pane-body">
+          <span class="badge">Renewal request</span>
+
+          <div class="card deadline" style="margin: 0.75rem 0;" role="group" aria-label="Deadline">
+            <span class="date">
+              <time datetime="2026-06-17">June 17, 2026</time>
+            </span>
+            <span class="days">32 days from today</span>
+          </div>
+
+          <p style="font-size: 1.05rem;">
+            Colorado Medicaid wants to check that you still qualify.
+            You need to send your renewal by <strong>June 17, 2026</strong>.
+            <strong>If you do nothing</strong>, your coverage ends on
+            July 1, 2026.
+          </p>
+
+          <h3 style="margin-top: 1.25rem;">What to do next</h3>
+          <ol class="actions-list">
+            <li>
+              <span class="num" aria-hidden="true">1</span>
+              <span class="body">
+                <strong>Renew online at PEAK</strong>
+                <span class="meta">Fastest. peak.colorado.gov.</span>
+              </span>
+            </li>
+            <li>
+              <span class="num" aria-hidden="true">2</span>
+              <span class="body">
+                <strong>Call Health First Colorado</strong>
+                <span class="meta">1-800-221-3943.</span>
+              </span>
+            </li>
+            <li>
+              <span class="num" aria-hidden="true">3</span>
+              <span class="body">
+                <strong>Call CCDC if you need help</strong>
+                <span class="meta">303-839-1775.</span>
+              </span>
+            </li>
+          </ol>
+        </div>
+        <div class="toolbar">
+          <button type="button" class="btn">Save as PDF</button>
+          <button type="button" class="btn btn-secondary">Print</button>
+          <button type="button" class="btn btn-ghost">Read another letter</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">
+      <div class="trust-row">
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Nothing leaves your device</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>No account, no tracking</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Free forever</span>
+      </div>
+      <span>Made with <a href="https://ccdconline.org/">CCDC</a>.</span>
+    </div>
+  </footer>
+</body>
+</html>

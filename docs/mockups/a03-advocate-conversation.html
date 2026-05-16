@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coverage Compass — Writing to an advocate (mockup A3)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .layout {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: 1fr;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    @media (min-width: 980px) {
+      .layout { grid-template-columns: 1.1fr 0.9fr; align-items: start; }
+    }
+
+    .convo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .convo-head {
+      padding: 0.85rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-elev);
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .convo-head .avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      display: grid; place-items: center;
+      font-weight: 700;
+    }
+    .convo-head h2 { margin: 0; font-size: 1.05rem; }
+    .convo-head .sub { margin: 0; color: var(--text-soft); font-size: 0.9rem; }
+
+    .convo {
+      padding: 1rem 1.1rem;
+      display: grid;
+      gap: 1rem;
+    }
+    .bubble {
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-lg);
+      max-width: 90%;
+    }
+    .from-app {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-top-left-radius: 4px;
+      justify-self: start;
+    }
+    .from-you {
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid var(--accent);
+      border-top-right-radius: 4px;
+      justify-self: end;
+    }
+    .from-you a { color: #fff; text-decoration: underline; }
+    .chip-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .chip {
+      min-height: 44px;
+      padding: 0 0.9rem;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 1px solid var(--border-strong);
+      color: var(--text); font: inherit; cursor: pointer;
+    }
+    .chip:hover { background: var(--accent-bg); border-color: var(--accent); }
+    .input-bar {
+      border-top: 1px solid var(--border);
+      padding: 0.85rem 1rem;
+      display: flex; gap: 0.5rem; align-items: center;
+      background: var(--bg);
+    }
+    .input-bar input {
+      flex: 1; min-height: var(--tap-min);
+      padding: 0 0.9rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-strong);
+      background: var(--bg); color: var(--text); font: inherit;
+    }
+
+    /* Right side: the draft that fills in as you go */
+    .draft-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+      padding: 1.25rem 1.5rem;
+      position: sticky;
+      top: 1rem;
+    }
+    .draft-card h2 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+    .draft-card .meta { color: var(--text-soft); font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .draft-body {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.15rem;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      min-height: 320px;
+    }
+    .draft-body .filled { background: rgba(28, 63, 170, 0.10); padding: 0 2px; border-radius: 2px; }
+    .draft-body .blank { color: var(--text-soft); font-style: italic; }
+    .draft-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+    .mockup-note { text-align: center; color: var(--text-soft); margin: 0 0 1.25rem; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a class="brand" href="appeals-index.html">
+        <span class="brand-mark" aria-hidden="true">CC</span>
+        Coverage Compass
+        <span class="brand-sub">talk it through</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" aria-pressed="true">English</button>
+        <button type="button" aria-pressed="false">Espanol</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <p class="mockup-note">
+      Mockup view: a short, guided conversation. The app helps you put it into words. A CCDC advocate reads it next.
+    </p>
+
+    <!-- Persistent dual-clock banner above the layout -->
+    <section class="case-banner" role="region" aria-label="Important deadlines" style="max-width: 1100px; margin: 0 auto 1.25rem;">
+      <div class="clock">
+        <span class="urgent">Most urgent</span>
+        <span class="label">Keep coverage during appeal</span>
+        <span class="value">9 days left</span>
+        <span class="sub">Ask by May 25, 2026</span>
+      </div>
+      <div class="clock">
+        <span class="label">File the appeal itself</span>
+        <span class="value">59 days left</span>
+        <span class="sub">By July 14, 2026</span>
+      </div>
+      <a class="btn" href="#convo">Keep my coverage now</a>
+    </section>
+
+    <div class="layout">
+
+      <!-- Conversation -->
+      <section class="convo-card" aria-labelledby="convo-h">
+        <header class="convo-head">
+          <span class="avatar" aria-hidden="true">CC</span>
+          <div>
+            <h2 id="convo-h">Drafting with you, for a CCDC advocate</h2>
+            <p class="sub">Plain English is fine. We turn this into a draft an advocate will review.</p>
+          </div>
+        </header>
+
+        <div class="convo" id="convo" role="log" aria-live="polite" aria-label="Conversation">
+          <div class="bubble from-app">
+            <p style="margin: 0;">
+              I am sorry you got this letter. Let us write something the
+              CCDC advocate can use. We do this in a few short questions.
+            </p>
+          </div>
+
+          <div class="bubble from-app">
+            <p style="margin: 0;">First, what kind of letter did you get?</p>
+            <div class="chip-row">
+              <button class="chip" type="button">Coverage will end</button>
+              <button class="chip" type="button">Application was denied</button>
+              <button class="chip" type="button">My care hours were cut</button>
+              <button class="chip" type="button">Something else</button>
+            </div>
+          </div>
+
+          <div class="bubble from-you">Coverage will end. Procedural termination.</div>
+
+          <div class="bubble from-app">
+            <p style="margin: 0;">Got it. In your own words, what happened?</p>
+            <p style="margin: 0.5rem 0 0; color: var(--text-soft); font-size: 0.95rem;">
+              You do not need to use legal words.
+            </p>
+          </div>
+
+          <div class="bubble from-you">
+            I mailed my renewal form on April 10. The letter says they did not get it. I cannot lose my home health aide. I do not know what to do.
+          </div>
+
+          <div class="bubble from-app">
+            <p style="margin: 0;">
+              That helps. Two quick things. Do you have any of these?
+            </p>
+            <div class="chip-row">
+              <button class="chip" type="button">A copy of what I mailed</button>
+              <button class="chip" type="button">Proof of mailing</button>
+              <button class="chip" type="button">My SSA award letter</button>
+              <button class="chip" type="button">My HCBS waiver paperwork</button>
+              <button class="chip" type="button">None of these</button>
+            </div>
+          </div>
+
+          <div class="bubble from-you">SSA award letter and HCBS waiver paperwork.</div>
+
+          <div class="bubble from-app">
+            <p style="margin: 0;">
+              Good. Those are strong. Last question for now: do you want
+              to keep your coverage during the appeal? You can. We will help.
+            </p>
+            <div class="chip-row">
+              <button class="chip" type="button">Yes, keep my coverage</button>
+              <button class="chip" type="button">Tell me more first</button>
+            </div>
+          </div>
+        </div>
+
+        <form class="input-bar" onsubmit="return false;" aria-label="Type a reply">
+          <label for="reply" class="visually-hidden">Type a reply</label>
+          <input id="reply" type="text" placeholder="Type here, or pick an answer above" />
+          <button type="submit" class="btn">Send</button>
+        </form>
+      </section>
+
+      <!-- Live-updating draft -->
+      <aside class="draft-card" aria-labelledby="draft-h">
+        <h2 id="draft-h">Your draft so far</h2>
+        <p class="meta">Updates as you answer. You can change anything.</p>
+        <div class="draft-body" aria-live="polite">
+<p>To: Office of Administrative Courts</p>
+<p>From: <span class="filled">Jane M.</span>, Case #<span class="filled">1234567890</span></p>
+<p>Date: <span class="filled">May 16, 2026</span></p>
+<p>Re: Appeal of <span class="filled">termination notice dated May 15, 2026</span></p>
+<p>I am appealing the notice that my Health First Colorado coverage will end on <span class="filled">June 30, 2026</span>. The notice says I did not return paperwork that was requested. <span class="filled">I mailed the renewal form on April 10, 2026.</span></p>
+<p>I have <span class="filled">an SSA award letter</span> and <span class="filled">HCBS waiver paperwork</span> showing I qualify. <span class="blank">[the advocate will add legal references]</span></p>
+<p><span class="blank">[continuation-of-benefits request will go here once you confirm]</span></p>
+        </div>
+        <div class="draft-actions">
+          <button type="button" class="btn btn-secondary">Edit the draft</button>
+          <button type="button" class="btn">Send to a CCDC advocate</button>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">
+      <div class="trust-row">
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Saved on your device only</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Goes to a CCDC advocate, never to the state</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Free forever</span>
+      </div>
+      <span>Made with <a href="https://ccdconline.org/">CCDC</a>.</span>
+    </div>
+  </footer>
+</body>
+</html>

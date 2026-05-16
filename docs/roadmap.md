@@ -22,6 +22,7 @@ Dates are anchored to the [Colorado work-requirements rollout](colorado-rules.md
 
 Ships before the first wave of notification letters goes out from HCPF in August 2026.
 
+- [x] UI brainstorm (2026-05-16; five HTML archetypes in `docs/mockups/`, summarized in `docs/ui-brainstorm.md`)
 - [ ] Vite + React + TS app scaffolded (done)
 - [ ] PDF intake (pdf.js) and image OCR (tesseract.js)
 - [ ] Letter classifier (rule-based first; revisit LLM later)
@@ -52,6 +53,7 @@ Ships before the first impact wave on 2027-01-01.
 
 For the first wave of disenrollments arriving on or after 2027-01-01.
 
+- [x] UI brainstorm (2026-05-16; five HTML archetypes in `docs/mockups/`, summarized in `docs/ui-brainstorm.md`)
 - [ ] Denial/termination letter classifier
 - [ ] Short structured interview (cause of denial, what user disagrees with)
 - [ ] Appeal letter templates (one per common denial pattern)

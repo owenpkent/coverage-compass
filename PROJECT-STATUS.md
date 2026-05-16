@@ -1,6 +1,6 @@
 # Project status
 
-**Snapshot date:** 2026-05-11
+**Snapshot date:** 2026-05-16
 **Phase:** v0.0 Foundation (scoping; no code in production)
 **Working title:** Coverage Compass
 
@@ -62,6 +62,7 @@ The roadmap in [`docs/roadmap.md`](docs/roadmap.md) is anchored to these dates. 
 - Outreach plan ([`docs/outreach.md`](docs/outreach.md))
 - Two pitches and an email template (above)
 - Prior-art survey of ~50 sources (above)
+- UI brainstorm write-up and ten static HTML mockups across both flows ([`docs/ui-brainstorm.md`](docs/ui-brainstorm.md), [`docs/mockups/`](docs/mockups/))
 - Hygiene files: `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, issue templates, `CHANGELOG.md`
 
 ### Code
@@ -152,9 +153,10 @@ If you're new to the repo and reading top-down:
 2. This file: where the project stands.
 3. [`docs/brainstorm.md`](docs/brainstorm.md): why the project exists.
 4. [`docs/spec-v0.1.md`](docs/spec-v0.1.md): what the first version does.
-5. [`docs/roadmap.md`](docs/roadmap.md): when each phase ships.
-6. [`docs/outreach.md`](docs/outreach.md): who we need to talk to.
-7. [`research/prior-art.md`](research/prior-art.md): what already exists.
-8. [`docs/architecture.md`](docs/architecture.md), [`docs/privacy.md`](docs/privacy.md), [`docs/accessibility.md`](docs/accessibility.md): the three non-negotiable constraints.
-9. [`CONTRIBUTING.md`](CONTRIBUTING.md): how to get involved.
-10. [`CHANGELOG.md`](CHANGELOG.md): what changed recently.
+5. [`docs/ui-brainstorm.md`](docs/ui-brainstorm.md): ten HTML mockups across two flows, with working recommendations.
+6. [`docs/roadmap.md`](docs/roadmap.md): when each phase ships.
+7. [`docs/outreach.md`](docs/outreach.md): who we need to talk to.
+8. [`research/prior-art.md`](research/prior-art.md): what already exists.
+9. [`docs/architecture.md`](docs/architecture.md), [`docs/privacy.md`](docs/privacy.md), [`docs/accessibility.md`](docs/accessibility.md): the three non-negotiable constraints.
+10. [`CONTRIBUTING.md`](CONTRIBUTING.md): how to get involved.
+11. [`CHANGELOG.md`](CHANGELOG.md): what changed recently.
