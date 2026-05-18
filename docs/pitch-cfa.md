@@ -11,10 +11,13 @@ I'm building a free, open-source, privacy-local web tool with the [Colorado Cros
 
 ## What the tool is
 
-One app, two flows from a shared engine.
+One app that organizes a member's Medicaid evidence (SSA award letter, waiver enrollment, tax returns, diagnosis letters) once and reuses it across three Medicaid events:
 
-- **Before things go wrong.** Read a HCPF or PEAK letter, explain it in plain language, surface the deadline, and assemble an exemption packet from documents the user already has (SSA award letter, waiver enrollment, tax returns, diagnosis letters).
-- **After things go wrong.** Take a denial or termination letter, run a short structured interview, produce a draft appeal that routes through a CCDC advocate for review (never direct-to-state, never UPL-implicating).
+- **Reporting.** Ongoing proof of qualifying status. 80-hour-per-month attestation for the work-required minority; periodic exemption re-attestation for the majority on an exemption.
+- **Reapplication.** Annual renewals and new applications. Where procedural disenrollment usually happens for this constituency.
+- **Appeals.** Denial or termination letter in, structured interview, draft appeal out. Routed through a CCDC advocate for review. Never direct-to-state, never UPL-implicating.
+
+Entry point is notice triage: drop a HCPF or PEAK letter, get a plain-language summary, the deadline, and a pointer to which flow applies.
 
 State-specific exemption categories, deadlines, and letter patterns live in plain YAML so a non-engineer advocate can read and propose edits.
 

@@ -77,3 +77,7 @@ Tradeoff to name openly: a hosted web app can in principle ship malicious JS in 
 - `spec-v0.1.md` for the MVP scope.
 - `roadmap.md` for the dated sequence anchored to the CO rollout.
 - `outreach.md` for the CCDC scoping plan.
+
+## Postscript: framing sharpened (2026-05-18)
+
+The "Before / After" framing above was later sharpened to three Medicaid life events: **reporting** (ongoing proof of qualifying status), **reapplication** (renewals and new applications), and **appeals**. Same documents, same engine, sharper labels for the three things a member is actually being asked to do. The roadmap (v0.1 notice triage, v0.2 evidence packet, v0.3 appeal draft) is unchanged. See the README and partner pitches for current language.

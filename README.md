@@ -22,11 +22,13 @@ The schedule that drives every other date in this project:
 
 ## What the tool does
 
-One tool, two flows from the same engine.
+A privacy-local document organizer for three Medicaid life events. The same personal archive (Social Security award letters, HCBS waiver paperwork, tax returns, diagnosis letters, work hours if applicable) serves all three.
 
-**Before things go wrong.** Read a letter from HCPF or PEAK, explain what it means in plain language, show the deadline, and help the member assemble an exemption packet from documents they already have (Social Security award letters, waiver paperwork, tax returns, diagnosis letters).
+1. **Reporting.** Ongoing proof you still qualify. For the small minority who must work, that means 80-hour-per-month attestation. For the majority on an exemption, it means periodic re-attestation that the exemption still applies.
+2. **Reapplication.** Renewals (typically every 12 months) and new applications. The heaviest practical lift for CCDC's constituency, and where procedural disenrollment usually happens.
+3. **Appeals.** If a denial, termination, or care reduction arrives, the tool runs a short structured interview and drafts an appeal. The draft routes to a CCDC advocate for review before it is filed. It does not replace a CCDC advocate or an attorney.
 
-**After things go wrong.** If a denial, termination, or care reduction arrives, the tool runs a short structured interview and drafts an appeal. The draft routes to a CCDC advocate for review before it is filed. It does not replace a CCDC advocate or an attorney.
+The entry point is a notice-triage step: drop a letter from HCPF or PEAK, get a plain-language summary, the deadline, and a pointer to which of the three flows applies.
 
 Full v0.1 product spec: [`docs/spec-v0.1.md`](docs/spec-v0.1.md). UI mockups: [`docs/ui-brainstorm.md`](docs/ui-brainstorm.md) (ten static HTML mockups, openable in a browser).
 
@@ -81,7 +83,7 @@ These do not change regardless of who joins.
 - Two partner pitches drafted (CCDC, CfA).
 - Web-app shell scaffolded (Vite + React + TypeScript + React Aria Components, no analytics, no third-party scripts).
 - Rule library seeded for Colorado: six letter types and eight exemption categories. All entries marked "verify with CCDC" until reviewed.
-- Ten static HTML mockups across both flows ([`docs/ui-brainstorm.md`](docs/ui-brainstorm.md)).
+- Ten static HTML mockups exploring UI archetypes ([`docs/ui-brainstorm.md`](docs/ui-brainstorm.md)).
 
 Full snapshot: [`PROJECT-STATUS.md`](PROJECT-STATUS.md).
 
@@ -124,7 +126,7 @@ Owen Kent, a CCDC member and software engineer. Volunteer work. No funding ask, 
 |   |-- architecture.md        how the tool is built
 |   |-- privacy.md             what we do and don't collect, and why
 |   |-- accessibility.md       accessibility standard and testing approach
-|   |-- ui-brainstorm.md       ten HTML mockups across both flows, with trade-offs
+|   |-- ui-brainstorm.md       ten HTML mockups exploring UI archetypes, with trade-offs
 |   |-- mockups/               openable static HTML mockups (drop into a browser)
 |   |-- glossary.md            plain definitions of SSDI, HCBS, CDASS, LTSS, PEAK, etc.
 |   |-- colorado-rules.md      Colorado exemption categories, deadlines, and sources

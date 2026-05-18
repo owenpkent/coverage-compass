@@ -5,7 +5,7 @@ The first hard problem isn't code. It's making sure this tool gets shaped by the
 ## Phase 1: CCDC scoping (now to end of June 2026)
 
 ### Goal
-Validate the "Before / After" framing against the actual bottleneck CCDC's advocacy team experiences. Either confirm the v0.1 spec or pivot it.
+Validate the three-event frame (reporting, reapplication, appeals) against the actual bottleneck CCDC's advocacy team experiences. Either confirm the v0.1 spec or pivot it.
 
 ### Asks
 1. **One hour of conversation** with whoever leads CCDC's appeals / advocacy work, plus ideally one front-line advocate who handles intake.
@@ -34,7 +34,7 @@ Owen is a CCDC member. The likely path is:
 
 ### One-page pitch
 
-Drafted: see [`pitch-ccdc.md`](pitch-ccdc.md). Covers the problem (procedural disenrollment risk under work requirements), the tool ("Before / After" framing), the privacy posture, the ask (one-hour scoping conversation), and the offer (free volunteer work, CCDC owns the direction). References [reclaimhealth.ai](https://github.com/owenpkent/reclaimhealth.ai) as prior work to establish credibility.
+Drafted: see [`pitch-ccdc.md`](pitch-ccdc.md). Covers the problem (procedural disenrollment risk under work requirements), the tool (three-event framing: reporting, reapplication, appeals), the privacy posture, the ask (one-hour scoping conversation), and the offer (free volunteer work, CCDC owns the direction). References [reclaimhealth.ai](https://github.com/owenpkent/reclaimhealth.ai) as prior work to establish credibility.
 
 ## Phase 2: Code for America outreach (pitch drafted 2026-05-11; sending TBD)
 

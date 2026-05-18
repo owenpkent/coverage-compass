@@ -119,12 +119,14 @@ Medicaid's work-reporting requirements (rolling out August 2026 to
 January 2027). Built in partnership with the Colorado Cross-Disability
 Coalition (CCDC).
 
-Two flows from one engine:
-- Before things go wrong: assemble an exemption packet from documents
-  the member already has (SSA award letter, waiver enrollment, tax
-  returns).
-- After things go wrong: draft an appeal letter, routed to a CCDC
-  advocate for review.
+One engine, three Medicaid events. Organize a member's documents
+(SSA award letter, waiver enrollment, tax returns, diagnosis letters)
+once and reuse them across:
+- Reporting: ongoing proof of qualifying status (80-hour attestation
+  or periodic exemption re-attestation).
+- Reapplication: annual renewals and new applications.
+- Appeals: draft an appeal letter, routed to a CCDC advocate for
+  review before the state sees it.
 
 Scaffold includes:
 - Documentation: brainstorm, spec v0.1, roadmap, architecture, privacy

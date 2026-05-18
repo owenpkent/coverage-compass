@@ -2,7 +2,7 @@
 
 ## 1. Scope and method
 
-Research was conducted on 2026-05-11. The scope was prior art relevant to a privacy-local, open-source web app that (a) reads a Medicaid notice and assembles an exemption packet, and (b) drafts an appeal of a denial / termination / care-reduction for review by a CCDC advocate. "Relevant" meant: it overlaps with at least one of those two flows, or with a load-bearing design choice (client-side processing, plain-language notice rewriting, rule libraries advocates can edit, screen-reader-first accessibility). Search was conducted via web search and web fetch across Code for America, NHeLP, Justice in Aging, NDRN and state P&As, AAPD, The Arc, KFF / Urban / CBPP / Georgetown CCF, SHVS, Stanford Legal Design Lab, plus broad searches for client-side OCR, appeal-letter generators, and state-coalition tools. Where a page was bot-blocked or paywalled, that is noted inline. Out of scope: general SNAP-eligibility calculators that do not touch work-requirement reporting; commercial health-insurance appeal tools that target private payers rather than Medicaid; pre-OBBBA waiver-era materials except where they survive as reusable assets.
+Research was conducted on 2026-05-11. The scope was prior art relevant to a privacy-local, open-source web app that (a) reads a Medicaid notice and assembles an exemption packet, and (b) drafts an appeal of a denial / termination / care-reduction for review by a CCDC advocate. "Relevant" meant: it overlaps with at least one of those flows, or with a load-bearing design choice (client-side processing, plain-language notice rewriting, rule libraries advocates can edit, screen-reader-first accessibility). Search was conducted via web search and web fetch across Code for America, NHeLP, Justice in Aging, NDRN and state P&As, AAPD, The Arc, KFF / Urban / CBPP / Georgetown CCF, SHVS, Stanford Legal Design Lab, plus broad searches for client-side OCR, appeal-letter generators, and state-coalition tools. Where a page was bot-blocked or paywalled, that is noted inline. Out of scope: general SNAP-eligibility calculators that do not touch work-requirement reporting; commercial health-insurance appeal tools that target private payers rather than Medicaid; pre-OBBBA waiver-era materials except where they survive as reusable assets.
 
 ## 2. What exists
 
@@ -17,7 +17,7 @@ The most important finding in the entire survey. CfA has an active, recently-pus
 - Hosted Rails on AWS, not client-side. Stores Personally Identifiable Information including the user's case number, the last four of their SSN, and email.
 - Active development: open issues include things like "WRSAT-578: Update Work Rules Apply Met", "WRSAT-515: add character limits to prevent PDF generation", "WRSAT-566 Add zip code support".
 
-This is the closest analogue to the "Before things go wrong" flow that exists today. It is not a Medicaid tool and it is not client-side, but it has the same shape: exemption screener -> PDF -> submit-to-agency.
+This is the closest analogue to our reporting and reapplication flows that exists today. It is not a Medicaid tool and it is not client-side, but it has the same shape: exemption screener -> PDF -> submit-to-agency.
 
 Broader CfA context:
 

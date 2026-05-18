@@ -11,10 +11,13 @@ I'm building a free, open-source, privacy-local web tool with the [Colorado Cros
 
 ## What the tool is, briefly
 
-One app, two flows from a shared engine, with CCDC owning the Colorado rules in a flat YAML library that advocates can read and edit without writing code.
+One app that organizes a member's Medicaid evidence (SSA award letter, waiver enrollment, tax returns, diagnosis letters) once and reuses it across three Medicaid events:
 
-- **Before things go wrong.** Read a letter from HCPF or PEAK, explain it in plain language, surface the deadline, assemble an exemption packet from documents the member already has (SSA award letter, waiver enrollment, tax returns, diagnosis letters).
-- **After things go wrong.** Take a denial / termination / care-reduction letter, run a short structured interview, produce a draft appeal that routes through a CCDC advocate before it reaches the state. Never direct-to-state. Never UPL-implicating.
+- **Reporting.** 80-hour-per-month attestation for the work-required minority; periodic exemption re-attestation for the majority on an exemption.
+- **Reapplication.** Annual renewals and new applications. The heaviest practical lift for this constituency, and where procedural disenrollment usually happens.
+- **Appeals.** Denial / termination / care-reduction letter in, structured interview, draft appeal out. Routed through a CCDC advocate before it reaches the state. Never direct-to-state. Never UPL-implicating.
+
+Entry point is notice triage: drop a letter from HCPF or PEAK, get a plain-language summary, the deadline, and a pointer to which flow applies. CCDC owns the Colorado rules in a flat YAML library that advocates can read and edit without writing code.
 
 Full v0.1 spec: [`spec-v0.1.md`](spec-v0.1.md). Architecture: [`architecture.md`](architecture.md). Privacy threat model: [`privacy.md`](privacy.md). Accessibility standard: [`accessibility.md`](accessibility.md).
 

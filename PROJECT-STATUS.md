@@ -16,10 +16,13 @@ This is a single-page snapshot of where the project stands. For detail, follow t
 
 ## What this is
 
-A free, open-source web app with two flows from one engine. Both flows run entirely in the user's browser. No server, no account, no telemetry.
+A free, open-source web app that organizes a disabled Coloradan's Medicaid evidence once and reuses it across three events: reporting (ongoing proof of qualifying status), reapplication (renewals and new applications), and appeals. Everything runs entirely in the user's browser. No server, no account, no telemetry.
 
-- **Before things go wrong.** Read an HCPF or PEAK letter, explain it in plain language, surface the deadline, and assemble an exemption packet from documents the user already has.
-- **After things go wrong.** Take a denial / termination / care-reduction letter, run a short interview, produce a draft appeal that routes through a CCDC advocate (never direct-to-state).
+- **Reporting.** 80-hour-per-month attestation for the work-required minority; periodic exemption re-attestation for the majority.
+- **Reapplication.** Annual renewals and new applications. The heaviest practical lift for CCDC's constituency, and where procedural disenrollment usually happens.
+- **Appeals.** Denial / termination / care-reduction letter in, structured interview, draft appeal out. Routes through a CCDC advocate before it reaches the state.
+
+Entry point is notice triage: drop an HCPF or PEAK letter, get a plain-language summary, the deadline, and a pointer to which flow applies.
 
 Full framing: [`docs/brainstorm.md`](docs/brainstorm.md). MVP scope: [`docs/spec-v0.1.md`](docs/spec-v0.1.md).
 
@@ -64,7 +67,7 @@ The roadmap in [`docs/roadmap.md`](docs/roadmap.md) is anchored to these dates. 
 - Outreach plan ([`docs/outreach.md`](docs/outreach.md))
 - Two pitches and an email template (above)
 - Prior-art survey of ~50 sources (above)
-- UI brainstorm write-up and ten static HTML mockups across both flows ([`docs/ui-brainstorm.md`](docs/ui-brainstorm.md), [`docs/mockups/`](docs/mockups/))
+- UI brainstorm write-up and ten static HTML mockups exploring UI archetypes ([`docs/ui-brainstorm.md`](docs/ui-brainstorm.md), [`docs/mockups/`](docs/mockups/))
 - Hygiene files: `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, issue templates, `CHANGELOG.md`
 
 ### Code
@@ -156,7 +159,7 @@ If you're new to the repo and reading top-down:
 2. This file: where the project stands.
 3. [`docs/brainstorm.md`](docs/brainstorm.md): why the project exists.
 4. [`docs/spec-v0.1.md`](docs/spec-v0.1.md): what the first version does.
-5. [`docs/ui-brainstorm.md`](docs/ui-brainstorm.md): ten HTML mockups across two flows, with working recommendations.
+5. [`docs/ui-brainstorm.md`](docs/ui-brainstorm.md): ten HTML mockups exploring UI archetypes, with working recommendations.
 6. [`docs/roadmap.md`](docs/roadmap.md): when each phase ships.
 7. [`docs/outreach.md`](docs/outreach.md): who we need to talk to.
 8. [`research/prior-art.md`](research/prior-art.md): what already exists.

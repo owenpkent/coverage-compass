@@ -11,10 +11,13 @@ Most CCDC members will qualify for an exemption (SSDI, HCBS, LTSS, Buy-In, or me
 
 ## The proposal
 
-A free, open-source web app for disabled Coloradans and the CCDC advocates who serve them. One tool, two flows from the same engine.
+A free, open-source web app for disabled Coloradans and the CCDC advocates who serve them. The tool organizes a member's Medicaid evidence (SSA award letter, waiver enrollment, tax returns, diagnosis letters) once and reuses it across three events:
 
-- **Before things go wrong.** Read a letter from PEAK or HCPF, explain it in plain language, show the deadline, and assemble an exemption packet from documents the member already has (SSA award letter, waiver enrollment, tax returns, diagnosis letters).
-- **After things go wrong.** Take a denial or termination letter, run a short interview, produce a draft appeal that routes to a CCDC advocate for review. Never direct-to-state. CCDC's attorneys stay in the loop.
+- **Reporting.** Ongoing proof of qualifying status. For the small minority who must work, that's 80-hour-per-month attestation. For most CCDC members on an exemption, it's periodic re-attestation that the exemption still applies.
+- **Reapplication.** Annual renewals and new applications. The heaviest practical lift for CCDC's constituency, and where procedural disenrollment usually happens.
+- **Appeals.** Denial, termination, or care-reduction letter in, short interview, draft appeal out. The draft routes to a CCDC advocate for review. Never direct-to-state. CCDC's attorneys stay in the loop.
+
+Entry point is notice triage: drop a letter from PEAK or HCPF, get a plain-language summary, the deadline, and a pointer to which of the three flows applies.
 
 ## Why this design
 
