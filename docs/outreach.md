@@ -69,6 +69,29 @@ Headline findings:
 - **Clearest gap:** No one has shipped a Medicaid-specific, client-side, advocate-in-the-loop tool with an advocate-readable rules library.
 - **Correction to this plan:** the original Phase 3 list referenced "Stanford Legal Design Lab OCR-based notice translator." The survey could not find a specific shipped Stanford project matching that description. Confirm with the Lab directly or treat it as methodological prior art only.
 
+## Phase 4: Anthropic outreach (pitch drafted 2026-05-18; sending TBD)
+
+### Goal
+Open a direct conversation with Anthropic about model access and methodology for the advocate-side LLM workflows (plain-language library, appeal drafter, evaluation). The existing Code for America + Anthropic public-benefits collaboration is the natural institutional home for this work, but Phase 4 runs in parallel with Phase 2 rather than waiting on a CfA introduction, so the August 2026 ship target stays intact.
+
+### Where to start
+- Anthropic's public-facing partnerships / civic-impact contact is the primary channel.
+- Mention the existing CfA collaboration as context. Offer to coordinate with whoever leads it on Anthropic's side at their discretion.
+
+### One-page pitch
+Drafted: see [`pitch-anthropic.md`](pitch-anthropic.md).
+
+### Questions to bring
+1. Does this fit inside the existing CfA collaboration, or should it be a separate Anthropic channel?
+2. What's already in flight from the partnership on Medicaid work-requirements, procedural disenrollment, or H.R. 1 prep?
+3. Model access terms for the advocate-side workflows: rate limits, data-handling terms, attribution requirements.
+4. Evaluation and red-teaming methodology: what should we borrow from prior CfA work rather than reinvent?
+5. Privacy-local architecture: any concerns with the "model never sees member data without advocate oversight" framing as the safety boundary?
+6. Other state coalitions in the H.R. 1 pipeline. If Anthropic / CfA already knows which states are ready, that informs whether the engine should lift in Q2 2027 or later.
+
+### Path in
+Direct outreach, in parallel with Phase 2. Lead with the pitch as written. Reference the existing CfA partnership as context, not as a gate. If Phase 2 produces a warm intro on Anthropic's side first, take it.
+
 ## Contact log
 
 Format: date, person/org, channel, status, notes.

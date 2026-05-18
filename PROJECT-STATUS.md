@@ -43,10 +43,12 @@ The roadmap in [`docs/roadmap.md`](docs/roadmap.md) is anchored to these dates. 
 - [x] Scaffold repo
 - [x] CCDC outreach pitch drafted ([`docs/pitch-ccdc.md`](docs/pitch-ccdc.md), [`docs/pitch-ccdc-email.md`](docs/pitch-ccdc-email.md))
 - [x] CfA outreach pitch drafted ([`docs/pitch-cfa.md`](docs/pitch-cfa.md))
+- [x] Anthropic outreach pitch drafted ([`docs/pitch-anthropic.md`](docs/pitch-anthropic.md))
 - [x] Prior-art survey ([`research/prior-art.md`](research/prior-art.md))
 - [ ] Scoping conversation with CCDC appeals/advocacy staff
 - [ ] CCDC pitch sent
 - [ ] CfA pitch sent
+- [ ] Anthropic pitch sent
 - [ ] License decision (Apache 2.0 vs AGPLv3, see [`LICENSE-DECISION.md`](LICENSE-DECISION.md))
 - [ ] First 10 anonymized sample letters from CCDC
 - [ ] Plain-language review process established with CCDC
@@ -97,6 +99,7 @@ Denial-letter classifier + structured interview + draft appeal routed to a CCDC 
 |---|---|---|
 | CCDC | Pitch drafted (one-pager + email template). Owen is a member. | Send via member channel; aim for a one-hour scoping conversation. |
 | Code for America | Pitch drafted, scoped to Safety Net Innovation Lab and Colorado brigade. | Send. Open with the `work-requirements-self-advocacy-tool` overlap question. |
+| Anthropic | Pitch drafted, scoped to the existing CfA public-benefits collaboration. | Send directly, in parallel with CfA. Reference the CfA partnership as context, not as a gate. |
 | HCPF | No outreach planned in this phase. CCDC owns the HCPF relationship. | Defer until CCDC says otherwise. |
 | Stanford Legal Design Lab | Outreach plan referenced an "OCR notice translator." Survey did not find a specific shipped project matching. | Treat as methodological prior art unless the Lab confirms otherwise. |
 
