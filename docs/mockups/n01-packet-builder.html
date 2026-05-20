@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coverage Compass: Renewal packet (mockup N1)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .packet-shell { max-width: 960px; margin: 0 auto; display: grid; gap: 1.25rem; }
+
+    .packet-head {
+      display: flex; gap: 1rem; justify-content: space-between; align-items: baseline;
+      flex-wrap: wrap;
+    }
+    .packet-head h1 { margin: 0; font-size: 1.8rem; }
+    .packet-head .sub { color: var(--text-muted); margin: 0.2rem 0 0; }
+
+    .progress-strip {
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 0.85rem 1rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .progress-strip .label { font-weight: 600; }
+    .progress-strip .bar {
+      flex: 1 1 240px;
+      min-width: 200px;
+      height: 12px;
+      background: var(--bg);
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .progress-strip .fill {
+      display: block; height: 100%;
+      width: 67%;
+      background: var(--accent);
+    }
+    .progress-strip .pct { font-weight: 700; min-width: 4em; text-align: right; }
+
+    .docs {
+      display: grid;
+      gap: 0.85rem;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 760px) {
+      .docs { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .doc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.25rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+    .doc-head {
+      display: flex; align-items: center; gap: 0.75rem; justify-content: space-between;
+    }
+    .doc-head h2 { margin: 0; font-size: 1.05rem; }
+    .doc-why { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
+    .doc-meta { color: var(--text-soft); font-size: 0.9rem; margin: 0; }
+    .doc-action { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+    .doc.have {
+      background: rgba(19,90,44,0.04);
+      border-color: var(--success);
+    }
+    @media (prefers-color-scheme: dark) {
+      .doc.have { background: rgba(107,213,143,0.08); }
+    }
+    .doc.have .check {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--success); color: #fff;
+      display: inline-grid; place-items: center;
+      font-weight: 800; font-size: 0.85rem;
+    }
+    .doc.need .badge { background: var(--warn-bg); color: #6a4900; border-color: var(--warn-border); }
+
+    .section-h {
+      margin: 0.5rem 0 0;
+      font-size: 1rem;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">CC</span>
+        Coverage Compass
+        <span class="brand-sub">renewal packet</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" aria-pressed="true">English</button>
+        <button type="button" aria-pressed="false">Espanol</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="packet-shell">
+
+      <header class="packet-head">
+        <div>
+          <h1>Your renewal packet</h1>
+          <p class="sub">For the renewal due <strong>July 15, 2026</strong>. 8 documents added, 4 to go.</p>
+        </div>
+        <div class="card deadline" style="margin: 0;" role="group" aria-label="Renewal deadline">
+          <span class="date"><time datetime="2026-07-15">July 15, 2026</time></span>
+          <span class="days">56 days from today</span>
+        </div>
+      </header>
+
+      <section class="progress-strip" aria-label="Packet progress">
+        <span class="label">Packet built</span>
+        <span class="bar" aria-hidden="true"><span class="fill"></span></span>
+        <span class="pct" aria-label="67 percent">8 of 12</span>
+      </section>
+
+      <h3 class="section-h">Identity and household</h3>
+      <div class="docs">
+        <article class="doc have" aria-labelledby="d1">
+          <div class="doc-head">
+            <h2 id="d1">Driver's license or state ID</h2>
+            <span class="check" aria-hidden="true">&check;</span>
+          </div>
+          <p class="doc-why">Proves who you are.</p>
+          <p class="doc-meta">Added May 6, 2026.</p>
+        </article>
+
+        <article class="doc have" aria-labelledby="d2">
+          <div class="doc-head">
+            <h2 id="d2">Social Security number</h2>
+            <span class="check" aria-hidden="true">&check;</span>
+          </div>
+          <p class="doc-why">Required on the renewal form.</p>
+          <p class="doc-meta">Saved on this device. Never sent anywhere.</p>
+        </article>
+
+        <article class="doc need" aria-labelledby="d3">
+          <div class="doc-head">
+            <h2 id="d3">Who lives with you</h2>
+            <span class="badge badge-warn">Need this</span>
+          </div>
+          <p class="doc-why">Household size affects how income is counted.</p>
+          <div class="doc-action">
+            <button type="button" class="btn btn-secondary">Answer 3 questions</button>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="section-h">Why you qualify</h3>
+      <div class="docs">
+        <article class="doc have" aria-labelledby="d4">
+          <div class="doc-head">
+            <h2 id="d4">SSDI award letter</h2>
+            <span class="check" aria-hidden="true">&check;</span>
+          </div>
+          <p class="doc-why">Most common path to an exemption.</p>
+          <p class="doc-meta">Photo, added April 22, 2026.</p>
+        </article>
+
+        <article class="doc have" aria-labelledby="d5">
+          <div class="doc-head">
+            <h2 id="d5">HCBS waiver paperwork</h2>
+            <span class="check" aria-hidden="true">&check;</span>
+          </div>
+          <p class="doc-why">Confirms your waiver status.</p>
+          <p class="doc-meta">PDF, added April 22, 2026.</p>
+        </article>
+
+        <article class="doc need" aria-labelledby="d6">
+          <div class="doc-head">
+            <h2 id="d6">Letter from your doctor (optional)</h2>
+            <span class="badge">Optional</span>
+          </div>
+          <p class="doc-why">Helpful if anything about your condition changed this year.</p>
+          <div class="doc-action">
+            <button type="button" class="btn btn-secondary">Add a document</button>
+            <button type="button" class="btn btn-ghost">Skip</button>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="section-h">Money</h3>
+      <div class="docs">
+        <article class="doc have" aria-labelledby="d7">
+          <div class="doc-head">
+            <h2 id="d7">2025 tax return</h2>
+            <span class="check" aria-hidden="true">&check;</span>
+          </div>
+          <p class="doc-why">Shows last year's income.</p>
+          <p class="doc-meta">PDF, added May 1, 2026.</p>
+        </article>
+
+        <article class="doc have" aria-labelledby="d8">
+          <div class="doc-head">
+            <h2 id="d8">Recent pay stubs (last 30 days)</h2>
+            <span class="check" aria-hidden="true">&check;</span>
+          </div>
+          <p class="doc-why">Shows what you make right now.</p>
+          <p class="doc-meta">2 photos, added May 17, 2026.</p>
+        </article>
+
+        <article class="doc need" aria-labelledby="d9">
+          <div class="doc-head">
+            <h2 id="d9">Statement of any other income</h2>
+            <span class="badge badge-warn">Need this</span>
+          </div>
+          <p class="doc-why">Side jobs, rental income, family help, anything regular.</p>
+          <div class="doc-action">
+            <button type="button" class="btn btn-secondary">Answer 2 questions</button>
+            <button type="button" class="btn btn-ghost">I have none</button>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="section-h">Address</h3>
+      <div class="docs">
+        <article class="doc have" aria-labelledby="d10">
+          <div class="doc-head">
+            <h2 id="d10">Proof of Colorado address</h2>
+            <span class="check" aria-hidden="true">&check;</span>
+          </div>
+          <p class="doc-why">A utility bill or lease in your name.</p>
+          <p class="doc-meta">PDF, added April 30, 2026.</p>
+        </article>
+
+        <article class="doc need" aria-labelledby="d11">
+          <div class="doc-head">
+            <h2 id="d11">Mailing address on file with HCPF</h2>
+            <span class="badge badge-warn">Need this</span>
+          </div>
+          <p class="doc-why">If they mail to the wrong place, you miss deadlines.</p>
+          <div class="doc-action">
+            <button type="button" class="btn btn-secondary">Check or fix it</button>
+          </div>
+        </article>
+      </div>
+
+      <section class="card" style="margin-top: 1rem;" aria-label="What happens next">
+        <h2 style="margin: 0 0 0.5rem;">When the packet is done</h2>
+        <p style="margin: 0 0 0.75rem;">
+          We will produce a printable one-pager with everything in the right
+          order, plus a checklist a CCDC advocate can review before you submit
+          on PEAK or in the mail.
+        </p>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button type="button" class="btn" disabled aria-disabled="true">Preview the printable packet</button>
+          <button type="button" class="btn btn-secondary">Ask a CCDC advocate to review it</button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">
+      <div class="trust-row">
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Saved on your device only</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>No account, no tracking</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Free forever</span>
+      </div>
+      <span>Made with <a href="https://ccdconline.org/">CCDC</a>.</span>
+    </div>
+  </footer>
+</body>
+</html>

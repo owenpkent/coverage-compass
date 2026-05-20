@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coverage Compass: Work hours log (mockup R2)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .log-shell { max-width: 760px; margin: 0 auto; display: grid; gap: 1.25rem; }
+    .month-head {
+      display: flex; gap: 1rem; justify-content: space-between; align-items: baseline;
+      flex-wrap: wrap;
+    }
+    .month-head h1 { margin: 0; font-size: 1.75rem; }
+    .month-head .meta { color: var(--text-soft); font-size: 0.95rem; }
+
+    .total {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-card);
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 600px) {
+      .total { grid-template-columns: auto 1fr; align-items: center; }
+    }
+    .total .big {
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--accent);
+    }
+    .total .big .of { color: var(--text-soft); font-size: 1.1rem; font-weight: 600; }
+    .total .label { color: var(--text-muted); }
+    .total .bar {
+      grid-column: 1 / -1;
+      height: 14px;
+      background: var(--bg-elev);
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .total .fill {
+      display: block;
+      height: 100%;
+      width: 77%;
+      background: var(--accent);
+    }
+    .total.goal-met .big { color: var(--success); }
+    .total.goal-met .fill { background: var(--success); }
+
+    .weeks {
+      display: grid;
+      gap: 0.75rem;
+    }
+    .week-row {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .week-row .name { font-weight: 700; }
+    .week-row .range { color: var(--text-soft); font-size: 0.9rem; display: block; }
+    .week-row .hours {
+      font-size: 1.4rem;
+      font-weight: 800;
+      min-width: 4ch;
+      text-align: right;
+    }
+    .week-row .hours .u { font-size: 0.95rem; font-weight: 600; color: var(--text-soft); }
+    .week-row .add { grid-column: 1 / -1; }
+    .week-row.empty .name { color: var(--text-soft); font-weight: 600; }
+    .week-row.empty .hours { color: var(--text-soft); }
+
+    .proof-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+    .proof-card h2 { margin: 0 0 0.5rem; font-size: 1.2rem; }
+    .proof-list { display: grid; gap: 0.5rem; margin-top: 0.75rem; }
+    .proof-pill {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 0.85rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      width: max-content;
+      max-width: 100%;
+    }
+    .proof-pill .kind { font-size: 0.8rem; font-weight: 700; color: var(--accent); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">CC</span>
+        Coverage Compass
+        <span class="brand-sub">work hours, May 2026</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" aria-pressed="true">English</button>
+        <button type="button" aria-pressed="false">Espanol</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="log-shell">
+
+      <header class="month-head">
+        <div>
+          <h1>May 2026</h1>
+          <p class="meta">Goal: 80 hours this month. 9 days left in May.</p>
+        </div>
+        <button type="button" class="btn">Log this week</button>
+      </header>
+
+      <section class="total" aria-label="May progress">
+        <div>
+          <div class="big">62<span class="of"> / 80</span></div>
+          <div class="label">hours logged so far</div>
+        </div>
+        <p style="margin: 0; color: var(--text-muted);">
+          You need <strong>18 more hours</strong> by May 31. That is about
+          4 to 5 hours a week for the rest of the month.
+        </p>
+        <span class="bar" aria-hidden="true"><span class="fill"></span></span>
+      </section>
+
+      <section class="weeks" aria-label="Weekly log">
+
+        <div class="week-row">
+          <div>
+            <span class="name">Week 1</span>
+            <span class="range">May 4 to May 10</span>
+          </div>
+          <div class="hours">18<span class="u"> hr</span></div>
+        </div>
+
+        <div class="week-row">
+          <div>
+            <span class="name">Week 2</span>
+            <span class="range">May 11 to May 17</span>
+          </div>
+          <div class="hours">22<span class="u"> hr</span></div>
+        </div>
+
+        <div class="week-row">
+          <div>
+            <span class="name">Week 3</span>
+            <span class="range">May 18 to May 24</span>
+          </div>
+          <div class="hours">22<span class="u"> hr</span></div>
+        </div>
+
+        <div class="week-row empty">
+          <div>
+            <span class="name">Week 4 (this week)</span>
+            <span class="range">May 25 to May 31</span>
+          </div>
+          <div class="hours">0<span class="u"> hr</span></div>
+          <button type="button" class="btn btn-secondary add">Add hours for this week</button>
+        </div>
+
+      </section>
+
+      <section class="proof-card" aria-labelledby="proof-h">
+        <h2 id="proof-h">Proof you have so far</h2>
+        <p style="margin: 0; color: var(--text-muted);">
+          Kept on your device. If the state ever asks, we will help you put it
+          together.
+        </p>
+        <div class="proof-list">
+          <span class="proof-pill"><span class="kind">PAY STUB</span> May 10 (Acme Co.)</span>
+          <span class="proof-pill"><span class="kind">PAY STUB</span> May 17 (Acme Co.)</span>
+          <span class="proof-pill"><span class="kind">PHOTO</span> Volunteer log, May 14</span>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.95rem; color: var(--text-soft);">
+          <a href="#">What counts as work for the 80-hour rule?</a>
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">
+      <div class="trust-row">
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Saved on your device only</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>No account, no tracking</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Free forever</span>
+      </div>
+      <span>Made with <a href="https://ccdconline.org/">CCDC</a>.</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coverage Compass: Monthly check-in (mockup R1)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .checkin-shell {
+      max-width: 720px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1.5rem;
+    }
+    .month-strip {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 0.4rem;
+      padding: 0.85rem 1rem;
+      background: var(--bg-elev);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+    .month-strip .mo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+    }
+    .month-strip .pip {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--border-strong);
+    }
+    .month-strip .mo.done .pip { background: var(--success); border-color: var(--success); }
+    .month-strip .mo.now { color: var(--text); font-weight: 700; }
+    .month-strip .mo.now .pip { border-color: var(--accent); border-width: 3px; }
+    .month-strip .mo.future .pip { opacity: 0.4; }
+    .prompt-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-card);
+    }
+    .prompt-card h1 { font-size: 1.6rem; margin: 0 0 0.4rem; }
+    .prompt-card .sub { color: var(--text-muted); margin-bottom: 1.25rem; }
+    .big-choice {
+      display: grid;
+      gap: 0.85rem;
+      grid-template-columns: 1fr;
+      margin-top: 1rem;
+    }
+    .big-choice button {
+      min-height: 96px;
+      padding: 1.25rem 1.5rem;
+      background: var(--bg);
+      border: 2px solid var(--border-strong);
+      border-radius: var(--radius);
+      color: var(--text);
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .big-choice button:hover { border-color: var(--accent); background: var(--accent-bg); }
+    .big-choice button strong { font-size: 1.2rem; }
+    .big-choice button .meta { color: var(--text-soft); font-size: 0.95rem; }
+    .yes-row strong { color: var(--success); }
+    .change-row strong { color: var(--accent); }
+    .why {
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-elev);
+      border-radius: var(--radius);
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .why strong { color: var(--text); display: block; margin-bottom: 0.25rem; }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">CC</span>
+        Coverage Compass
+        <span class="brand-sub">monthly check-in, May 2026</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" aria-pressed="true">English</button>
+        <button type="button" aria-pressed="false">Espanol</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="checkin-shell">
+
+      <section class="month-strip" aria-label="Your year so far">
+        <div class="mo done"><span class="pip" aria-hidden="true"></span>Jan</div>
+        <div class="mo done"><span class="pip" aria-hidden="true"></span>Feb</div>
+        <div class="mo done"><span class="pip" aria-hidden="true"></span>Mar</div>
+        <div class="mo done"><span class="pip" aria-hidden="true"></span>Apr</div>
+        <div class="mo now" aria-current="true"><span class="pip" aria-hidden="true"></span>May</div>
+        <div class="mo future"><span class="pip" aria-hidden="true"></span>Jun</div>
+        <div class="mo future"><span class="pip" aria-hidden="true"></span>Jul</div>
+        <div class="mo future"><span class="pip" aria-hidden="true"></span>Aug</div>
+        <div class="mo future"><span class="pip" aria-hidden="true"></span>Sep</div>
+        <div class="mo future"><span class="pip" aria-hidden="true"></span>Oct</div>
+        <div class="mo future"><span class="pip" aria-hidden="true"></span>Nov</div>
+        <div class="mo future"><span class="pip" aria-hidden="true"></span>Dec</div>
+      </section>
+
+      <section class="prompt-card" aria-labelledby="prompt-h">
+        <h1 id="prompt-h">May check-in</h1>
+        <p class="sub">
+          You are on Medicaid because of your <strong>HCBS waiver</strong>. We
+          ask once a month so the state has a record that nothing changed.
+        </p>
+
+        <div class="big-choice" role="group" aria-label="Your answer">
+          <button type="button" class="yes-row">
+            <strong>Still on my HCBS waiver. Nothing changed.</strong>
+            <span class="meta">One tap. We save the date on this device. Takes 2 seconds.</span>
+          </button>
+          <button type="button" class="change-row">
+            <strong>Something changed.</strong>
+            <span class="meta">Lost the waiver, started working, moved, income changed. We will walk through it.</span>
+          </button>
+        </div>
+
+        <aside class="why" aria-label="Why this matters">
+          <strong>Why we ask</strong>
+          The 2027 rules expect a record that your exemption still applies. A
+          dated answer here, kept on your device, is something a CCDC advocate
+          can hand to the state if your coverage is ever questioned.
+        </aside>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">
+      <div class="trust-row">
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Saved on your device only</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>No account, no tracking</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Free forever</span>
+      </div>
+      <span>Made with <a href="https://ccdconline.org/">CCDC</a>.</span>
+    </div>
+  </footer>
+</body>
+</html>

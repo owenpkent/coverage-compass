@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coverage Compass: Renewal deadline plan (mockup N2)</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .deadline-shell { max-width: 760px; margin: 0 auto; display: grid; gap: 1.25rem; }
+
+    .hero-deadline {
+      background: var(--bg-card);
+      border: 2px solid var(--accent);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      display: grid;
+      gap: 0.5rem;
+      text-align: center;
+    }
+    .hero-deadline .label {
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .hero-deadline .date {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.1;
+    }
+    .hero-deadline .days {
+      color: var(--text-muted);
+    }
+
+    .timeline {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0;
+      position: relative;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0; bottom: 0; left: 14px;
+      width: 2px;
+      background: var(--border-strong);
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      gap: 1rem;
+      align-items: start;
+      padding: 1rem 0;
+      position: relative;
+    }
+    .step .marker {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 3px solid var(--border-strong);
+      display: inline-grid; place-items: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      position: relative;
+      z-index: 1;
+    }
+    .step.done .marker {
+      background: var(--success); border-color: var(--success);
+      color: #fff;
+    }
+    .step.now .marker {
+      background: var(--accent); border-color: var(--accent);
+      color: #fff;
+    }
+    .step .body {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.9rem 1.1rem;
+    }
+    .step .when {
+      color: var(--text-soft);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+    .step .title { font-weight: 700; font-size: 1.05rem; display: block; margin-bottom: 0.25rem; }
+    .step .desc { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
+    .step .ctas {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin-top: 0.6rem;
+    }
+    .step.done .title { color: var(--text-soft); }
+    .step.now .body { border-color: var(--accent); border-width: 2px; }
+
+    .reminder-card {
+      background: var(--accent-bg);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+      color: var(--text);
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .reminder-card .icon {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      display: inline-grid; place-items: center;
+      font-weight: 700;
+      flex: 0 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">CC</span>
+        Coverage Compass
+        <span class="brand-sub">renewal plan</span>
+      </a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" aria-pressed="true">English</button>
+        <button type="button" aria-pressed="false">Espanol</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="deadline-shell">
+
+      <section class="hero-deadline" aria-label="Renewal deadline">
+        <span class="label">Your renewal is due</span>
+        <span class="date"><time datetime="2026-07-15">July 15, 2026</time></span>
+        <span class="days">56 days from today. Plenty of time if we start now.</span>
+      </section>
+
+      <section class="reminder-card" role="region" aria-label="Reminder">
+        <span class="icon" aria-hidden="true">i</span>
+        <div>
+          <strong>We will remind you on this device.</strong>
+          <p style="margin: 0.25rem 0 0; font-size: 0.95rem;">
+            No email, no text, no account. Open this page and you will see
+            where you are.
+          </p>
+        </div>
+      </section>
+
+      <ol class="timeline" aria-label="Steps from now to renewal day">
+
+        <li class="step done">
+          <span class="marker" aria-hidden="true">&check;</span>
+          <div class="body">
+            <span class="when">Done, April 22</span>
+            <span class="title">Gather your big proofs</span>
+            <p class="desc">SSDI award letter, HCBS waiver paperwork, 2025 tax return. Saved.</p>
+          </div>
+        </li>
+
+        <li class="step now">
+          <span class="marker" aria-hidden="true">2</span>
+          <div class="body">
+            <span class="when">This week, by May 24</span>
+            <span class="title">Fill in the household and income answers</span>
+            <p class="desc">Three short questions about who lives with you and any other income.</p>
+            <div class="ctas">
+              <button type="button" class="btn">Answer them now</button>
+              <button type="button" class="btn btn-ghost">Remind me on May 22</button>
+            </div>
+          </div>
+        </li>
+
+        <li class="step">
+          <span class="marker" aria-hidden="true">3</span>
+          <div class="body">
+            <span class="when">By June 15</span>
+            <span class="title">Confirm your mailing address with HCPF</span>
+            <p class="desc">If they mail the renewal letter to the wrong place, the deadline still counts. Five-minute call.</p>
+            <div class="ctas">
+              <button type="button" class="btn btn-secondary">See the script for the call</button>
+            </div>
+          </div>
+        </li>
+
+        <li class="step">
+          <span class="marker" aria-hidden="true">4</span>
+          <div class="body">
+            <span class="when">By July 1</span>
+            <span class="title">Ask a CCDC advocate to review your packet</span>
+            <p class="desc">Two weeks of buffer in case the advocate wants you to add or fix anything.</p>
+          </div>
+        </li>
+
+        <li class="step">
+          <span class="marker" aria-hidden="true">5</span>
+          <div class="body">
+            <span class="when">By July 8</span>
+            <span class="title">Submit the renewal on PEAK</span>
+            <p class="desc">A week before the actual deadline. If PEAK has trouble, you still have time.</p>
+          </div>
+        </li>
+
+        <li class="step">
+          <span class="marker" aria-hidden="true">!</span>
+          <div class="body">
+            <span class="when">July 15</span>
+            <span class="title">Renewal deadline</span>
+            <p class="desc">The state's last day to receive it. We will check that you got a confirmation.</p>
+          </div>
+        </li>
+
+      </ol>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">
+      <div class="trust-row">
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Saved on your device only</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>No account, no tracking</span>
+        <span class="trust-pill"><span class="dot" aria-hidden="true"></span>Free forever</span>
+      </div>
+      <span>Made with <a href="https://ccdconline.org/">CCDC</a>.</span>
+    </div>
+  </footer>
+</body>
+</html>

@@ -30,13 +30,13 @@ A privacy-local document organizer for three Medicaid life events. The same pers
 
 The entry point is a notice-triage step: drop a letter from HCPF or PEAK, get a plain-language summary, the deadline, and a pointer to which of the three flows applies.
 
-Full v0.1 product spec: [`docs/spec-v0.1.md`](docs/spec-v0.1.md). UI mockups: [`docs/ui-brainstorm.md`](docs/ui-brainstorm.md) (ten static HTML mockups, openable in a browser).
+Full v0.1 product spec: [`docs/spec-v0.1.md`](docs/spec-v0.1.md). UI mockups: [`docs/ui-brainstorm.md`](docs/ui-brainstorm.md) (fourteen static HTML mockups grouped by the three events plus triage, openable in a browser).
 
 ## Why three partners
 
 The problem does not fit cleanly inside any one of these organizations. It needs all three.
 
-### CCDC: lived expertise, member trust, advocate-in-the-loop
+### [CCDC](https://ccdconline.org/): lived expertise, member trust, advocate-in-the-loop
 
 CCDC owns the Colorado rules. Exemption categories, deadlines, letter patterns, and plain-language explanations live in flat YAML files that an advocate can read and propose edits on without writing code. CCDC also owns the appeals review step: every appeal draft routes through a CCDC advocate before the state sees it. That keeps the tool firmly inside the unauthorized-practice-of-law boundary and keeps disabled Coloradans hearing from a person they already trust.
 
@@ -44,7 +44,7 @@ What CCDC brings: institutional home, advocate review, 10 to 20 anonymized sampl
 
 Current status: pitch drafted ([`docs/pitch-ccdc.md`](docs/pitch-ccdc.md), [`docs/pitch-ccdc-email.md`](docs/pitch-ccdc-email.md)). The author is a CCDC member.
 
-### Code for America: safety-net civic tech, methodology, reusability
+### [Code for America](https://codeforamerica.org/): safety-net civic tech, methodology, reusability
 
 CfA's Safety Net Innovation Lab and the GetCalFresh lineage have spent a decade learning what works when civic tech meets public benefits administration. CfA also already maintains [`work-requirements-self-advocacy-tool`](https://github.com/codeforamerica/work-requirements-self-advocacy-tool) (North Carolina, SNAP). The pattern overlap with this project is high; the lane is different (Medicaid, disability-rooted, privacy-local, advocate-in-the-loop). The cleanest outcome is shared infrastructure across states rather than parallel rebuilds.
 
@@ -52,7 +52,7 @@ What CfA brings: a decade of safety-net product methodology, brigade volunteers 
 
 Current status: pitch drafted ([`docs/pitch-cfa.md`](docs/pitch-cfa.md)). Not yet sent.
 
-### Anthropic: responsible AI for the parts that need it
+### [Anthropic](https://www.anthropic.com/): responsible AI for the parts that need it
 
 Most of v0.1 is rule-based, not AI. Letter classification, deadline extraction, and exemption matching run from the YAML rule library, deterministically, in the user's browser. That choice is deliberate: privacy by architecture beats privacy by policy when the threat model includes the state itself.
 
@@ -83,9 +83,23 @@ These do not change regardless of who joins.
 - Two partner pitches drafted (CCDC, CfA).
 - Web-app shell scaffolded (Vite + React + TypeScript + React Aria Components, no analytics, no third-party scripts).
 - Rule library seeded for Colorado: six letter types and eight exemption categories. All entries marked "verify with CCDC" until reviewed.
-- Ten static HTML mockups exploring UI archetypes ([`docs/ui-brainstorm.md`](docs/ui-brainstorm.md)).
+- Fourteen static HTML mockups exploring UI archetypes across all three events plus the triage entry ([`docs/ui-brainstorm.md`](docs/ui-brainstorm.md)).
 
 Full snapshot: [`PROJECT-STATUS.md`](PROJECT-STATUS.md).
+
+## Other tools this same pattern could power
+
+The Medicaid tool is the first application of a reusable kit: a privacy-local document archive, a per-state YAML rule library an advocate can edit without writing code, a plain-language explainer, an advocate-in-the-loop review step for anything that gets sent to a government agency, and a WCAG 2.2 AA accessible UI. Once that kit exists, other tools CCDC members need become much cheaper to build. A short list, in rough order of pattern fit:
+
+- **ADA Title II / III complaint drafter.** Structured intake walks a member through what happened, drafts a complaint to DOJ or the Colorado Civil Rights Division, routes to a CCDC advocate before filing. Same advocate-in-the-loop pattern as Medicaid appeals.
+- **Reasonable accommodation request generator (housing and employment).** Drafts Fair Housing Act accommodation requests to landlords or ADA accommodation requests to employers from a short interview. The personal document archive carries over.
+- **Olmstead / community-based services self-advocacy tool.** Helps members request community-based alternatives to institutional placement, with letter templates, deadline tracking, and a plain-language rights primer.
+- **Paratransit and accessible-transit complaint tracker.** Logs RTD Access-a-Ride denials, late pickups, and accessibility failures over time, then generates an FTA complaint when a pattern emerges. The data stays on the user's device.
+- **Benefits stack visualizer.** Shows how SSDI, SSI, Medicaid, SNAP, Section 8, and CDASS interact when income or hours change, so members can stress-test a decision (taking a job, moving, marrying) before they make it. Read-only, no PII required.
+- **IEP / 504 prep tool.** Helps parents and adult students organize evaluations, prior plans, and proposed accommodations into a meeting packet, with plain-language explanations of procedural rights.
+- **SOAR-style SSI / SSDI application helper.** Document checklist, deadline reminders, and a structured interview that an advocate can review before submission.
+
+These are not commitments. They are evidence that the architecture is general, and an open question for CCDC: if Medicaid is not the right first tool, or if a second tool should start in parallel, the same volunteer time and the same partner conversations can point at any of them. The Medicaid tool is the proposed first build because the January 2027 deadline is what makes it urgent.
 
 ## The ask
 
@@ -126,7 +140,7 @@ Owen Kent, a CCDC member and software engineer. Volunteer work. No funding ask, 
 |   |-- architecture.md        how the tool is built
 |   |-- privacy.md             what we do and don't collect, and why
 |   |-- accessibility.md       accessibility standard and testing approach
-|   |-- ui-brainstorm.md       ten HTML mockups exploring UI archetypes, with trade-offs
+|   |-- ui-brainstorm.md       fourteen HTML mockups across three events plus triage, with trade-offs
 |   |-- mockups/               openable static HTML mockups (drop into a browser)
 |   |-- glossary.md            plain definitions of SSDI, HCBS, CDASS, LTSS, PEAK, etc.
 |   |-- colorado-rules.md      Colorado exemption categories, deadlines, and sources
