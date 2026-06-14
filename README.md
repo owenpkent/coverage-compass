@@ -89,7 +89,7 @@ Full snapshot: [`PROJECT-STATUS.md`](PROJECT-STATUS.md).
 
 ## Other tools this same pattern could power
 
-The Medicaid tool is the first application of a reusable kit: a privacy-local document archive, a per-state YAML rule library an advocate can edit without writing code, a plain-language explainer, an advocate-in-the-loop review step for anything that gets sent to a government agency, and a WCAG 2.2 AA accessible UI. Once that kit exists, other tools CCDC members need become much cheaper to build. A short list, in rough order of pattern fit:
+The Medicaid tool is the first application of a reusable kit: a privacy-local document archive, a per-state YAML rule library an advocate can edit without writing code, a plain-language explainer, a document-extraction and PDF form-fill engine (already proven in a sibling project, [CDASS Enroll](https://github.com/owenpkent/cdass-enroll)), an advocate-in-the-loop review step for anything that gets sent to a government agency, and a WCAG 2.2 AA accessible UI. Once that kit exists, other tools CCDC members need become much cheaper to build. A short list, in rough order of pattern fit:
 
 - **ADA Title II / III complaint drafter.** Structured intake walks a member through what happened, drafts a complaint to DOJ or the Colorado Civil Rights Division, routes to a CCDC advocate before filing. Same advocate-in-the-loop pattern as Medicaid appeals.
 - **Reasonable accommodation request generator (housing and employment).** Drafts Fair Housing Act accommodation requests to landlords or ADA accommodation requests to employers from a short interview. The personal document archive carries over.
@@ -138,6 +138,7 @@ Owen Kent, a CCDC member and software engineer. Volunteer work. No funding ask, 
 |   |-- spec-v0.1.md           what the first version does
 |   |-- roadmap.md             dates and milestones, tied to the CO rollout
 |   |-- architecture.md        how the tool is built
+|   |-- form-fill-engine.md    plan to reuse the CDASS Enroll fill engine (v0.2, Reapplication)
 |   |-- privacy.md             what we do and don't collect, and why
 |   |-- accessibility.md       accessibility standard and testing approach
 |   |-- ui-brainstorm.md       fourteen HTML mockups across three events plus triage, with trade-offs

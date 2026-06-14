@@ -43,7 +43,7 @@ Ships before the first impact wave on 2027-01-01.
 - [ ] Document classifier for SSA award letters and waiver enrollment letters
 - [ ] Tax-return reader for W-2 / 1099-NEC / Schedule C / Schedule SE (PDF, not IRS API)
 - [ ] Exemption decision tree (SSDI -> HCBS -> LTSS -> Buy-In -> medically frail -> caregiver)
-- [ ] Packet template generator (PDF output with cover letter and labeled exhibits)
+- [ ] Packet template generator (PDF output with cover letter and labeled exhibits). The PDF form-fill here reuses the CDASS Enroll engine rather than rebuilding it; see [`form-fill-engine.md`](form-fill-engine.md)
 - [ ] Renewal calendar with deadline tracking (IndexedDB, local only)
 - [ ] Updated CCDC user test
 

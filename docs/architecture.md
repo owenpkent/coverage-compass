@@ -47,6 +47,18 @@ Explicit non-choices:
 
 All boxes run in the user's browser. There is no server. The "rules engine" is a pure TypeScript function that takes extracted text and returns a structured letter classification, deadline, and recommended actions.
 
+## Form-fill (the write side, v0.2 and Reapplication)
+
+The flow above is the read side: classify an incoming letter and explain it. The
+v0.2 exemption packet and the Reapplication event need the write side, which is
+producing completed official PDFs from the archive. That engine is already
+proven in a sibling project, CDASS Enroll
+(https://github.com/owenpkent/cdass-enroll), and is brought in rather than
+rebuilt. pdf.js reads PDFs; pdf-lib writes them, and the two coexist
+client-side. The fill layer is pure functions over pdf-lib, so it ports cleanly
+into this TypeScript and React shell. See [`form-fill-engine.md`](form-fill-engine.md)
+for the component mapping and the step plan.
+
 ## Module layout
 
 ```
