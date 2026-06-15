@@ -40,7 +40,7 @@ I'm Owen Kent, a CCDC member and software engineer. Quick version:
 - Most CCDC members will qualify for an exemption. The danger is procedural disenrollment from failing to *prove* it in time.
 - I'd like to volunteer to build a free, privacy-local web tool. Two flows from one engine: (1) help a member prove their exemption at renewal, (2) help a CCDC advocate draft an appeal when something goes wrong. No server, no accounts, no telemetry. CCDC owns the rules and reviews the output.
 
-Full proposal: https://github.com/owenpkent/ccdc-medicaid-tool/blob/main/docs/pitch-ccdc.md
+Full proposal: https://github.com/owenpkent/coverage-compass/blob/main/docs/pitch-ccdc.md
 
 Could I get one hour with whoever leads CCDC appeals or advocacy work, plus a front-line advocate if possible? No funding ask. CCDC sets the direction.
 

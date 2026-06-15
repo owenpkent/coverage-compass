@@ -18,6 +18,26 @@ holds. Its approach is written up in its
 This document is the plan to lift that engine into Coverage Compass rather than
 rebuild it.
 
+## Pre-population: fill this year from last year
+
+Reapplication is not only filling a blank form once. It is filling the *same*
+form again every year with mostly the same facts. Colorado's renewal and
+redetermination packets can run dozens of pages, and CDASS participants also
+maintain a care-hours worksheet (the IHSS Care Plan) that itemizes
+attendant-care minutes per task and is redone on reassessment. Most of that
+content does not change year to year.
+
+So the archive is durable, not single-session. Once a person's evidence and
+answers are captured, the engine pre-fills next year's renewal and care-hours
+worksheet from the prior filing, and the person (or a CCDC advocate) reviews and
+corrects only what changed. An 80-page yearly form becomes a review-and-correct
+step.
+
+The same pre-fill extends to caseworkers: a CCDC advocate or county eligibility
+worker can prepare the forms with a member from the member's archive, on the
+member's device, with no data leaving it. This is an extension of the same
+engine, not a separate build.
+
 ## What CDASS Enroll already provides
 
 - A **schema** that is the single source of truth for every field; the input UI
@@ -72,8 +92,9 @@ shells differ.
    data: household members, income sources and amounts, exemption category and
    evidence, renewal dates.
 4. Obtain the first real Colorado form (a Medicaid renewal or redetermination
-   form, or the exemption-packet cover form). Keep the blank template in the
-   repo; never commit a filled copy or real data.
+   form, the exemption-packet cover form, or the CDASS care-hours worksheet,
+   which is the IHSS Care Plan). Keep the blank template in the repo; never
+   commit a filled copy or real data.
 5. Dump its field names with pypdf and write the flat mapping in
    `web/src/lib/fill/forms/<form>.ts`. Gate any attestation checkbox on
    unambiguous data.

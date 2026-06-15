@@ -66,7 +66,7 @@ Repository is scaffolded with full documentation (architecture, privacy threat m
 
 Prior related work: I previously built [reclaimhealth.ai](https://github.com/owenpkent/reclaimhealth.ai), a landing page exploring AI-assisted appeals for private-insurance denials. This Medicaid project is its narrower, privacy-local, free, FOSS sibling, scoped specifically to disabled Coloradans on Health First Colorado, deterministic in v0.1, and answers to a disability coalition rather than to investors.
 
-Repository: https://github.com/owenpkent/ccdc-medicaid-tool
+Repository: https://github.com/owenpkent/coverage-compass
 
 ---
 

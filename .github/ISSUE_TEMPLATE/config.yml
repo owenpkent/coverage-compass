@@ -8,11 +8,11 @@ contact_links:
       ccdconline.org. Their advocates can help with appeals, individual advocacy,
       and civil rights legal support.
   - name: Security or privacy vulnerability
-    url: https://github.com/owenpkent/ccdc-medicaid-tool/security/policy
+    url: https://github.com/owenpkent/coverage-compass/security/policy
     about: |
       Please do NOT report security or privacy issues in a public issue.
       See SECURITY.md for the responsible disclosure process.
   - name: Question about the project
-    url: https://github.com/owenpkent/ccdc-medicaid-tool/discussions
+    url: https://github.com/owenpkent/coverage-compass/discussions
     about: |
       For open-ended questions, please use Discussions rather than Issues.

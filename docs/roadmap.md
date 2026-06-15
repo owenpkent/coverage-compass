@@ -44,6 +44,8 @@ Ships before the first impact wave on 2027-01-01.
 - [ ] Tax-return reader for W-2 / 1099-NEC / Schedule C / Schedule SE (PDF, not IRS API)
 - [ ] Exemption decision tree (SSDI -> HCBS -> LTSS -> Buy-In -> medically frail -> caregiver)
 - [ ] Packet template generator (PDF output with cover letter and labeled exhibits). The PDF form-fill here reuses the CDASS Enroll engine rather than rebuilding it; see [`form-fill-engine.md`](form-fill-engine.md)
+- [ ] Carry-forward pre-fill: keep the archive across years and pre-fill next year's renewal and redetermination from the prior filing, turning a multi-page yearly form into a review-and-correct step
+- [ ] CDASS care-hours worksheet pre-fill: carry the itemized minutes-per-task care plan (the IHSS Care Plan) forward from the prior worksheet and the archive
 - [ ] Renewal calendar with deadline tracking (IndexedDB, local only)
 - [ ] Updated CCDC user test
 
@@ -71,5 +73,6 @@ Not committed, not ordered.
 - CDASS toolkit (`docs/brainstorm.md` idea #4)
 - Procedural-disenrollment incident tracker for CCDC policy advocacy (`docs/brainstorm.md` idea #7)
 - Multi-state expansion (start with another state coalition that wants to adopt)
+- Caseworker mode: let a CCDC advocate or county caseworker pre-fill and review the same forms with a member, on the member's device
 - Tauri desktop wrapper for kiosk use
 - Locally-run small LLM for free-form notice translation

@@ -19,7 +19,7 @@ vulnerabilities.**
 Use GitHub's [private vulnerability reporting][gh-private-vuln] on this
 repository to submit a confidential report. We aim to respond within 7 days.
 
-[gh-private-vuln]: https://github.com/owenpkent/ccdc-medicaid-tool/security/advisories/new
+[gh-private-vuln]: https://github.com/owenpkent/coverage-compass/security/advisories/new
 
 Include:
 

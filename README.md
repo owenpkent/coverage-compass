@@ -25,7 +25,7 @@ The schedule that drives every other date in this project:
 A privacy-local document organizer for three Medicaid life events. The same personal archive (Social Security award letters, HCBS waiver paperwork, tax returns, diagnosis letters, work hours if applicable) serves all three.
 
 1. **Reporting.** Ongoing proof you still qualify. For the small minority who must work, that means 80-hour-per-month attestation. For the majority on an exemption, it means periodic re-attestation that the exemption still applies.
-2. **Reapplication.** Renewals (typically every 12 months) and new applications. The heaviest practical lift for CCDC's constituency, and where procedural disenrollment usually happens.
+2. **Reapplication.** Renewals (typically every 12 months) and new applications. The heaviest practical lift for CCDC's constituency, and where procedural disenrollment usually happens. These forms re-ask the same facts every year and can run dozens of pages, including the CDASS care-hours worksheet that itemizes attendant-care minutes per task. The tool stores your answers once and pre-fills next year's renewal from what you already filed, so a yearly 80-page form becomes a review-and-correct step. The same pre-fill can help a CCDC advocate or county caseworker prepare the form with a member.
 3. **Appeals.** If a denial, termination, or care reduction arrives, the tool runs a short structured interview and drafts an appeal. The draft routes to a CCDC advocate for review before it is filed. It does not replace a CCDC advocate or an attorney.
 
 The entry point is a notice-triage step: drop a letter from HCPF or PEAK, get a plain-language summary, the deadline, and a pointer to which of the three flows applies.
@@ -135,7 +135,8 @@ Owen Kent, a CCDC member and software engineer. Volunteer work. No funding ask, 
 |-- NOTICE                     third-party attributions
 |-- docs/                      plain-language and technical documentation
 |   |-- brainstorm.md          why this project exists
-|   |-- spec-v0.1.md           what the first version does
+|   |-- spec-v0.1.md           what the first version does (notice triage)
+|   |-- spec-v0.2.md           reapplication: pre-fill renewals from your archive
 |   |-- roadmap.md             dates and milestones, tied to the CO rollout
 |   |-- architecture.md        how the tool is built
 |   |-- form-fill-engine.md    plan to reuse the CDASS Enroll fill engine (v0.2, Reapplication)
@@ -149,7 +150,8 @@ Owen Kent, a CCDC member and software engineer. Volunteer work. No funding ask, 
 |   |-- pitch-ccdc.md          one-page pitch for CCDC leadership and advocacy staff
 |   |-- pitch-ccdc-email.md    paste-able email versions of the CCDC pitch
 |   |-- pitch-cfa.md           one-page pitch for Code for America
-|   `-- pitch-anthropic.md     one-page pitch for Anthropic
+|   |-- pitch-anthropic.md     one-page pitch for Anthropic
+|   `-- formfest-2026-application.md  FormFest 2026 session proposal (paste-ready)
 |-- web/                       the web app itself
 |-- rules/                     per-state rule libraries (plain text, reviewable)
 |   `-- co/                    Colorado
