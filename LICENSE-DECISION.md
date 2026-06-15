@@ -1,42 +1,26 @@
 # License decision
 
-**Decided: Apache 2.0.** See `LICENSE` and `NOTICE` at the repo root. Reasoning preserved below.
+**Decided: Apache 2.0.** The full text is in [`LICENSE`](LICENSE); third-party attributions are in [`NOTICE`](NOTICE). Copyright is held by "Owen Kent and Coverage Compass contributors". This decision is final for the project. The rationale and the alternatives that were considered are kept below for the record.
 
-If CCDC's preference after the scoping conversation is AGPLv3 instead, relicensing is straightforward at this stage (no external contributors yet).
+## Why Apache 2.0
 
----
+- Permissive: anyone can fork, modify, and host it, including for commercial use, without being required to share changes back. The goal is maximum adoption by other state disability coalitions who can point the same engine at their own state's Medicaid rules.
+- Strong patent grant: contributors automatically grant patent rights for their contributions, which protects users from contributor patent claims.
+- It is the common choice in civic tech and is already used by adjacent state-coalition projects, so it lowers adoption friction.
 
+Lowering adoption friction matters more here than ensuring forks share their changes back. That is the trade Apache 2.0 makes, and it is the right one for a tool meant to be lifted into other states.
 
-We need to pick a license before v0.1 ships publicly. Two candidates.
+## How contributions are licensed
 
-## Apache 2.0
+Contributions are inbound equals outbound: by submitting a contribution you agree it is licensed under Apache 2.0, per section 5 of the license. No separate contributor license agreement (CLA) is required. See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
-- Permissive: anyone can fork, modify, host, including for commercial use, without sharing changes back.
-- Strong patent grant: contributors automatically grant patent rights for their contributions; protects users from contributor patent claims.
-- Most common in civic tech and broadly adopted by other state coalitions.
+## Alternatives considered
 
-**Argument for Apache 2.0:** maximizes the chance other state disability coalitions can pick this up and adapt it to their state's Medicaid system. Lowering adoption friction matters more than ensuring forks share back.
+- **AGPLv3** (strong network copyleft) was considered because the threat model centers on what a host can do with user data, and AGPL would force a modifying host to publish its changes. It was not chosen because the privacy guarantee here comes from architecture (everything runs on the user's device, so there is no host holding the data), not from the license, and because copyleft would narrow the adoption breadth that is the main goal. The tool is auditable by reading its source regardless of license.
+- **MIT** was set aside as too permissive: it loses the patent grant Apache 2.0 provides.
+- **GPLv3** does not close the network-use (SaaS) gap that motivated looking at AGPL in the first place.
+- **CC0** (public-domain dedication) loses contributor patent and attribution protection.
 
-## AGPLv3
+## If this ever needs to change
 
-- Strong copyleft, including for network use: if anyone hosts a modified version as a service, they must share their changes under the same license.
-- Closes the "SaaS loophole" in GPL.
-- Signals intent: this tool is and stays in the commons.
-
-**Argument for AGPLv3:** the threat model already centers on what a host can do with user data. Making the host share their changes back means user-facing privacy claims are auditable in any deployment.
-
-## Other options considered
-
-- **MIT:** too permissive; loses the patent grant Apache offers.
-- **GPLv3:** doesn't close the SaaS loophole.
-- **CC0:** dedication to public domain; loses contributor protection.
-
-## Recommendation
-
-Likely **Apache 2.0** for maximum adoption by other coalitions, with a `CONTRIBUTING.md` that includes a clear contributor license agreement and explicit statements about the privacy commitment.
-
-Open to AGPLv3 if CCDC's preference (after hearing both sides) is to prioritize keeping forks in the commons over adoption breadth.
-
-## Decision deadline
-
-Before any public commits or release tags. Probably part of the CCDC scoping conversation.
+Relicensing is straightforward today because there are few external contributors. Any future change would be made in the open, with contributor agreement, and recorded here.

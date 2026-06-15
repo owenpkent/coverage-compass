@@ -1,0 +1,34 @@
+# CODEOWNERS for Coverage Compass
+#
+# This file tells GitHub who to request for review on a pull request.
+# Lines are matched top to bottom; the LAST matching pattern wins.
+#
+# Right now there is one maintainer, so @owenpkent owns the whole repo.
+# As CCDC advocates and other reviewers join with GitHub accounts, add
+# their handles to the relevant paths below (see the TODO block).
+
+# Default owner for everything in the repo.
+*       @owenpkent
+
+# -----------------------------------------------------------------------------
+# TODO: CCDC / advocate review (placeholder, not yet assigned)
+# -----------------------------------------------------------------------------
+# The paths below carry the Colorado policy facts and the words a member reads.
+# They should get a second reviewer from CCDC (an advocate or attorney) in
+# addition to the maintainer, because a mistake here can cost someone their
+# coverage. Do NOT add a handle until that person has a GitHub account and has
+# agreed to be a reviewer. Replace the placeholder below with their real
+# @handle when that happens, and uncomment the lines.
+#
+# Paths that need CCDC / advocate review:
+#   - rules/**                 the per-state YAML rule library (exemptions,
+#                              deadlines, letter patterns)
+#   - docs/colorado-rules.md   the Colorado exemption categories and sources
+#   - user-facing copy         any plain-language strings a member reads
+#                              (translations and explainer text live in web/;
+#                              point this at the exact path once it settles)
+#
+# Example, once a real handle exists (placeholder shown, DO NOT use as-is):
+#   rules/**                 @owenpkent @CCDC-REVIEWER-PLACEHOLDER
+#   docs/colorado-rules.md   @owenpkent @CCDC-REVIEWER-PLACEHOLDER
+# -----------------------------------------------------------------------------

@@ -43,7 +43,7 @@ A short conversation. Thirty minutes is plenty. Specifically:
 
 ## What CfA gets
 
-- The code, open source, under a license chosen with CfA-style reuse in mind (Apache 2.0 or AGPLv3, decision pending).
+- The code, open source under Apache 2.0, chosen with CfA-style reuse in mind.
 - A worked example of a privacy-local PWA in the safety-net space, with the architecture, threat model, accessibility standard, and rule schema documented as separate files. Reusable independently of this app.
 - A Colorado-specific rule library that another state coalition can fork as a starting template.
 - Volunteer time. No funding ask, no revenue model, no data leaves the user's device.

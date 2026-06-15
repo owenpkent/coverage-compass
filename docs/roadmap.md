@@ -12,7 +12,7 @@ Dates are anchored to the [Colorado work-requirements rollout](colorado-rules.md
 - [ ] Scoping conversation with CCDC appeals/advocacy staff (see `outreach.md`)
 - [ ] CCDC pitch sent
 - [ ] CfA pitch sent
-- [ ] License decision (Apache 2.0 vs AGPLv3)
+- [x] License decision: Apache 2.0 (see `LICENSE` and `LICENSE-DECISION.md`)
 - [ ] First 10 anonymized sample letters from CCDC
 - [ ] Plain-language review process established with CCDC
 
@@ -22,8 +22,8 @@ Dates are anchored to the [Colorado work-requirements rollout](colorado-rules.md
 
 Ships before the first wave of notification letters goes out from HCPF in August 2026.
 
-- [x] UI brainstorm (2026-05-16; five HTML archetypes in `docs/mockups/`, summarized in `docs/ui-brainstorm.md`)
-- [ ] Vite + React + TS app scaffolded (done)
+- [x] UI brainstorm (2026-05-16; fourteen HTML mockups in `docs/mockups/` across the three events plus triage, summarized in `docs/ui-brainstorm.md`)
+- [x] Vite + React + TS app scaffolded
 - [ ] PDF intake (pdf.js) and image OCR (tesseract.js)
 - [ ] Letter classifier (rule-based first; revisit LLM later)
 - [ ] Plain-language explanation library (CO-specific, reviewed by CCDC)
@@ -40,10 +40,12 @@ Ships before the first wave of notification letters goes out from HCPF in August
 
 Ships before the first impact wave on 2027-01-01.
 
+The write side is already proven. The CDASS Enroll proof of concept is a working, local-first form-autofill engine: one schema is the source of truth, a capture pipeline fills the profile from documents the person already holds, and pure functions over pdf-lib map profile values to exact PDF field names and save the official template's AcroForm without flattening, producing an exact, still-editable copy. v0.2 is about adopting and mapping that engine for Medicaid forms, not inventing it. See [`form-fill-engine.md`](form-fill-engine.md).
+
 - [ ] Document classifier for SSA award letters and waiver enrollment letters
 - [ ] Tax-return reader for W-2 / 1099-NEC / Schedule C / Schedule SE (PDF, not IRS API)
 - [ ] Exemption decision tree (SSDI -> HCBS -> LTSS -> Buy-In -> medically frail -> caregiver)
-- [ ] Packet template generator (PDF output with cover letter and labeled exhibits). The PDF form-fill here reuses the CDASS Enroll engine rather than rebuilding it; see [`form-fill-engine.md`](form-fill-engine.md)
+- [ ] Packet template generator (PDF output with cover letter and labeled exhibits). The PDF form-fill here adopts the proven CDASS Enroll engine and maps it to the Medicaid forms rather than rebuilding it; see [`form-fill-engine.md`](form-fill-engine.md)
 - [ ] Carry-forward pre-fill: keep the archive across years and pre-fill next year's renewal and redetermination from the prior filing, turning a multi-page yearly form into a review-and-correct step
 - [ ] CDASS care-hours worksheet pre-fill: carry the itemized minutes-per-task care plan (the IHSS Care Plan) forward from the prior worksheet and the archive
 - [ ] Renewal calendar with deadline tracking (IndexedDB, local only)
@@ -55,7 +57,7 @@ Ships before the first impact wave on 2027-01-01.
 
 For the first wave of disenrollments arriving on or after 2027-01-01.
 
-- [x] UI brainstorm (2026-05-16; five HTML archetypes in `docs/mockups/`, summarized in `docs/ui-brainstorm.md`)
+- [x] UI brainstorm (2026-05-16; fourteen HTML mockups in `docs/mockups/` across the three events plus triage, summarized in `docs/ui-brainstorm.md`)
 - [ ] Denial/termination letter classifier
 - [ ] Short structured interview (cause of denial, what user disagrees with)
 - [ ] Appeal letter templates (one per common denial pattern)

@@ -5,6 +5,8 @@ All notable changes to this project are recorded here. The project is in pre-v0.
 ## [Unreleased]
 
 ### Added
+- `.github/CODEOWNERS`: default review owner (@owenpkent), with a clearly-marked placeholder for adding CCDC advocate review of `rules/**` and user-facing copy once a reviewer has a GitHub handle.
+- `SUPPORT.md`: where to get help; routes Medicaid case help to CCDC (303-839-3056) and software questions to Discussions, and points security reports to SECURITY.md.
 - `docs/spec-v0.2.md`: spec for v0.2 Reapplication, pre-filling renewals, redeterminations, exemption packets, and the CDASS care-hours worksheet from the local archive (carry-forward).
 - `docs/formfest-2026-application.md`: paste-ready FormFest 2026 session proposal (panel, Accessibility theme).
 - `docs/ui-brainstorm.md`: write-up of the two UI brainstorms (v0.1 notice triage and v0.3 appeal workflow), including the working recommendations and what was not decided.
@@ -17,6 +19,10 @@ All notable changes to this project are recorded here. The project is in pre-v0.
 - `What's in this repository` section in `README.md` with a plain-language directory listing.
 
 ### Changed
+- Re-architected the docs around the proven CDASS Enroll engine: `docs/architecture.md` now centers the headless engine (schema, capture, fill) with the accessible React + React Aria shell built around it, and `docs/form-fill-engine.md`, `README.md`, `PROJECT-STATUS.md`, and `docs/roadmap.md` align to the engine-as-foundation framing and an explicit proven-vs-new split.
+- `CONTRIBUTING.md`: expanded for community contributions (first-contribution quickstart, exact `web/` dev setup and commands, Node 20, fork/branch/small-PR workflow, the rule-library YAML contribution path, the shared-engine note, Apache 2.0 inbound-equals-outbound licensing with optional DCO, and links to every issue template and to SUPPORT).
+- License consistency: corrected remaining "pending" / "to be decided" / "Apache 2.0 vs AGPLv3" language to Apache 2.0 (decided) in `LICENSE-DECISION.md` (rewritten to present Apache 2.0 as final), `README.md`, `PROJECT-STATUS.md`, `docs/roadmap.md`, and `docs/pitch-cfa.md`.
+- `docs/roadmap.md`: corrected the mockup count (fourteen archetypes across the three events plus triage, not five) and the contradictory app-scaffold checklist item.
 - `README.md`: Reapplication now describes carry-forward pre-population and the CDASS care-hours worksheet, plus a caseworker note; the directory listing adds `spec-v0.2.md` and `formfest-2026-application.md`.
 - `docs/roadmap.md`: v0.2 adds carry-forward pre-fill and CDASS care-hours worksheet items; post-MVP backlog adds caseworker mode.
 - `docs/form-fill-engine.md`: adds a "Pre-population: fill this year from last year" section, names the CDASS care-hours worksheet as a target form, and adds the caseworker extension.

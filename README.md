@@ -2,7 +2,7 @@
 
 A free, open source tool to help disabled Coloradans keep their Medicaid when Colorado's new work-reporting rules take effect in 2027. Built with [CCDC](https://ccdconline.org/) (Colorado Cross-Disability Coalition) as the design partner.
 
-**Status:** early scoping. Nothing is live yet. First version targeted August 2026, before the state begins mailing notification letters.
+**Status:** scoping the Coverage Compass shell, building on a proven engine. The write side (document capture and exact PDF form-fill) is already a working proof of concept in a sibling project, [CDASS Enroll](https://github.com/owenpkent/cdass-enroll); Coverage Compass is re-architected around it. The Coverage Compass app is not live yet. First version targeted August 2026, before the state begins mailing notification letters.
 
 **This README is a partner brief.** It exists to invite three organizations into the build: CCDC (lived expertise, member trust, advocate review), [Code for America](https://codeforamerica.org/) (safety-net civic tech, multi-state reusability), and [Anthropic](https://www.anthropic.com/) (responsible AI patterns for the parts of the tool that need them). Code for America and Anthropic already have a public-benefits collaboration. CCDC is the on-the-ground partner who closes the loop.
 
@@ -23,6 +23,8 @@ The schedule that drives every other date in this project:
 ## What the tool does
 
 A privacy-local document organizer for three Medicaid life events. The same personal archive (Social Security award letters, HCBS waiver paperwork, tax returns, diagnosis letters, work hours if applicable) serves all three.
+
+Coverage Compass is built in two parts. The first is a proven engine: a local-first, zero-runtime-network form-autofill engine that is a working proof of concept today in [CDASS Enroll](https://github.com/owenpkent/cdass-enroll). It is the foundation, not a future borrow. The engine is headless and framework-agnostic. One schema is the source of truth, a capture pipeline fills the profile from documents the person already holds (AAMVA barcode via zxing-wasm, passport MRZ, tesseract.js OCR, all verify-everything), and a fill layer of pure functions over pdf-lib maps profile values to exact PDF field names and saves the official template without flattening, so the output is an exact, still-editable copy that downloads locally. Signatures are never fabricated, attestation checkboxes are gated on unambiguous data, and a smoke test reloads the output to confirm it stayed an exact copy. The second part is the new Coverage Compass shell built around the engine: the accessible UI, the read side (notice triage), and the personal archive. The same engine is shared with CDASS Enroll. See [`docs/architecture.md`](docs/architecture.md) and [`docs/form-fill-engine.md`](docs/form-fill-engine.md).
 
 1. **Reporting.** Ongoing proof you still qualify. For the small minority who must work, that means 80-hour-per-month attestation. For the majority on an exemption, it means periodic re-attestation that the exemption still applies.
 2. **Reapplication.** Renewals (typically every 12 months) and new applications. The heaviest practical lift for CCDC's constituency, and where procedural disenrollment usually happens. These forms re-ask the same facts every year and can run dozens of pages, including the CDASS care-hours worksheet that itemizes attendant-care minutes per task. The tool stores your answers once and pre-fills next year's renewal from what you already filed, so a yearly 80-page form becomes a review-and-correct step. The same pre-fill can help a CCDC advocate or county caseworker prepare the form with a member.
@@ -74,22 +76,38 @@ These do not change regardless of who joins.
 - **Accessibility is the floor, not a feature.** WCAG 2.2 AA, screen-reader-first, keyboard-only flows. English and Spanish from day one. Standard and testing approach: [`docs/accessibility.md`](docs/accessibility.md).
 - **6th-grade plain language.** Enforced in CI before user-facing copy lands.
 - **Advocate-in-the-loop for appeals.** The tool drafts; CCDC files. No direct-to-state path.
-- **Open source.** License decision pending ([`LICENSE-DECISION.md`](LICENSE-DECISION.md)). Anyone can audit exactly what the tool does, including the partners listed above.
+- **Open source.** Licensed under Apache 2.0 ([`LICENSE`](LICENSE), reasoning in [`LICENSE-DECISION.md`](LICENSE-DECISION.md)). Anyone can audit exactly what the tool does, including the partners listed above.
 
 ## What's already done
 
+The write side is proven, not planned. It runs today in [CDASS Enroll](https://github.com/owenpkent/cdass-enroll), a working proof of concept that fills the Colorado CDASS/PPL attendant enrollment packet from documents the applicant already holds. Coverage Compass adopts that engine as a headless TypeScript module rather than rebuilding it.
+
+Proven today (in CDASS Enroll, adopted as-is):
+
+- Local-only, zero-runtime-network architecture, with in-browser OCR.
+- The capture-once schema and profile that is the single source of truth.
+- Document extraction (AAMVA barcode, passport MRZ, tesseract.js OCR), all behind a verify-everything review step.
+- Filling official PDFs into exact, still-editable copies (pure functions over pdf-lib, never flattened).
+- Conservative attestation gating: signatures are never fabricated, fact-asserting checkboxes are checked only on unambiguous data.
+- Privacy hygiene: retention auto-clear, scrub-after-generate, vendored OCR and WASM assets, a Content-Security-Policy that blocks runtime network.
+- An exact-copy smoke test that reloads the output and asserts page and field counts match the blank template.
+
+New for Coverage Compass (the shell around the engine):
+
 - Full scoping documentation: architecture, privacy threat model, accessibility standard, roadmap anchored to the Colorado timeline, glossary, Colorado rules reference.
 - Prior-art survey across roughly 50 sources ([`research/prior-art.md`](research/prior-art.md)).
-- Two partner pitches drafted (CCDC, CfA).
+- Three partner pitches drafted (CCDC, CfA, Anthropic).
 - Web-app shell scaffolded (Vite + React + TypeScript + React Aria Components, no analytics, no third-party scripts).
 - Rule library seeded for Colorado: six letter types and eight exemption categories. All entries marked "verify with CCDC" until reviewed.
 - Fourteen static HTML mockups exploring UI archetypes across all three events plus the triage entry ([`docs/ui-brainstorm.md`](docs/ui-brainstorm.md)).
+
+Still ahead: notice triage (the read side), the advocate-editable per-state YAML rule library, advocate-in-the-loop review, WCAG 2.2 AA accessibility in English and Spanish, the Medicaid-specific schema growth (household, income, exemption category and evidence, renewal dates, the CDASS care-hours worksheet which is the IHSS Care Plan), and carry-forward pre-fill across years.
 
 Full snapshot: [`PROJECT-STATUS.md`](PROJECT-STATUS.md).
 
 ## Other tools this same pattern could power
 
-The Medicaid tool is the first application of a reusable kit: a privacy-local document archive, a per-state YAML rule library an advocate can edit without writing code, a plain-language explainer, a document-extraction and PDF form-fill engine (already proven in a sibling project, [CDASS Enroll](https://github.com/owenpkent/cdass-enroll)), an advocate-in-the-loop review step for anything that gets sent to a government agency, and a WCAG 2.2 AA accessible UI. Once that kit exists, other tools CCDC members need become much cheaper to build. A short list, in rough order of pattern fit:
+The Medicaid tool is the first application of a reusable kit: a privacy-local document archive, a per-state YAML rule library an advocate can edit without writing code, a plain-language explainer, a headless document-extraction and PDF form-fill engine (the foundation Coverage Compass is built on, proven in a sibling project, [CDASS Enroll](https://github.com/owenpkent/cdass-enroll), and shared with it), an advocate-in-the-loop review step for anything that gets sent to a government agency, and a WCAG 2.2 AA accessible UI. Once that kit exists, other tools CCDC members need become much cheaper to build. A short list, in rough order of pattern fit:
 
 - **ADA Title II / III complaint drafter.** Structured intake walks a member through what happened, drafts a complaint to DOJ or the Colorado Civil Rights Division, routes to a CCDC advocate before filing. Same advocate-in-the-loop pattern as Medicaid appeals.
 - **Reasonable accommodation request generator (housing and employment).** Drafts Fair Housing Act accommodation requests to landlords or ADA accommodation requests to employers from a short interview. The personal document archive carries over.
@@ -130,8 +148,8 @@ Owen Kent, a CCDC member and software engineer. Volunteer work. No funding ask, 
 |-- CONTRIBUTING.md            how to get involved
 |-- CODE_OF_CONDUCT.md         community standards
 |-- SECURITY.md                how to report a security concern
-|-- LICENSE                    legal terms (placeholder, see LICENSE-DECISION.md)
-|-- LICENSE-DECISION.md        notes on choosing a license
+|-- LICENSE                    legal terms (Apache 2.0)
+|-- LICENSE-DECISION.md        why Apache 2.0 (decided)
 |-- NOTICE                     third-party attributions
 |-- docs/                      plain-language and technical documentation
 |   |-- brainstorm.md          why this project exists
@@ -139,7 +157,7 @@ Owen Kent, a CCDC member and software engineer. Volunteer work. No funding ask, 
 |   |-- spec-v0.2.md           reapplication: pre-fill renewals from your archive
 |   |-- roadmap.md             dates and milestones, tied to the CO rollout
 |   |-- architecture.md        how the tool is built
-|   |-- form-fill-engine.md    plan to reuse the CDASS Enroll fill engine (v0.2, Reapplication)
+|   |-- form-fill-engine.md    the proven CDASS Enroll engine (the write side) and how it is adopted
 |   |-- privacy.md             what we do and don't collect, and why
 |   |-- accessibility.md       accessibility standard and testing approach
 |   |-- ui-brainstorm.md       fourteen HTML mockups across three events plus triage, with trade-offs
@@ -166,4 +184,4 @@ Architecture, privacy threat model, accessibility standard, roadmap, and contrib
 
 ## License
 
-To be decided. See [`LICENSE-DECISION.md`](LICENSE-DECISION.md).
+Apache 2.0. See [`LICENSE`](LICENSE) for the full terms and [`LICENSE-DECISION.md`](LICENSE-DECISION.md) for the reasoning. Copyright Owen Kent and Coverage Compass contributors. Contributions are inbound equals outbound: anything you contribute is licensed under Apache 2.0 per its section 5. See [`CONTRIBUTING.md`](CONTRIBUTING.md).

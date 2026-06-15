@@ -1,22 +1,32 @@
 # Form-fill engine (the write side)
 
-Coverage Compass reads documents today: a person drops in a state letter and the
-app classifies it, finds the deadline, and explains it. Two later phases need
-the opposite, the write side, which is producing completed official PDFs from
-the person's archive.
+Coverage Compass is architected around a proven form-fill engine. The same
+write side that powers the sibling project **CDASS Enroll**
+(https://github.com/owenpkent/cdass-enroll) is the foundation here, not a future
+borrow. CDASS Enroll is a working proof of concept: a local-first,
+zero-runtime-network form-autofill engine that fills the Colorado CDASS/PPL
+attendant enrollment packet from documents the applicant already holds. Its
+approach is written up in its
+[white paper](https://github.com/owenpkent/cdass-enroll/blob/master/docs/whitepaper.md).
+This engine is the write side of Coverage Compass.
 
-- **v0.2 Exemption Packet:** the "packet template generator (PDF output)" item
-  on the [roadmap](roadmap.md).
+Coverage Compass reads documents today: a person drops in a state letter and the
+app classifies it, finds the deadline, and explains it. The write side is the
+opposite operation, producing completed official PDFs from the person's archive,
+and two areas of the product depend on it.
+
+- **Exemption Packet:** the "packet template generator (PDF output)" item on the
+  [roadmap](roadmap.md), built on this engine rather than rebuilt.
 - **Reapplication:** renewals and new applications are, mechanically, filling
   Colorado's Medicaid forms from the archive.
 
-That write side is already built and proven in a sibling project, **CDASS
-Enroll** (https://github.com/owenpkent/cdass-enroll), which fills the Colorado
-CDASS/PPL attendant enrollment packet from documents the applicant already
-holds. Its approach is written up in its
-[white paper](https://github.com/owenpkent/cdass-enroll/blob/master/docs/whitepaper.md).
-This document is the plan to lift that engine into Coverage Compass rather than
-rebuild it.
+The engine is **headless and framework-agnostic**: pure functions over pdf-lib,
+schema-driven, with no UI coupling. That is exactly why it composes with the
+accessible Coverage Compass shell unchanged. The integration model is decided:
+adopt the engine as a headless TypeScript module now (see
+[Integration model](#integration-model) below). This document gives the
+file-by-file mapping and the step plan for that adoption. The engine itself is
+proven; the porting work into this app is still to be done.
 
 ## Pre-population: fill this year from last year
 
@@ -38,33 +48,42 @@ worker can prepare the forms with a member from the member's archive, on the
 member's device, with no data leaving it. This is an extension of the same
 engine, not a separate build.
 
-## What CDASS Enroll already provides
+## What the engine provides
+
+These are the engine's layers, proven in the CDASS Enroll POC and adopted as-is.
 
 - A **schema** that is the single source of truth for every field; the input UI
   and the form mappings both derive from it. This is the same idea as the
   Coverage Compass personal archive.
 - A **document extraction** layer: OCR with image enhancement, a digits-only
   pass for numbers, tolerant parsing, plausibility checks, and a user-guided
-  crop, all behind a verify-everything review step.
+  crop, all behind a verify-everything review step. Where useful for capturing
+  identity, it also reads structured sources: the AAMVA PDF417 barcode on a
+  driver's license (zxing-wasm) and a passport's machine-readable zone with
+  check-digit validation.
 - A **fill layer**: one flat mapping module per form (literal PDF field name to
   value), plus tolerant helpers so a missing or renamed field degrades to a
   logged warning rather than a crash.
-- An **output discipline**: fill the real template's form fields with pdf-lib
-  and never flatten, so the result is an exact, still-editable copy. Signatures
-  are never auto-filled, and fact-asserting checkboxes are only checked when the
-  data unambiguously supports them.
+- An **output discipline**: fill the real template's AcroForm with pdf-lib and
+  never flatten, so the result is an exact, still-editable copy. Signatures are
+  never auto-filled, and fact-asserting checkboxes are only checked when the data
+  unambiguously supports them.
 - A **regression test** that reloads the output and asserts the page count and
   field count match the blank template, proving it stayed an exact editable
   copy.
 
-## The one technical addition
+## The one technical addition to this app
 
-Coverage Compass reads PDFs with pdf.js. Filling PDFs needs a writer, so add
-**pdf-lib** (pure client-side, same privacy posture). pdf.js stays for reading
-incoming letters and supporting documents; pdf-lib does the form filling. The
-two coexist in the browser with no server involved.
+Coverage Compass reads PDFs with pdf.js. Filling PDFs needs a writer, so the
+stack adds **pdf-lib** (pure client-side, same privacy posture, proven in CDASS
+Enroll). pdf.js stays for reading incoming letters and supporting documents;
+pdf-lib does the form filling. The two coexist in the browser with no server
+involved. Both run client-side under the Apache 2.0 license.
 
 ## Where each piece lands
+
+The engine's modules port into `web/src/lib`. The pure pieces move verbatim;
+only the rendering and storage shells differ.
 
 | CDASS Enroll (vanilla JS) | Coverage Compass (TypeScript + React) |
 | --- | --- |
@@ -72,7 +91,7 @@ two coexist in the browser with no server involved.
 | `src/fill/util.js` (tolerant pdf-lib helpers) | `web/src/lib/fill/util.ts` |
 | `src/fill/<form>.js` (per-form mappings) | `web/src/lib/fill/forms/<form>.ts` |
 | template load + fill + save (no flatten) | `web/src/lib/fill/fillForm.ts` |
-| `src/extract/*` (OCR, parsing, verification) | extend `web/src/lib/ocr.ts`; add `web/src/lib/extract/*` |
+| `src/extract/*` (OCR, barcode, MRZ, verification) | extend `web/src/lib/ocr.ts`; add `web/src/lib/extract/*` |
 | `localStorage` persistence | IndexedDB via `idb` (already the chosen store) |
 | vanilla DOM review/generate UI | React + React Aria components |
 | `tests/smoke.mjs` exact-copy guard | Vitest test asserting pages and fields preserved |
@@ -82,7 +101,24 @@ with no UI coupling. Converting to TypeScript is mostly adding types. The schema
 and the per-form mapping modules port directly; only the rendering and storage
 shells differ.
 
+## Integration model
+
+**Decided: adopt the engine as a headless TypeScript module now.** The CDASS
+Enroll modules move into `web/src/lib` (with `profile`/schema, `extract`, and
+`fill` submodules), ported verbatim where they are pure. This matches the
+whitepaper's own portability note: the fill layer and per-form mappings port
+directly (vanilla JS to TypeScript); only the rendering and storage shells
+differ.
+
+**Future option, explicitly not now: a shared package (monorepo).** Extracting
+the engine into a standalone package consumed by both CDASS Enroll and Coverage
+Compass is a reasonable future step, but only once a second consumer justifies
+the overhead. For now, adopting the engine as an in-repo TypeScript module keeps
+friction low and avoids premature shared-package machinery.
+
 ## Step plan
+
+This is the porting work, still to be done. The engine it ports from is proven.
 
 1. Add `pdf-lib` to `web/package.json`. Lazy-import it, like pdf.js and
    tesseract.js, so it loads only when a form is generated.
@@ -114,23 +150,30 @@ shells differ.
 
 ## Reused vs new
 
-- **Reused:** the schema-driven model, the fill layer and its exact-editable
-  discipline, the conservative attestation rule, the OCR-plus-verification
-  methodology, and the exact-copy regression test.
+The line is drawn honestly: the engine is proven; the Medicaid-specific work on
+top of it is new.
+
+- **Reused (proven in CDASS Enroll, adopted as-is):** the schema-driven model,
+  the fill layer and its exact-editable discipline, the conservative attestation
+  rule, the OCR-plus-verification methodology, and the exact-copy regression
+  test.
 - **New for Coverage Compass:** the Medicaid-specific schema additions, the
   Colorado form mappings, tax-document reading (W-2, 1099-NEC, Schedule C,
   Schedule SE), and the exemption-packet cover-letter and labeled-exhibit
   assembly. (pdf-lib can also build a PDF from scratch, which is beyond the fill
-  pattern.)
-- **Not relevant here:** the driver's-license PDF417 barcode path. Medicaid
-  packets do not need it, though the OCR methodology around it carries over.
+  pattern.) Carry-forward pre-fill across years is new here too.
+- **Not central here:** the driver's-license PDF417 barcode path. Medicaid
+  packets do not need it for filling, though the engine still offers it for
+  identity capture and the OCR methodology around it carries over.
 
 ## Constraint alignment
 
 - **Privacy.** pdf-lib runs entirely in the browser. No server, no change to the
-  threat model in [privacy.md](privacy.md).
+  threat model in [privacy.md](privacy.md). This preserves the engine's
+  local-only, zero-runtime-network posture.
 - **Accessibility.** The engine is headless; the review and generate UI must meet
-  WCAG 2.2 AA like the rest of the app.
+  WCAG 2.2 AA like the rest of the app. Because the engine is headless, the
+  accessible React + React Aria shell wraps it unchanged.
 - **Advocate-in-the-loop.** The engine fills and the person (and, where the flow
   requires it, a CCDC advocate) reviews before anything reaches the state.
   Signatures are by hand.
