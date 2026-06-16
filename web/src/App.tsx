@@ -47,7 +47,7 @@ export function App() {
             Open source.
           </p>
           <p>
-            Need help right now? Call CCDC at <a href="tel:+13038393056">(303) 839-3056</a>.
+            Need help right now? Call CCDC at <a href="tel:+13038391775">(303) 839-1775</a>.
           </p>
         </div>
       </footer>

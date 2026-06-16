@@ -13,7 +13,7 @@ For real help with a Medicaid case in Colorado (appeals, individual advocacy,
 work-requirement notices, HCBS waivers, the Buy-In program, or civil rights
 legal support), contact the Colorado Cross-Disability Coalition (CCDC):
 
-- **Phone: (303) 839-3056**
+- **Phone: (303) 839-1775**
 - **Web: [ccdconline.org](https://ccdconline.org/)**
 
 CCDC has advocates who can actually help with your case. Coverage Compass
@@ -59,7 +59,7 @@ reporting so your report stays confidential.
 
 | What you need | Where to go |
 |---|---|
-| Help with your Medicaid case | CCDC: (303) 839-3056, [ccdconline.org](https://ccdconline.org/) |
+| Help with your Medicaid case | CCDC: (303) 839-1775, [ccdconline.org](https://ccdconline.org/) |
 | Question about the software | [Discussions](https://github.com/owenpkent/coverage-compass/discussions) |
 | Bug report or request | [Issue templates](https://github.com/owenpkent/coverage-compass/issues/new/choose) |
 | Security or privacy report | [SECURITY.md](SECURITY.md) (private, confidential) |

@@ -141,7 +141,7 @@ A `Signed-off-by` line (the [Developer Certificate of Origin](https://developerc
 
 - [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md): Contributor Covenant 2.1, with a project-specific addendum about the disability community as the priority audience. It applies to everyone, everywhere in the project.
 - [`SECURITY.md`](SECURITY.md): how to report a security or privacy vulnerability. Do **not** open a public issue for these; follow the responsible-disclosure process there.
-- [`SUPPORT.md`](SUPPORT.md): where to get help. For help with your own Medicaid case, contact CCDC at (303) 839-3056 or [ccdconline.org](https://ccdconline.org/); this is a software project, not a legal-help line. For open-ended questions about the project, use [Discussions](https://github.com/owenpkent/coverage-compass/discussions).
+- [`SUPPORT.md`](SUPPORT.md): where to get help. For help with your own Medicaid case, contact CCDC at (303) 839-1775 or [ccdconline.org](https://ccdconline.org/); this is a software project, not a legal-help line. For open-ended questions about the project, use [Discussions](https://github.com/owenpkent/coverage-compass/discussions).
 
 ## Issue templates
 

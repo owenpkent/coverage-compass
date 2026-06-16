@@ -1,5 +1,12 @@
 # Coverage Compass *(working title)*
 
+[![License](https://img.shields.io/github/license/owenpkent/coverage-compass?color=blue)](LICENSE)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![good first issues](https://img.shields.io/github/issues/owenpkent/coverage-compass/good%20first%20issue?color=7057ff&label=good%20first%20issues)](https://github.com/owenpkent/coverage-compass/contribute)
+![Accessibility: WCAG 2.2 AA](https://img.shields.io/badge/a11y-WCAG_2.2_AA-success)
+![Privacy: local-only](https://img.shields.io/badge/privacy-local--only%2C_no_server-informational)
+![Status: pre-v0.1](https://img.shields.io/badge/status-pre--v0.1-orange)
+
 A free, open source tool to help disabled Coloradans keep their Medicaid when Colorado's new work-reporting rules take effect in 2027. Built with [CCDC](https://ccdconline.org/) (Colorado Cross-Disability Coalition) as the design partner.
 
 **Status:** scoping the Coverage Compass shell, building on a proven engine. The write side (document capture and exact PDF form-fill) is already a working proof of concept in a sibling project, [CDASS Enroll](https://github.com/owenpkent/cdass-enroll); Coverage Compass is re-architected around it. The Coverage Compass app is not live yet. First version targeted August 2026, before the state begins mailing notification letters.

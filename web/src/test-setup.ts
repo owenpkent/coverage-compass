@@ -1,1 +1,3 @@
-// Vitest setup. Add @testing-library/jest-dom matchers and global mocks here as needed.
+// Vitest setup: registers @testing-library/jest-dom matchers (toBeInTheDocument, etc.).
+// Add any global test mocks below as needed.
+import "@testing-library/jest-dom";
