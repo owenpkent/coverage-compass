@@ -82,4 +82,4 @@ Downloadable (optional):
 
 ## UI shape
 
-Five static HTML archetypes for this flow live in [`mockups/`](mockups/) and are summarized in [`ui-brainstorm.md`](ui-brainstorm.md). No archetype is picked yet; the working recommendation is single-screen upload with a print-first one-pager result, pending the CCDC scoping conversation.
+Five static HTML archetypes for this flow live in [`mockups/`](mockups/) and are summarized in [`ui-brainstorm.md`](ui-brainstorm.md). No archetype is picked yet; the working recommendation is single-screen upload with a print-first one-pager result, pending the design review with CCDC, the project's partner organization.

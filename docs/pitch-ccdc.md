@@ -1,7 +1,11 @@
-# A tool to help CCDC members keep their Medicaid
+# Coverage Compass + CCDC: working brief
 
-**For:** CCDC leadership and advocacy staff
-**From:** Owen Kent, CCDC member and software engineer ([LinkedIn](https://www.linkedin.com/in/owenpkent))
+**A tool to help CCDC members keep their Medicaid**
+
+**Partner:** Colorado Cross-Disability Coalition (CCDC), confirmed
+**Author:** Owen Kent, CCDC member and software engineer ([LinkedIn](https://www.linkedin.com/in/owenpkent))
+
+This was the original pitch. CCDC is now the confirmed partner organization and the scoping conversation with appeals and advocacy staff has happened, so this is kept as the shared working brief: the framing we agreed on, where the build stands, and the live items between CCDC and the project.
 
 ## The problem
 
@@ -9,7 +13,7 @@ Starting August 2026, HCPF will send letters to Medicaid members about Colorado'
 
 Most CCDC members will qualify for an exemption (SSDI, HCBS, LTSS, Buy-In, or medically frail). But Arkansas in 2018 already showed the pattern: people lose coverage not because they fail the rule, but because they fail to *prove* the exemption in time. Procedural disenrollment is the policy lever, and the window to prepare CCDC members is short.
 
-## The proposal
+## What we are building
 
 A free, open-source web app for disabled Coloradans and the CCDC advocates who serve them. The tool organizes a member's Medicaid evidence (SSA award letter, waiver enrollment, tax returns, diagnosis letters) once and reuses it across three events:
 
@@ -26,29 +30,35 @@ Entry point is notice triage: drop a letter from PEAK or HCPF, get a plain-langu
 - **CCDC owns the rules.** Colorado-specific exemption categories, deadlines, and letter patterns live in plain YAML files that an advocate or attorney can read and propose edits on. The app is a UI on top of CCDC's expertise.
 - **UPL-safe.** Appeals output routes through CCDC, not the state. The tool extends advocate capacity; it doesn't replace counsel.
 
-## Status
+## Where the build stands
 
-The v0.1 read side (notice triage) is built and works locally: drop a PDF or photo of a letter, or paste its text, and the app reads it on the device, classifies it against the rule library, and explains it in plain language with the deadline and next steps, in English or Spanish. It is backed by full documentation (architecture, privacy threat model, accessibility standard, roadmap, glossary, Colorado rules reference, outreach plan) and passes unit tests, automated accessibility checks, and a production build. The rule library is seeded with five Colorado letter types and eight exemption categories, all explicitly marked "verify with CCDC" until reviewed. What it needs from CCDC is exactly that review, plus 10 to 20 real anonymized letters to validate the classifier.
+The v0.1 read side (notice triage) is built and works locally: drop a PDF or photo of a letter, or paste its text, and the app reads it on the device, classifies it against the rule library, and explains it in plain language with the deadline and next steps, in English or Spanish. It is backed by full documentation (architecture, privacy threat model, accessibility standard, roadmap, glossary, Colorado rules reference, outreach plan) and passes unit tests, automated accessibility checks, and a production build. The rule library is seeded with five Colorado letter types and eight exemption categories, all explicitly marked "verify with CCDC" until reviewed.
 
 **Prior related work:** I previously built [reclaimhealth.ai](https://github.com/owenpkent/reclaimhealth.ai), a landing page for an AI-powered appeals concept aimed at private-insurance denials. This Medicaid project is its narrower, privacy-local, free, FOSS sibling. It is scoped specifically to disabled Coloradans on Health First Colorado, runs no AI in v0.1, and answers to CCDC, not investors.
 
-## The ask
+## The working relationship
 
-One hour. With whoever leads CCDC appeals or advocacy work, plus ideally one front-line advocate. To answer:
+The scoping conversation has happened and CCDC is on as the partner organization. The live items between CCDC and the project:
+
+1. **Rule-content review.** A CCDC advocate or attorney reviews the seeded Colorado rule library so the "verify with CCDC" flags can come off.
+2. **Sample letters.** 10 to 20 real anonymized letters from CCDC's archive (under whatever data terms CCDC sets) to bring the v0.1 classifier to working accuracy.
+3. **A named reviewer.** Someone at CCDC who will look at PRs that change `rules/co/` and gets a GitHub handle in `CODEOWNERS`.
+4. **Appeals review step.** Confirm the advocate-in-the-loop intake so appeal drafts route through CCDC, not direct-to-state.
+
+Open questions still worth settling together:
 
 1. Is procedural disenrollment under work requirements the right focus, or is there a higher-priority pain point?
-2. What is your actual bottleneck (intake volume, drafting time, evidence-gathering, deadline tracking)?
+2. What is the actual bottleneck (intake volume, drafting time, evidence-gathering, deadline tracking)?
 3. Would CCDC use this internally to extend advocate capacity, would members use it directly, or both?
-4. Who at CCDC reviews and signs off on the Colorado rule library?
 
 ## What CCDC gets
 
 - All the code, free, branding-neutral, hostable on a CCDC URL.
-- 10 to 20 anonymized sample letters from CCDC's archive (under whatever data terms you set) bring the v0.1 classifier to working accuracy.
+- A v0.1 classifier brought to working accuracy by CCDC's own anonymized sample letters (under whatever data terms CCDC sets).
 - Volunteer time, indefinitely.
 
 No funding ask. No revenue model. No data leaves the user's device.
 
 ---
 
-*Happy to send the full architecture, privacy, and accessibility docs in advance of any conversation, or to walk through them in the meeting.*
+*Happy to send the full architecture, privacy, and accessibility docs ahead of any working session, or to walk through them live.*

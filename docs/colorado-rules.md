@@ -77,4 +77,4 @@ To be expanded as we collect sample letters. This list seeds `rules/co/letter-ty
 - Whether the "medically frail" determination is automatic from existing diagnosis data or requires fresh documentation.
 - Whether the Buy-In population has a separate notification flow.
 
-These are open questions to take to the CCDC scoping conversation.
+These are open questions to settle with CCDC, the project's partner organization, as part of the rule-content review.

@@ -1,20 +1,24 @@
-# Email to send the pitch
+# Email templates for the CCDC working relationship
 
-Paste-able. Tune the greeting once you know who you're writing to.
+CCDC is the confirmed partner and the scoping conversation has happened, so these are working-relationship emails, not a cold pitch. Paste-able. Tune the greeting and the specifics once you know who you're writing to.
 
 ---
 
-**Subject:** Volunteer software help for CCDC members under the 2027 Medicaid work requirements
+## Follow-up after the scoping conversation (move the live items forward)
+
+**Subject:** Coverage Compass next steps: rule review, sample letters, and a named reviewer
 
 Hi [first name],
 
-I'm Owen Kent, a CCDC member and software engineer. HCPF starts sending work-requirement letters in August, and the rules first affect renewals and new applications in January 2027. Most CCDC members will qualify for an exemption (SSDI, HCBS, LTSS, Buy-In, medically frail). The risk is procedural disenrollment, the Arkansas 2018 pattern.
+Thank you again for the scoping conversation. To keep Coverage Compass moving toward the August 2026 build, here are the live items on CCDC's side, in priority order:
 
-I'd like to volunteer to build a free, privacy-local web tool that helps CCDC members prove their exemption status before things go wrong, and helps your advocates draft appeals when things do go wrong. Everything runs in the user's browser. No server, no accounts, no telemetry. CCDC owns the rules.
+1. **Rule-content review.** A quick pass by an advocate or attorney over the seeded Colorado rule library (five letter types, eight exemption categories) so we can take the "verify with CCDC" flags off. It is plain-language YAML, readable without any code.
+2. **Sample letters.** 10 to 20 real anonymized HCPF/PEAK letters from recent cases, under whatever data-handling terms you want. These are what bring the classifier to working accuracy.
+3. **A named reviewer.** Whoever at CCDC will look at changes to the Colorado rules going forward, so I can add them to the repo.
 
-Before I write any user-facing code, I want to make sure I'm solving CCDC's actual bottleneck. Could I get one hour with whoever leads your appeals or advocacy work, plus a front-line advocate if possible?
+Everything still runs in the user's browser: no server, no accounts, no telemetry, no data leaving the device. CCDC owns the rules and the appeals review step.
 
-The attached one-pager has the full proposal. No funding ask, no revenue model, no data ever leaves the user's device. Happy to come to your office, meet on Zoom, or join a member meeting if that fits better.
+Happy to come to your office, meet on Zoom, or work async, whatever is lightest for your team.
 
 Thanks for everything CCDC does.
 
@@ -22,27 +26,24 @@ Owen Kent
 <your-email>
 LinkedIn: [linkedin.com/in/owenpkent](https://www.linkedin.com/in/owenpkent)
 CCDC member
-Prior work: [reclaimhealth.ai](https://github.com/owenpkent/reclaimhealth.ai)
 
 ---
 
-## Alternative: short version, inline (no attachment)
+## Short version, inline
 
-If `pitch-ccdc.md` feels too long to attach, use this body and lead with the link instead.
-
-**Subject:** Volunteer software help for CCDC members under the 2027 Medicaid work requirements
+**Subject:** Coverage Compass next steps with CCDC
 
 Hi [first name],
 
-I'm Owen Kent, a CCDC member and software engineer. Quick version:
+Following up after our scoping conversation. Three things on CCDC's side, smallest to largest:
 
-- HCPF starts sending work-requirement letters in August. The first impact wave hits January 2027.
-- Most CCDC members will qualify for an exemption. The danger is procedural disenrollment from failing to *prove* it in time.
-- I'd like to volunteer to build a free, privacy-local web tool. Two flows from one engine: (1) help a member prove their exemption at renewal, (2) help a CCDC advocate draft an appeal when something goes wrong. No server, no accounts, no telemetry. CCDC owns the rules and reviews the output.
+- **Rule review:** a quick advocate/attorney pass over the seeded Colorado rules (plain-language YAML, no code) so we can drop the "verify with CCDC" flags.
+- **Sample letters:** 10 to 20 anonymized HCPF/PEAK letters, under your data terms, to validate the classifier.
+- **A named reviewer** for future rule changes.
 
-Full proposal: https://github.com/owenpkent/coverage-compass/blob/main/docs/pitch-ccdc.md
+Working brief: https://github.com/owenpkent/coverage-compass/blob/main/docs/pitch-ccdc.md
 
-Could I get one hour with whoever leads CCDC appeals or advocacy work, plus a front-line advocate if possible? No funding ask. CCDC sets the direction.
+No funding ask. CCDC sets the direction and owns the rules. Whatever cadence is lightest for your team works for me.
 
 Thanks for everything CCDC does.
 
@@ -50,13 +51,12 @@ Owen Kent
 <your-email>
 LinkedIn: [linkedin.com/in/owenpkent](https://www.linkedin.com/in/owenpkent)
 CCDC member
-Prior work: [reclaimhealth.ai](https://github.com/owenpkent/reclaimhealth.ai)
 
 ---
 
 ## Notes
 
-- Address it to a named person if you can. Otherwise the general info contact at CCDC.
-- If you've spoken at a member meeting recently or have a specific CCDC staff member already on a first-name basis with you, use that as the opening hook in sentence 1.
-- Don't oversell the tech. The pitch sells itself if the framing (procedural disenrollment, privacy by architecture, CCDC owns the rules) lands.
-- If they say yes to the meeting, send `pitch-ccdc.md` plus links to `docs/architecture.md`, `docs/privacy.md`, and `docs/accessibility.md` in advance so they have something to react to.
+- Address it to the named CCDC contact from the scoping conversation.
+- Lead with whichever live item is closest to ready. Sample letters are usually the long pole, so naming them early helps.
+- Don't oversell the tech. The framing (procedural disenrollment, privacy by architecture, CCDC owns the rules) carries it.
+- When you send sample letters or rule edits, link [`docs/architecture.md`](architecture.md), [`docs/privacy.md`](privacy.md), and [`docs/accessibility.md`](accessibility.md) so reviewers have context.

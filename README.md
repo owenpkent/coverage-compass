@@ -11,7 +11,7 @@ A free, open source tool to help disabled Coloradans keep their Medicaid when Co
 
 **Status:** the v0.1 read side (notice triage) is built and works locally. Drop a PDF or photo of a letter, or paste its text, and the app reads it on your device, classifies it against the Colorado rule library, and explains it in plain language with the deadline and next steps, in English or Spanish. It passes unit tests, automated accessibility checks, and a production build. It is not deployed yet, and the rule content and Spanish still need CCDC and native-speaker review. The write side (document capture and exact PDF form-fill) is already a working proof of concept in a sibling project, [CDASS Enroll](https://github.com/owenpkent/cdass-enroll); Coverage Compass is re-architected around it. First public version targeted August 2026, before the state begins mailing notification letters.
 
-**This README is a partner brief.** It exists to invite three organizations into the build: CCDC (lived expertise, member trust, advocate review), [Code for America](https://codeforamerica.org/) (safety-net civic tech, multi-state reusability), and [Anthropic](https://www.anthropic.com/) (responsible AI patterns for the parts of the tool that need them). Code for America and Anthropic already have a public-benefits collaboration. CCDC is the on-the-ground partner who closes the loop.
+**This README is a partner brief.** [CCDC](https://ccdconline.org/) (lived expertise, member trust, advocate review) is the confirmed partner and the on-the-ground organization that closes the loop. The brief exists to invite two more organizations into the build alongside CCDC: [Code for America](https://codeforamerica.org/) (safety-net civic tech, multi-state reusability) and [Anthropic](https://www.anthropic.com/) (responsible AI patterns for the parts of the tool that need them). Code for America and Anthropic already have a public-benefits collaboration.
 
 ## What's happening in Colorado
 
@@ -51,7 +51,7 @@ CCDC owns the Colorado rules. Exemption categories, deadlines, letter patterns, 
 
 What CCDC brings: institutional home, advocate review, 10 to 20 anonymized sample letters from the archive (under data terms CCDC sets) to train and verify the v0.1 classifier, and the ability to put this in members' hands.
 
-Current status: pitch drafted ([`docs/pitch-ccdc.md`](docs/pitch-ccdc.md), [`docs/pitch-ccdc-email.md`](docs/pitch-ccdc-email.md)). The author is a CCDC member.
+Current status: confirmed partner. The scoping conversation with CCDC's appeals and advocacy staff has happened; the working brief is [`docs/pitch-ccdc.md`](docs/pitch-ccdc.md) (with [`docs/pitch-ccdc-email.md`](docs/pitch-ccdc-email.md)). The author is a CCDC member. Active work with CCDC: rule-content review, the first 10 to 20 anonymized sample letters to validate the classifier, and a named advocate reviewer for `rules/**`.
 
 ### [Code for America](https://codeforamerica.org/): safety-net civic tech, methodology, reusability
 
@@ -104,7 +104,7 @@ New for Coverage Compass (the shell around the engine):
 - **The read side (notice triage), built and tested.** On-device PDF text extraction (pdf.js) and photo OCR (tesseract.js, with the worker, WASM, and English/Spanish language data vendored to our own origin), a deterministic classifier over the advocate-editable YAML rule library, and a plain-language result with a prominent deadline, the do-nothing consequence, and concrete next actions. English and Spanish via react-intl, an optional downloadable one-page PDF summary, offline support via a service worker, and a production Content-Security-Policy that blocks any third-party network. Covered by unit, accessibility (axe-core), and lint checks plus a green build.
 - Full scoping documentation: architecture, privacy threat model, accessibility standard, roadmap anchored to the Colorado timeline, glossary, Colorado rules reference.
 - Prior-art survey across roughly 50 sources ([`research/prior-art.md`](research/prior-art.md)).
-- Three partner pitches drafted (CCDC, CfA, Anthropic).
+- CCDC confirmed as the partner organization (scoping conversation held); pitches to Code for America and Anthropic drafted.
 - Rule library seeded for Colorado: five letter types (now bilingual, driving the classifier) and eight exemption categories. All entries marked "verify with CCDC" until reviewed.
 - Fourteen static HTML mockups exploring UI archetypes across all three events plus the triage entry ([`docs/ui-brainstorm.md`](docs/ui-brainstorm.md)).
 
@@ -128,7 +128,7 @@ These are not commitments. They are evidence that the architecture is general, a
 
 ## The ask
 
-**For CCDC.** One hour with whoever leads appeals or advocacy work, plus ideally one front-line advocate. Agenda is the four questions in [`docs/pitch-ccdc.md`](docs/pitch-ccdc.md).
+**For CCDC (confirmed partner).** The working relationship is already underway. The live items are the rule-content review, the first anonymized sample letters to validate the classifier, a named advocate reviewer for `rules/**`, and the appeals review step. Working brief: [`docs/pitch-ccdc.md`](docs/pitch-ccdc.md).
 
 **For Code for America.** Thirty minutes to check pattern overlap with the existing `work-requirements-self-advocacy-tool`, surface any in-flight work on Medicaid administrative burden or H.R. 1 prep, and connect with counterpart coalitions in other states. Agenda: [`docs/pitch-cfa.md`](docs/pitch-cfa.md).
 
@@ -172,8 +172,8 @@ Owen Kent, a CCDC member and software engineer. Volunteer work. No funding ask, 
 |   |-- glossary.md            plain definitions of SSDI, HCBS, CDASS, LTSS, PEAK, etc.
 |   |-- colorado-rules.md      Colorado exemption categories, deadlines, and sources
 |   |-- outreach.md            CCDC and Code for America contact plan
-|   |-- pitch-ccdc.md          one-page pitch for CCDC leadership and advocacy staff
-|   |-- pitch-ccdc-email.md    paste-able email versions of the CCDC pitch
+|   |-- pitch-ccdc.md          working brief for the CCDC partnership (was the original pitch)
+|   |-- pitch-ccdc-email.md    paste-able working-relationship emails for the CCDC contact
 |   |-- pitch-cfa.md           one-page pitch for Code for America
 |   |-- pitch-anthropic.md     one-page pitch for Anthropic
 |   `-- formfest-2026-application.md  FormFest 2026 session proposal (paste-ready)

@@ -9,8 +9,8 @@ Dates are anchored to the [Colorado work-requirements rollout](colorado-rules.md
 - [x] CCDC outreach pitch drafted (2026-05-11; `docs/pitch-ccdc.md`, `docs/pitch-ccdc-email.md`)
 - [x] Survey of prior art (2026-05-11; `research/prior-art.md`)
 - [x] CfA outreach pitch drafted (2026-05-11; `docs/pitch-cfa.md`)
-- [ ] Scoping conversation with CCDC appeals/advocacy staff (see `outreach.md`)
-- [ ] CCDC pitch sent
+- [x] CCDC confirmed as partner organization
+- [x] Scoping conversation with CCDC appeals/advocacy staff (see `outreach.md`)
 - [ ] CfA pitch sent
 - [x] License decision: Apache 2.0 (see `LICENSE` and `LICENSE-DECISION.md`)
 - [ ] First 10 anonymized sample letters from CCDC

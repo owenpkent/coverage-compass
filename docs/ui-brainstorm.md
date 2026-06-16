@@ -1,7 +1,7 @@
 # UI brainstorm
 
 **Date:** 2026-05-20
-**Status:** fourteen static HTML mockups in `docs/mockups/`, organized around the three Medicaid events the tool covers (reporting, reapplication, appeals) plus a shared notice-triage entry point. No decisions yet. Inputs for the CCDC scoping conversation.
+**Status:** fourteen static HTML mockups in `docs/mockups/`, organized around the three Medicaid events the tool covers (reporting, reapplication, appeals) plus a shared notice-triage entry point. No decisions yet. Inputs for the design review with CCDC, the project's partner organization.
 
 ## Why this exists
 
@@ -121,7 +121,7 @@ These are project constraints, not per-mockup choices. They live in `shared.css`
 
 ## What was not decided
 
-- Which archetype wins inside each event. The recommendations above are hypotheses, not picks. The CCDC scoping conversation is the right place to validate them.
+- Which archetype wins inside each event. The recommendations above are hypotheses, not picks. The design review with CCDC is the right place to validate them.
 - Whether the four sections (triage, reporting, reapplication, appeals) share a single entry point or live at separate URLs.
 - Whether the language toggle is in the header (current mockups) or as a first-run modal.
 - Visual identity. Color, typography, and the CC mark are placeholders. None of this has been reviewed by a designer.

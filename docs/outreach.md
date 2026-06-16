@@ -4,6 +4,8 @@ The first hard problem isn't code. It's making sure this tool gets shaped by the
 
 ## Phase 1: CCDC scoping (now to end of June 2026)
 
+**Status: CCDC is confirmed as the partner organization and the scoping conversation has happened. This phase is now the working scope-and-handoff with CCDC, not a cold pitch. The live items below (the first anonymized sample letters, a named rule-library reviewer, the UPL read, user-testing permission) are the active deliverables.**
+
 ### Goal
 Validate the three-event frame (reporting, reapplication, appeals) against the actual bottleneck CCDC's advocacy team experiences. Either confirm the v0.1 spec or pivot it.
 
@@ -26,15 +28,12 @@ Validate the three-event frame (reporting, reapplication, appeals) against the a
 9. Are there CCDC publications (newsletter, podcast, member meetings) where we should plan to introduce the tool when it's ready?
 10. Who at CCDC owns the relationship with HCPF? Would they want HCPF on the loop?
 
-### Path in
-Owen is a CCDC member. The likely path is:
-1. Email the general info contact at CCDC, mentioning membership and asking who handles tech / policy / advocacy partnerships.
-2. If that doesn't get traction, ask at a member meeting or event.
-3. Worst case: cold-email the Executive Director with a one-page pitch.
+### Path in (done)
+Owen is a CCDC member, and the member channel is how the partnership came together. The scoping conversation with appeals and advocacy staff has happened, and the relationship is now established. (Original path, kept for the record: email the general info contact mentioning membership, then raise it at a member meeting, then the Executive Director as a last resort.)
 
-### One-page pitch
+### Working brief
 
-Drafted: see [`pitch-ccdc.md`](pitch-ccdc.md). Covers the problem (procedural disenrollment risk under work requirements), the tool (three-event framing: reporting, reapplication, appeals), the privacy posture, the ask (one-hour scoping conversation), and the offer (free volunteer work, CCDC owns the direction). References [reclaimhealth.ai](https://github.com/owenpkent/reclaimhealth.ai) as prior work to establish credibility.
+See [`pitch-ccdc.md`](pitch-ccdc.md), now a working brief for the partnership. It covers the problem (procedural disenrollment risk under work requirements), the tool (three-event framing: reporting, reapplication, appeals), the privacy posture, the live workstream (rule-content review, the first sample letters, a named reviewer), and the standing offer (free volunteer work, CCDC owns the direction). References [reclaimhealth.ai](https://github.com/owenpkent/reclaimhealth.ai) as prior work.
 
 ## Phase 2: Code for America outreach (pitch drafted 2026-05-11; sending TBD)
 

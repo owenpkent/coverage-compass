@@ -9,7 +9,7 @@ This is a single-page snapshot of where the project stands. For detail, follow t
 ## At a glance
 
 - **Goal:** help disabled Coloradans keep their Medicaid when Colorado's work-reporting requirements take effect in 2027, and help CCDC advocates draft appeals when something goes wrong.
-- **Design partner:** [Colorado Cross-Disability Coalition](https://ccdconline.org/) (institutional home).
+- **Partner:** [Colorado Cross-Disability Coalition](https://ccdconline.org/) (confirmed; institutional home and advocate-in-the-loop).
 - **Built by:** one volunteer software engineer (CCDC member). No funding ask, no revenue model.
 - **Architecture:** Coverage Compass is now re-architected around the proven **CDASS Enroll** engine: a local-first, zero-runtime-network form-autofill engine that is a working proof of concept today. The engine is the foundation, not a future borrow. See [`docs/architecture.md`](docs/architecture.md) and [`docs/form-fill-engine.md`](docs/form-fill-engine.md).
 - **License:** decided. Apache 2.0 (see [`LICENSE`](LICENSE) and [`LICENSE-DECISION.md`](LICENSE-DECISION.md)).
@@ -59,8 +59,8 @@ The roadmap in [`docs/roadmap.md`](docs/roadmap.md) is anchored to these dates. 
 - [x] Prior-art survey ([`research/prior-art.md`](research/prior-art.md))
 - [x] License decision: Apache 2.0 ([`LICENSE`](LICENSE), [`LICENSE-DECISION.md`](LICENSE-DECISION.md))
 - [x] Re-architecture around the proven CDASS Enroll engine ([`docs/architecture.md`](docs/architecture.md), [`docs/form-fill-engine.md`](docs/form-fill-engine.md))
-- [ ] Scoping conversation with CCDC appeals/advocacy staff
-- [ ] CCDC pitch sent
+- [x] CCDC confirmed as partner organization
+- [x] Scoping conversation with CCDC appeals/advocacy staff
 - [ ] CfA pitch sent
 - [ ] Anthropic pitch sent
 - [ ] First 10 anonymized sample letters from CCDC
@@ -93,7 +93,7 @@ The integration model is decided: adopt the engine into the Coverage Compass web
 - Colorado rules reference ([`docs/colorado-rules.md`](docs/colorado-rules.md))
 - v0.1 product spec ([`docs/spec-v0.1.md`](docs/spec-v0.1.md))
 - Outreach plan ([`docs/outreach.md`](docs/outreach.md))
-- Three pitches and an email template (above)
+- Three partner pitches and an email template (above; the CCDC pitch is now a working brief for the partnership)
 - Prior-art survey of ~50 sources (above)
 - UI brainstorm write-up and fourteen static HTML mockups grouped by the three events plus the triage entry ([`docs/ui-brainstorm.md`](docs/ui-brainstorm.md), [`docs/mockups/`](docs/mockups/))
 - Hygiene files: `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, issue templates, `CHANGELOG.md`
@@ -108,7 +108,7 @@ The integration model is decided: adopt the engine into the Coverage Compass web
 
 ### Immediate (the rest of June into July 2026)
 
-1. **Send the CCDC pitch.** The repo has a one-pager and a paste-able email; the institutional path in (CCDC member channel first, then ED if needed) is documented in [`docs/outreach.md`](docs/outreach.md).
+1. **Move the CCDC work forward.** CCDC is on as the partner organization and the scoping conversation has happened. The live items are the rule-content review, the first 10 to 20 anonymized sample letters to validate the classifier, and a named advocate reviewer for `rules/**`. Plan in [`docs/outreach.md`](docs/outreach.md).
 2. **Send the CfA pitch.** The prior-art survey makes one specific ask load-bearing: talk to the team behind [`codeforamerica/work-requirements-self-advocacy-tool`](https://github.com/codeforamerica/work-requirements-self-advocacy-tool) before duplicating screener content.
 3. **Begin porting the engine into the shell.** Adopt the pure CDASS Enroll modules into `web/src/lib` as a headless TypeScript module (schema, extract, fill), per the step plan in [`docs/form-fill-engine.md`](docs/form-fill-engine.md). The fill layer ports almost verbatim; the work is mostly adding types.
 4. **Convert prior-art findings into rule-library seed content.** NHeLP's Technical Guide, Justice in Aging's seven principles, AAPD's plain-language explainer, and the SHVS medical-frailty toolkit are the highest-value inputs.
@@ -129,7 +129,7 @@ Denial-letter classifier + structured interview + draft appeal routed to a CCDC 
 
 | Org | Status | Next step |
 |---|---|---|
-| CCDC | Pitch drafted (one-pager + email template). Owen is a member. | Send via member channel; aim for a one-hour scoping conversation. |
+| CCDC | Confirmed partner. Scoping conversation held. Owen is a member. | Rule-content review, first anonymized sample letters, and a named advocate reviewer for `rules/**`. |
 | Code for America | Pitch drafted, scoped to Safety Net Innovation Lab and Colorado brigade. | Send. Open with the `work-requirements-self-advocacy-tool` overlap question. |
 | Anthropic | Pitch drafted, scoped to the existing CfA public-benefits collaboration. | Send directly, in parallel with CfA. Reference the CfA partnership as context, not as a gate. |
 | HCPF | No outreach planned in this phase. CCDC owns the HCPF relationship. | Defer until CCDC says otherwise. |
@@ -150,7 +150,7 @@ Full survey: [`research/prior-art.md`](research/prior-art.md). The short version
 
 ## Open questions and decisions pending
 
-Numbered for a scoping conversation.
+Open items to settle with CCDC, our partner.
 
 1. Is procedural disenrollment the right focus for CCDC's advocacy team, or is there a higher-priority bottleneck?
 2. Would CCDC use the tool internally (advocate productivity), put it in members' hands directly, or both?
@@ -165,7 +165,7 @@ Full set of open questions: [`research/prior-art.md`](research/prior-art.md) sec
 
 ## Known risks
 
-- **Schedule risk.** The August 2026 ship target depends on a CCDC scoping conversation happening soon. Each week of delay compresses build time.
+- **Schedule risk.** With CCDC confirmed as partner and the scoping conversation held, the August 2026 ship target now depends on the rule-content review and the first sample letters landing soon. Each week of delay compresses build time.
 - **Validation and content risk.** The read side is built and works, but its rule content is unreviewed by CCDC, the classifier is not yet validated against real Colorado letters, the Spanish is machine-drafted, and a manual screen-reader pass and a deploy remain. The write-side engine is still to be ported into `web/src/lib` (v0.2 work). The August target now depends on the CCDC review and the sample-letter validation landing on schedule, not on the read-side build.
 - **Sample-letter dependency.** v0.1 acceptance criteria require correctly classifying real Colorado letters. We need 10 to 20 anonymized samples from CCDC. Without them, the classifier is unverified.
 - **Stack drift.** Tesseract.js, pdf.js, and pdf-lib are heavy. The architecture target is < 250 KB gzipped bundle and < 3s TTI on a 2019 Chromebook. As of the v0.1 read-side build, pdf.js, tesseract.js, and pdf-lib are each lazy-loaded into their own chunks, so the initial JS is roughly 110 KB gzipped (entry plus React Aria plus react-intl), within budget. TTI on real low-end hardware still needs measuring.
@@ -176,7 +176,7 @@ Full set of open questions: [`research/prior-art.md`](research/prior-art.md) sec
 ## How to help
 
 - **Disabled Coloradans** with Medicaid experience: tell us what breaks in the renewal or appeals process.
-- **CCDC staff or advocates:** the scoping conversation is the unblocker.
+- **CCDC staff or advocates:** the rule-content review and the first anonymized sample letters are the unblockers.
 - **Civic-tech volunteers (Code for America, brigade):** code, accessibility testing, plain-language review.
 - **Spanish reviewers:** native speakers for translation review.
 - **Plain-language writers:** review the 6th-grade-reading-level constraint.
