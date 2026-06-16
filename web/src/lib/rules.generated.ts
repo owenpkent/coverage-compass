@@ -1,0 +1,275 @@
+/* GENERATED FILE - do not edit by hand.
+ *
+ * Source: rules/co/letter-types.yaml
+ * Regenerate: npm run gen:rules  (also runs on predev / prebuild / pretest)
+ *
+ * Edit the YAML, not this file. The YAML is the advocate-editable source of
+ * truth; this module is what the app imports.
+ */
+
+export const RULES_VERSION = "0.1.0";
+export const ES_REVIEWED = false;
+export const CCDC_PHONE = "(303) 839-1775";
+
+export const LETTER_RULES = [
+  {
+    "id": "renewal_request",
+    "label": {
+      "en": "Renewal request",
+      "es": "Solicitud de renovación"
+    },
+    "priority": 4,
+    "patterns": {
+      "en": [
+        "time to renew",
+        "renewal packet",
+        "redetermine your eligibility",
+        "renew your coverage",
+        "renew your benefits"
+      ],
+      "es": [
+        "hora de renovar",
+        "paquete de renovación",
+        "renovar su cobertura",
+        "renovar sus beneficios"
+      ]
+    },
+    "plainLanguage": {
+      "en": "Colorado Medicaid needs you to confirm you still qualify. Send back the paperwork, or do it on PEAK. If you do not, your coverage can end.",
+      "es": "Colorado Medicaid necesita que confirme que todavía califica. Devuelva los papeles, o hágalo en PEAK. Si no lo hace, su cobertura puede terminar."
+    },
+    "doNothingConsequence": {
+      "en": "Your Health First Colorado coverage will end on the date in the letter.",
+      "es": "Su cobertura de Health First Colorado terminará en la fecha que dice la carta."
+    },
+    "deadline": {
+      "daysFromNotice": 60,
+      "source": "HCPF (verify with CCDC)"
+    },
+    "nextActions": [
+      {
+        "label": {
+          "en": "Renew on PEAK or by mail",
+          "es": "Renueve en PEAK o por correo"
+        },
+        "detail": {
+          "en": "Go to colorado.gov/peak, or use the form in the letter.",
+          "es": "Vaya a colorado.gov/peak, o use el formulario de la carta."
+        },
+        "urgency": "this-month"
+      },
+      {
+        "label": {
+          "en": "Call CCDC if you need help",
+          "es": "Llame a CCDC si necesita ayuda"
+        },
+        "detail": {
+          "en": "(303) 839-1775.",
+          "es": "(303) 839-1775."
+        },
+        "urgency": "this-month"
+      }
+    ]
+  },
+  {
+    "id": "procedural_termination",
+    "label": {
+      "en": "Termination for paperwork",
+      "es": "Terminación por papeleo"
+    },
+    "priority": 1,
+    "patterns": {
+      "en": [
+        "did not return",
+        "did not complete renewal",
+        "failure to provide",
+        "we did not receive",
+        "coverage will end"
+      ],
+      "es": [
+        "no devolvió",
+        "no completó la renovación",
+        "no proporcionó",
+        "no recibimos",
+        "su cobertura terminará"
+      ]
+    },
+    "plainLanguage": {
+      "en": "Colorado Medicaid is ending your coverage because they did not get the paperwork they asked for. You can usually fix this if you act fast.",
+      "es": "Colorado Medicaid va a terminar su cobertura porque no recibieron los papeles que pidieron. Por lo general puede arreglarlo si actúa rápido."
+    },
+    "doNothingConsequence": {
+      "en": "Your Health First Colorado coverage will end on the date in the letter.",
+      "es": "Su cobertura de Health First Colorado terminará en la fecha que dice la carta."
+    },
+    "deadline": {
+      "daysFromNotice": 60,
+      "source": "HCPF (verify with CCDC)"
+    },
+    "nextActions": [
+      {
+        "label": {
+          "en": "Call CCDC",
+          "es": "Llame a CCDC"
+        },
+        "detail": {
+          "en": "(303) 839-1775. They help with appeals.",
+          "es": "(303) 839-1775. Ayudan con las apelaciones."
+        },
+        "urgency": "now"
+      },
+      {
+        "label": {
+          "en": "Send the missing paperwork",
+          "es": "Envíe los papeles que faltan"
+        },
+        "detail": {
+          "en": "On PEAK or by mail, as soon as you can.",
+          "es": "En PEAK o por correo, lo antes posible."
+        },
+        "urgency": "this-week"
+      }
+    ]
+  },
+  {
+    "id": "work_requirement_notification",
+    "label": {
+      "en": "Work-reporting notice (new, starting August 2026)",
+      "es": "Aviso de requisito de trabajo (nuevo, desde agosto de 2026)"
+    },
+    "priority": 3,
+    "patterns": {
+      "en": [
+        "work requirement",
+        "community engagement",
+        "80 hours",
+        "work and community engagement"
+      ],
+      "es": [
+        "requisito de trabajo",
+        "participación comunitaria",
+        "80 horas"
+      ]
+    },
+    "plainLanguage": {
+      "en": "Colorado has a new rule. Some adults on Medicaid must show they work 80 hours a month. Others do not have to. This is called an exemption, and many disabled people get one. This letter says what Colorado thinks you must do.",
+      "es": "Colorado tiene una regla nueva. Algunos adultos con Medicaid deben mostrar que trabajan 80 horas al mes. Otros no tienen que hacerlo. Esto se llama una exención, y muchas personas con discapacidad la tienen. Esta carta dice qué cree Colorado que usted debe hacer."
+    },
+    "doNothingConsequence": {
+      "en": "If the letter says you must comply and you do not, you can lose coverage starting in 2027.",
+      "es": "Si la carta dice que usted debe cumplir y no lo hace, puede perder la cobertura a partir de 2027."
+    },
+    "deadline": {
+      "daysFromNotice": null,
+      "source": "Final CMS guidance pending (June 2026); verify with CCDC"
+    },
+    "nextActions": [
+      {
+        "label": {
+          "en": "Check if you are exempt",
+          "es": "Verifique si está exento"
+        },
+        "detail": {
+          "en": "SSDI, an HCBS waiver, LTSS, Buy-In, or medically frail status all exempt you.",
+          "es": "SSDI, una exención HCBS, LTSS, Buy-In, o la condición de médicamente frágil lo eximen."
+        },
+        "urgency": "this-month"
+      },
+      {
+        "label": {
+          "en": "Call CCDC if you are unsure",
+          "es": "Llame a CCDC si no está seguro"
+        },
+        "detail": {
+          "en": "(303) 839-1775.",
+          "es": "(303) 839-1775."
+        },
+        "urgency": "this-month"
+      }
+    ]
+  },
+  {
+    "id": "exemption_decision",
+    "label": {
+      "en": "Exemption decision",
+      "es": "Decisión sobre la exención"
+    },
+    "priority": 2,
+    "patterns": {
+      "en": [
+        "exempt",
+        "exemption",
+        "medically frail",
+        "you are not required"
+      ],
+      "es": [
+        "exento",
+        "exención",
+        "médicamente frágil",
+        "no está obligado"
+      ]
+    },
+    "plainLanguage": {
+      "en": "Colorado made a decision about whether you have to follow the work-reporting rules. The letter says yes or no.",
+      "es": "Colorado tomó una decisión sobre si usted tiene que seguir las reglas de reporte de trabajo. La carta dice que sí o que no."
+    },
+    "doNothingConsequence": {
+      "en": "If you disagree, you have a limited time to appeal. Check the date on the letter.",
+      "es": "Si no está de acuerdo, tiene un tiempo limitado para apelar. Mire la fecha de la carta."
+    },
+    "deadline": {
+      "daysFromNotice": 60,
+      "source": "HCPF (verify with CCDC)"
+    },
+    "nextActions": [
+      {
+        "label": {
+          "en": "If you disagree, call CCDC",
+          "es": "Si no está de acuerdo, llame a CCDC"
+        },
+        "detail": {
+          "en": "(303) 839-1775.",
+          "es": "(303) 839-1775."
+        },
+        "urgency": "this-week"
+      }
+    ]
+  },
+  {
+    "id": "unknown",
+    "label": {
+      "en": "Not sure what this is",
+      "es": "No estamos seguros de qué es esto"
+    },
+    "priority": 99,
+    "patterns": {
+      "en": [],
+      "es": []
+    },
+    "plainLanguage": {
+      "en": "We are not sure what kind of letter this is. Call CCDC and they can help you read it.",
+      "es": "No estamos seguros de qué tipo de carta es esta. Llame a CCDC y le pueden ayudar a leerla."
+    },
+    "doNothingConsequence": {
+      "en": "Do not ignore Medicaid letters. They usually have a deadline.",
+      "es": "No ignore las cartas de Medicaid. Por lo general tienen una fecha límite."
+    },
+    "deadline": {
+      "daysFromNotice": null,
+      "source": ""
+    },
+    "nextActions": [
+      {
+        "label": {
+          "en": "Call CCDC",
+          "es": "Llame a CCDC"
+        },
+        "detail": {
+          "en": "(303) 839-1775.",
+          "es": "(303) 839-1775."
+        },
+        "urgency": "this-week"
+      }
+    ]
+  }
+] as const;

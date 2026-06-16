@@ -3,3 +3,8 @@ dist/
 *.tsbuildinfo
 .vite/
 coverage/
+
+# Vendored OCR runtime assets (tesseract worker, WASM cores, language data).
+# ~27 MB of binaries, reproducibly copied from node_modules by
+# scripts/vendor-ocr.mjs (run automatically on predev/prebuild). Not committed.
+public/vendor/

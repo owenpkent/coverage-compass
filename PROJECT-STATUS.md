@@ -1,7 +1,7 @@
 # Project status
 
 **Snapshot date:** 2026-06-15
-**Phase:** v0.0 Foundation (re-architected around the proven engine; shell still early)
+**Phase:** v0.1 Notice Triage (read side implemented and tested; pending CCDC content review, native Spanish review, manual screen-reader testing, and deploy)
 **Working title:** Coverage Compass
 
 This is a single-page snapshot of where the project stands. For detail, follow the links into `docs/` and `research/`.
@@ -13,7 +13,7 @@ This is a single-page snapshot of where the project stands. For detail, follow t
 - **Built by:** one volunteer software engineer (CCDC member). No funding ask, no revenue model.
 - **Architecture:** Coverage Compass is now re-architected around the proven **CDASS Enroll** engine: a local-first, zero-runtime-network form-autofill engine that is a working proof of concept today. The engine is the foundation, not a future borrow. See [`docs/architecture.md`](docs/architecture.md) and [`docs/form-fill-engine.md`](docs/form-fill-engine.md).
 - **License:** decided. Apache 2.0 (see [`LICENSE`](LICENSE) and [`LICENSE-DECISION.md`](LICENSE-DECISION.md)).
-- **Status:** the write-side engine is proven in a sibling proof of concept; the Coverage Compass shell that wraps it is still early. Scoping with CCDC is the next blocker, not the engine pattern.
+- **Status:** the v0.1 read side (notice triage) is now implemented in `web/` and works locally: drop a PDF or photo (or paste text), and the app reads it on-device, classifies it against the Colorado rule library, and explains it in plain language with the deadline and next steps, in English or Spanish. It passes unit tests, automated accessibility checks, lint, and a production build. What remains before release is content (CCDC review of the rules, real Colorado sample letters, native Spanish review) and verification (manual NVDA/VoiceOver/keyboard passes, a deploy). The write-side engine remains proven in the sibling proof of concept and is not yet ported into the shell.
 - **First ship target:** v0.1 (notice triage) in August 2026, before HCPF starts sending work-requirement letters.
 
 ## What this is
@@ -100,9 +100,9 @@ The integration model is decided: adopt the engine into the Coverage Compass web
 
 ### Code
 
-- The engine (the write side) is implemented and proven in CDASS Enroll: `src/schema.js`, `src/extract/*`, `src/fill/*`, `src/store.js`, `tests/smoke.mjs`, with vendored OCR/WASM assets and a runtime-network-blocking CSP. Coverage Compass adopts these pure modules; only the rendering and storage shells differ.
-- Coverage Compass shell scaffolded (Vite + React + TypeScript + React Aria Components). The engine has not yet been ported into `web/src/lib`, and there are no user-facing features yet. The shell is early.
-- Rule library directory in place (`rules/co/`). YAML files seeded with the first letter types and exemption categories. All entries flagged "verify with CCDC" until reviewed.
+- **Read side (v0.1 notice triage) implemented in `web/`.** End to end: file or photo or pasted text in, on-device extraction (pdf.js for PDFs with the worker bundled local; tesseract.js for photos with the worker, WASM cores, and English/Spanish language data vendored to our own origin), deterministic classification against the rule library, and a plain-language result with a prominent deadline, do-nothing consequence, and next actions. English and Spanish via react-intl. Optional one-page PDF summary via pdf-lib. Installable/offline via a service worker. A production Content-Security-Policy blocks any third-party network. Covered by unit tests (classifier, deadline extractor), automated axe-core accessibility tests, a flat-config jsx-a11y lint, and a green production build.
+- The engine (the write side) is implemented and proven in CDASS Enroll: `src/schema.js`, `src/extract/*`, `src/fill/*`, `src/store.js`, `tests/smoke.mjs`, with vendored OCR/WASM assets and a runtime-network-blocking CSP. Coverage Compass adopts these pure modules; only the rendering and storage shells differ. It is not yet ported into `web/src/lib` (that is v0.2 work).
+- Rule library in place (`rules/co/`). `letter-types.yaml` is now bilingual and drives the classifier via build-time codegen; `exemptions.yaml` and `deadlines.yaml` await the v0.2 flows. All entries remain flagged "verify with CCDC" until reviewed.
 
 ## What's next
 
@@ -115,7 +115,7 @@ The integration model is decided: adopt the engine into the Coverage Compass web
 
 ### v0.1 Notice Triage (target August 2026)
 
-Drop-a-letter, get-a-summary. The read side: pdf.js plus tesseract.js classify a letter against the advocate-editable YAML rule library and explain it in plain language. Acceptance criteria in [`docs/spec-v0.1.md`](docs/spec-v0.1.md). Ships before HCPF begins mailing.
+Drop-a-letter, get-a-summary. **The read side is built:** pdf.js plus tesseract.js read the letter on-device and a deterministic classifier matches it against the advocate-editable YAML rule library and explains it in plain language, with the deadline and next steps, in English or Spanish. What remains before it ships, against the acceptance criteria in [`docs/spec-v0.1.md`](docs/spec-v0.1.md): CCDC review of the rule content, 10 to 20 real anonymized Colorado letters to validate the classifier, native-speaker review of the Spanish, manual NVDA/VoiceOver/keyboard passes, a 6th-grade reading-level check in CI, and a deploy. Ships before HCPF begins mailing.
 
 ### v0.2 Exemption Packet (target November 2026 to January 2027)
 
@@ -166,9 +166,9 @@ Full set of open questions: [`research/prior-art.md`](research/prior-art.md) sec
 ## Known risks
 
 - **Schedule risk.** The August 2026 ship target depends on a CCDC scoping conversation happening soon. Each week of delay compresses build time.
-- **Shell-maturity risk.** The engine is proven, but the Coverage Compass shell is early: the engine has not yet been ported into `web/src/lib`, and there are no user-facing features yet. The August target depends on the read side and the porting work landing on schedule.
+- **Validation and content risk.** The read side is built and works, but its rule content is unreviewed by CCDC, the classifier is not yet validated against real Colorado letters, the Spanish is machine-drafted, and a manual screen-reader pass and a deploy remain. The write-side engine is still to be ported into `web/src/lib` (v0.2 work). The August target now depends on the CCDC review and the sample-letter validation landing on schedule, not on the read-side build.
 - **Sample-letter dependency.** v0.1 acceptance criteria require correctly classifying real Colorado letters. We need 10 to 20 anonymized samples from CCDC. Without them, the classifier is unverified.
-- **Stack drift.** Tesseract.js, pdf.js, and pdf-lib are heavy. The architecture target is < 250 KB gzipped bundle and < 3s TTI on a 2019 Chromebook. The write-side engine is lazy-loaded so it adds nothing to the read-side first load; verify in v0.1 and v0.2.
+- **Stack drift.** Tesseract.js, pdf.js, and pdf-lib are heavy. The architecture target is < 250 KB gzipped bundle and < 3s TTI on a 2019 Chromebook. As of the v0.1 read-side build, pdf.js, tesseract.js, and pdf-lib are each lazy-loaded into their own chunks, so the initial JS is roughly 110 KB gzipped (entry plus React Aria plus react-intl), within budget. TTI on real low-end hardware still needs measuring.
 - **Form-revision drift.** The fill layer maps exact PDF field names per form revision. Colorado can re-issue a form with renamed fields. The engine degrades a missing or renamed field to a logged warning rather than a crash, and the exact-copy smoke test guards regressions, but each new form revision needs a fresh field dump and mapping.
 - **CfA collision.** If CfA quietly builds a Medicaid version of their tool before we ship, we should reconsider the lane. Phase 2 outreach is partly to surface this.
 - **Reading-level enforcement.** The 6th-grade Flesch-Kincaid target is a hard project rule, not a wish. Need a working CI tool before user-facing copy lands.

@@ -48,6 +48,30 @@ A hosted web app's biggest privacy risk vs. a frozen native binary is that the h
 
 This is the honest tradeoff. We name it instead of hiding it.
 
+## Content-Security-Policy and response headers
+
+The production build ships a Content-Security-Policy. The key directive is
+`connect-src 'self'`, which blocks the page from sending anything to a third
+party: that is what enforces "no data leaves the device" in the browser, not just
+in policy. The OCR and PDF assets are served from our own origin, so they still
+load.
+
+Two delivery details matter:
+
+- The policy is included as a `<meta http-equiv>` tag in the HTML, which covers
+  `connect-src`, `script-src`, `worker-src`, and the rest. But a `<meta>` CSP
+  cannot enforce `frame-ancestors` (anti-clickjacking). The build also emits a
+  `_headers` file (Netlify / Cloudflare Pages format) carrying the full policy
+  plus `frame-ancestors 'none'`, `X-Frame-Options: DENY`, and
+  `X-Content-Type-Options: nosniff`.
+- **GitHub Pages cannot set custom response headers**, so on a GitHub Pages
+  deploy the `_headers` file is ignored and `frame-ancestors` is not enforced.
+  For any production deploy, prefer a host that honors response headers (Netlify
+  or Cloudflare Pages). The clickjacking risk is limited here (no backend, no
+  accounts, no cookies, no state-changing server requests), but a UI-redress
+  attempt that tricks a user into acting on a framed copy is the residual gap we
+  name rather than hide.
+
 ## What we ask of contributors
 
 - No new dependencies without a deps review (look at the package, its dependency tree, its maintenance status, its license).

@@ -11,6 +11,12 @@
   --color-border: #cbd5e1;
   --color-error: #b91c1c;
   --color-success: #15803d;
+  --color-warning: #92400e;
+  --color-warning-bg: #fef3c7;
+  --color-error-bg: #fee2e2;
+  --color-info: #1e40af;
+  --color-info-bg: #dbeafe;
+  --color-calm-bg: #dcfce7;
 
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-size-base: 1.125rem; /* 18px floor for readability */
@@ -243,4 +249,298 @@ p {
   padding-block: var(--space-4);
   margin-block-start: var(--space-6);
   color: var(--color-muted);
+}
+
+/* Header layout + language toggle ---------------------------------------- */
+.header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.lang-toggle {
+  display: inline-flex;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.lang-btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--color-fg);
+  font: inherit;
+  font-size: 1rem;
+  padding: var(--space-2) var(--space-3);
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.lang-btn[aria-pressed="true"] {
+  background: var(--color-accent);
+  color: var(--color-accent-fg);
+  font-weight: 700;
+}
+
+/* Buttons (React Aria Button renders a <button>) ------------------------- */
+.btn {
+  appearance: none;
+  display: inline-block;
+  font: inherit;
+  font-weight: 600;
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  padding: var(--space-2) var(--space-4);
+  min-height: 44px;
+  min-width: 44px;
+  cursor: pointer;
+  line-height: 1.4;
+}
+
+.btn-primary {
+  background: var(--color-accent);
+  color: var(--color-accent-fg);
+  border-color: var(--color-accent);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.btn[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn[data-hovered] {
+  filter: brightness(1.08);
+}
+
+/* Dropzone (React Aria DropZone) ----------------------------------------- */
+.dropzone[data-drop-target] {
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 12%, var(--color-bg));
+}
+
+.dropzone[data-focus-visible] {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* Status + paste fallback ------------------------------------------------ */
+.status {
+  display: block;
+  min-height: 1.5em;
+  margin-block: var(--space-3);
+  font-weight: 600;
+}
+
+.status-percent {
+  margin: 0 0 var(--space-3);
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--color-accent);
+}
+
+.paste {
+  margin-block: var(--space-4);
+}
+
+.link-button {
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: var(--space-1) 0;
+  color: var(--color-accent);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.paste-body {
+  margin-block-start: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.paste-body textarea {
+  font: inherit;
+  font-size: 1rem;
+  padding: var(--space-2);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  width: 100%;
+}
+
+/* Result view ------------------------------------------------------------ */
+.result {
+  margin-block: var(--space-4);
+}
+
+.result:focus {
+  outline: none;
+}
+
+.result-block {
+  margin-block: var(--space-4);
+}
+
+.result-block h3 {
+  font-size: 1.15rem;
+  margin-block: 0 var(--space-2);
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.result-type {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.result-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-block: var(--space-4);
+}
+
+.disclaimer {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  border-block-start: 1px solid var(--color-border);
+  padding-block-start: var(--space-3);
+}
+
+/* Deadline card ---------------------------------------------------------- */
+.deadline-card {
+  border: 2px solid var(--color-border);
+  border-inline-start-width: 8px;
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  margin-block: var(--space-3);
+  background: color-mix(in srgb, var(--color-accent) 6%, var(--color-bg));
+}
+
+.deadline-label {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.deadline-date {
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin: var(--space-1) 0;
+  line-height: 1.2;
+}
+
+.deadline-countdown {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.deadline-note {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  margin: var(--space-2) 0 0;
+}
+
+.deadline-now {
+  border-color: var(--color-error);
+  background: color-mix(in srgb, var(--color-error) 12%, var(--color-bg));
+}
+
+.deadline-this-week {
+  border-color: var(--color-warning);
+  background: color-mix(in srgb, var(--color-warning) 14%, var(--color-bg));
+}
+
+.deadline-this-month {
+  border-color: var(--color-success);
+  background: color-mix(in srgb, var(--color-success) 10%, var(--color-bg));
+}
+
+/* Callouts --------------------------------------------------------------- */
+.callout {
+  border-inline-start: 5px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  margin-block: var(--space-3);
+}
+
+.callout-warning {
+  border-color: var(--color-warning);
+  background: color-mix(in srgb, var(--color-warning) 14%, var(--color-bg));
+}
+
+.callout-error {
+  border-color: var(--color-error);
+  background: color-mix(in srgb, var(--color-error) 12%, var(--color-bg));
+}
+
+.callout-info {
+  border-color: var(--color-info);
+  background: color-mix(in srgb, var(--color-info) 12%, var(--color-bg));
+}
+
+/* Next actions ----------------------------------------------------------- */
+.next-actions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.action {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+}
+
+.action-badge {
+  flex-shrink: 0;
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius);
+  white-space: nowrap;
+  min-width: 7.5rem;
+  text-align: center;
+}
+
+.badge-now {
+  background: var(--color-error);
+}
+
+.badge-this-week {
+  background: var(--color-warning);
+}
+
+.badge-this-month {
+  background: var(--color-success);
+}
+
+.action-label {
+  font-weight: 700;
 }

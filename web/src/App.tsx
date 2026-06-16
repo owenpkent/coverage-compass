@@ -1,41 +1,64 @@
-import { LetterDropzone } from "./components/LetterDropzone";
+import { FormattedMessage, useIntl } from "react-intl";
+import { Triage } from "./components/Triage";
+import { LanguageToggle } from "./components/LanguageToggle";
+import { CCDC_PHONE } from "./lib/rules";
+
+const REPO_URL = "https://github.com/owenpkent/coverage-compass";
+const PRIVACY_URL = `${REPO_URL}/blob/main/docs/privacy.md`;
+const telHref = `tel:+1${CCDC_PHONE.replace(/\D/g, "")}`;
 
 export function App() {
+  const intl = useIntl();
   return (
     <>
+      <a href="#main" className="skip-link">
+        <FormattedMessage id="nav.skip" />
+      </a>
       <header className="site-header">
-        <div className="container">
-          <p className="brand">Coverage Compass</p>
-          <p className="tagline">A private tool for understanding letters from Colorado Medicaid.</p>
+        <div className="container header-row">
+          <div>
+            <p className="brand">Coverage Compass</p>
+            <p className="tagline">
+              <FormattedMessage id="app.tagline" />
+            </p>
+          </div>
+          <LanguageToggle />
         </div>
       </header>
 
       <main id="main" className="container" tabIndex={-1}>
         <section aria-labelledby="hero-title" className="hero">
-          <h1 id="hero-title">Got a letter from Health First Colorado?</h1>
+          <h1 id="hero-title">
+            <FormattedMessage id="hero.title" />
+          </h1>
           <p>
-            Drop it in below. We will tell you what it says, what to do, and when. Your letter
-            never leaves this device.
+            <FormattedMessage id="hero.body" />
           </p>
           <p className="privacy-note">
-            <strong>No accounts. No tracking. No server.</strong> Everything happens in your
-            browser.
+            <strong>
+              <FormattedMessage id="hero.privacy" />
+            </strong>
           </p>
         </section>
 
-        <section aria-labelledby="dropzone-title">
-          <h2 id="dropzone-title" className="visually-hidden">
-            Upload your letter
-          </h2>
-          <LetterDropzone />
+        <section aria-label={intl.formatMessage({ id: "triage.region" })}>
+          <Triage />
         </section>
 
         <section aria-labelledby="how-title" className="how">
-          <h2 id="how-title">How it works</h2>
+          <h2 id="how-title">
+            <FormattedMessage id="how.title" />
+          </h2>
           <ol>
-            <li>Drop in a PDF or photo of your letter.</li>
-            <li>We read it on your device. Nothing is uploaded.</li>
-            <li>You see a plain-language summary, the deadline, and what to do next.</li>
+            <li>
+              <FormattedMessage id="how.step1" />
+            </li>
+            <li>
+              <FormattedMessage id="how.step2" />
+            </li>
+            <li>
+              <FormattedMessage id="how.step3" />
+            </li>
           </ol>
         </section>
       </main>
@@ -43,11 +66,18 @@ export function App() {
       <footer className="site-footer">
         <div className="container">
           <p>
-            Built with the <a href="https://ccdconline.org/">Colorado Cross-Disability Coalition</a>.
-            Open source.
+            <FormattedMessage id="footer.builtWith" />
           </p>
           <p>
-            Need help right now? Call CCDC at <a href="tel:+13038391775">(303) 839-1775</a>.
+            <FormattedMessage
+              id="footer.help"
+              values={{ phone: <a href={telHref}>{CCDC_PHONE}</a> }}
+            />
+          </p>
+          <p>
+            <a href={PRIVACY_URL}>
+              <FormattedMessage id="footer.privacyLink" />
+            </a>
           </p>
         </div>
       </footer>

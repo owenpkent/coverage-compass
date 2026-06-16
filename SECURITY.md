@@ -8,7 +8,7 @@ is in [`docs/privacy.md`](docs/privacy.md).
 
 | Version | Supported |
 |---------|-----------|
-| pre-v0.1 (scaffold) | Best-effort response |
+| v0.1 (read side, pre-deploy) | Full security response within 7 days |
 | v0.1+   | Full security response within 7 days |
 
 ## Reporting a vulnerability

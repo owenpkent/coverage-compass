@@ -5,11 +5,11 @@
 [![good first issues](https://img.shields.io/github/issues/owenpkent/coverage-compass/good%20first%20issue?color=7057ff&label=good%20first%20issues)](https://github.com/owenpkent/coverage-compass/contribute)
 ![Accessibility: WCAG 2.2 AA](https://img.shields.io/badge/a11y-WCAG_2.2_AA-success)
 ![Privacy: local-only](https://img.shields.io/badge/privacy-local--only%2C_no_server-informational)
-![Status: pre-v0.1](https://img.shields.io/badge/status-pre--v0.1-orange)
+![Status: v0.1 read side built](https://img.shields.io/badge/status-v0.1_read_side_built-yellowgreen)
 
 A free, open source tool to help disabled Coloradans keep their Medicaid when Colorado's new work-reporting rules take effect in 2027. Built with [CCDC](https://ccdconline.org/) (Colorado Cross-Disability Coalition) as the design partner.
 
-**Status:** scoping the Coverage Compass shell, building on a proven engine. The write side (document capture and exact PDF form-fill) is already a working proof of concept in a sibling project, [CDASS Enroll](https://github.com/owenpkent/cdass-enroll); Coverage Compass is re-architected around it. The Coverage Compass app is not live yet. First version targeted August 2026, before the state begins mailing notification letters.
+**Status:** the v0.1 read side (notice triage) is built and works locally. Drop a PDF or photo of a letter, or paste its text, and the app reads it on your device, classifies it against the Colorado rule library, and explains it in plain language with the deadline and next steps, in English or Spanish. It passes unit tests, automated accessibility checks, and a production build. It is not deployed yet, and the rule content and Spanish still need CCDC and native-speaker review. The write side (document capture and exact PDF form-fill) is already a working proof of concept in a sibling project, [CDASS Enroll](https://github.com/owenpkent/cdass-enroll); Coverage Compass is re-architected around it. First public version targeted August 2026, before the state begins mailing notification letters.
 
 **This README is a partner brief.** It exists to invite three organizations into the build: CCDC (lived expertise, member trust, advocate review), [Code for America](https://codeforamerica.org/) (safety-net civic tech, multi-state reusability), and [Anthropic](https://www.anthropic.com/) (responsible AI patterns for the parts of the tool that need them). Code for America and Anthropic already have a public-benefits collaboration. CCDC is the on-the-ground partner who closes the loop.
 
@@ -101,14 +101,14 @@ Proven today (in CDASS Enroll, adopted as-is):
 
 New for Coverage Compass (the shell around the engine):
 
+- **The read side (notice triage), built and tested.** On-device PDF text extraction (pdf.js) and photo OCR (tesseract.js, with the worker, WASM, and English/Spanish language data vendored to our own origin), a deterministic classifier over the advocate-editable YAML rule library, and a plain-language result with a prominent deadline, the do-nothing consequence, and concrete next actions. English and Spanish via react-intl, an optional downloadable one-page PDF summary, offline support via a service worker, and a production Content-Security-Policy that blocks any third-party network. Covered by unit, accessibility (axe-core), and lint checks plus a green build.
 - Full scoping documentation: architecture, privacy threat model, accessibility standard, roadmap anchored to the Colorado timeline, glossary, Colorado rules reference.
 - Prior-art survey across roughly 50 sources ([`research/prior-art.md`](research/prior-art.md)).
 - Three partner pitches drafted (CCDC, CfA, Anthropic).
-- Web-app shell scaffolded (Vite + React + TypeScript + React Aria Components, no analytics, no third-party scripts).
-- Rule library seeded for Colorado: six letter types and eight exemption categories. All entries marked "verify with CCDC" until reviewed.
+- Rule library seeded for Colorado: five letter types (now bilingual, driving the classifier) and eight exemption categories. All entries marked "verify with CCDC" until reviewed.
 - Fourteen static HTML mockups exploring UI archetypes across all three events plus the triage entry ([`docs/ui-brainstorm.md`](docs/ui-brainstorm.md)).
 
-Still ahead: notice triage (the read side), the advocate-editable per-state YAML rule library, advocate-in-the-loop review, WCAG 2.2 AA accessibility in English and Spanish, the Medicaid-specific schema growth (household, income, exemption category and evidence, renewal dates, the CDASS care-hours worksheet which is the IHSS Care Plan), and carry-forward pre-fill across years.
+Still ahead: CCDC review of the rule content and 10 to 20 real anonymized Colorado letters to validate the classifier, native-speaker review of the Spanish, manual NVDA/VoiceOver/keyboard testing, a 6th-grade reading-level check in CI, a deploy, advocate-in-the-loop review, the Medicaid-specific schema growth (household, income, exemption category and evidence, renewal dates, the CDASS care-hours worksheet which is the IHSS Care Plan), and carry-forward pre-fill across years.
 
 Full snapshot: [`PROJECT-STATUS.md`](PROJECT-STATUS.md).
 

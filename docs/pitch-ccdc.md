@@ -28,7 +28,7 @@ Entry point is notice triage: drop a letter from PEAK or HCPF, get a plain-langu
 
 ## Status
 
-Repository is scaffolded with full documentation (architecture, privacy threat model, accessibility standard, roadmap, glossary, Colorado rules reference, outreach plan). A working web-app shell is in place (TypeScript, React Aria Components, accessible by default, plain CSS, no analytics). The rule library is seeded with the first six Colorado letter types and eight exemption categories. All deadlines and several exemption details are explicitly marked "verify with CCDC" until reviewed.
+The v0.1 read side (notice triage) is built and works locally: drop a PDF or photo of a letter, or paste its text, and the app reads it on the device, classifies it against the rule library, and explains it in plain language with the deadline and next steps, in English or Spanish. It is backed by full documentation (architecture, privacy threat model, accessibility standard, roadmap, glossary, Colorado rules reference, outreach plan) and passes unit tests, automated accessibility checks, and a production build. The rule library is seeded with five Colorado letter types and eight exemption categories, all explicitly marked "verify with CCDC" until reviewed. What it needs from CCDC is exactly that review, plus 10 to 20 real anonymized letters to validate the classifier.
 
 **Prior related work:** I previously built [reclaimhealth.ai](https://github.com/owenpkent/reclaimhealth.ai), a landing page for an AI-powered appeals concept aimed at private-insurance denials. This Medicaid project is its narrower, privacy-local, free, FOSS sibling. It is scoped specifically to disabled Coloradans on Health First Colorado, runs no AI in v0.1, and answers to CCDC, not investors.
 

@@ -24,17 +24,20 @@ Ships before the first wave of notification letters goes out from HCPF in August
 
 - [x] UI brainstorm (2026-05-16; fourteen HTML mockups in `docs/mockups/` across the three events plus triage, summarized in `docs/ui-brainstorm.md`)
 - [x] Vite + React + TS app scaffolded
-- [ ] PDF intake (pdf.js) and image OCR (tesseract.js)
-- [ ] Letter classifier (rule-based first; revisit LLM later)
-- [ ] Plain-language explanation library (CO-specific, reviewed by CCDC)
-- [ ] Deadline extraction
-- [ ] Accessibility audit pass (axe-core + manual screen reader)
-- [ ] Spanish translation
-- [ ] PWA install + offline mode
+- [x] PDF intake (pdf.js) and image OCR (tesseract.js), with OCR assets vendored to our own origin
+- [x] Letter classifier (rule-based, deterministic, generated from the YAML rule library)
+- [x] Deadline extraction (bilingual)
+- [x] Spanish translation present (react-intl; native-speaker review still pending)
+- [x] PWA install + offline mode
+- [x] Automated accessibility checks (axe-core) and a jsx-a11y lint gate
+- [ ] Plain-language explanation library reviewed by a CCDC advocate
+- [ ] Manual screen-reader pass (NVDA, VoiceOver, keyboard-only)
+- [ ] 10 to 20 real anonymized Colorado letters to validate the classifier
+- [ ] 6th-grade reading-level check enforced in CI
 - [ ] Hosted on a stable URL with SRI and reproducible build
 - [ ] CCDC advocate user test passes
 
-**Exit criteria:** all acceptance criteria in `spec-v0.1.md` pass.
+**Exit criteria:** all acceptance criteria in `spec-v0.1.md` pass. The build is done; the remaining items are CCDC content review, validation against real letters, native Spanish review, manual screen-reader testing, and a deploy.
 
 ## v0.2 Exemption Packet (target: November 2026 to January 2027)
 

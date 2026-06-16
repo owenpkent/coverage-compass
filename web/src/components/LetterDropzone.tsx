@@ -1,82 +1,46 @@
-import { useRef, useState, type ChangeEvent, type DragEvent, type KeyboardEvent } from "react";
+import { DropZone, FileTrigger, Button, Text, type FileDropItem } from "react-aria-components";
+import { useIntl } from "react-intl";
 
-type Status = "idle" | "reading" | "done" | "error";
-
-export function LetterDropzone() {
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [status, setStatus] = useState<Status>("idle");
-  const [fileName, setFileName] = useState<string | null>(null);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
-  function handleFile(file: File) {
-    setFileName(file.name);
-    setErrorMessage(null);
-    setStatus("reading");
-    // v0.1: hook this up to lib/pdf.ts and lib/rules.ts.
-    // For now, the scaffold just acknowledges the file.
-    setTimeout(() => setStatus("done"), 250);
-  }
-
-  function onInputChange(e: ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (file) handleFile(file);
-  }
-
-  function onDrop(e: DragEvent<HTMLDivElement>) {
-    e.preventDefault();
-    const file = e.dataTransfer.files?.[0];
-    if (file) handleFile(file);
-  }
-
-  function onDragOver(e: DragEvent<HTMLDivElement>) {
-    e.preventDefault();
-  }
-
-  function onKeyDown(e: KeyboardEvent<HTMLDivElement>) {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      inputRef.current?.click();
-    }
-  }
+/**
+ * Accessible file input: a React Aria DropZone (keyboard-focusable, announces
+ * drag state) plus a FileTrigger button that opens the native picker (which
+ * offers the camera on phones). Emits the chosen File to the parent; it does no
+ * reading itself.
+ */
+export function LetterDropzone({
+  onFile,
+  disabled = false,
+}: {
+  onFile: (file: File) => void;
+  disabled?: boolean;
+}) {
+  const intl = useIntl();
 
   return (
-    <div className="dropzone-wrap">
-      <div
-        className="dropzone"
-        role="button"
-        tabIndex={0}
-        aria-label="Drop a PDF or photo of your letter here, or press Enter to choose a file"
-        aria-describedby="dropzone-help"
-        onDrop={onDrop}
-        onDragOver={onDragOver}
-        onKeyDown={onKeyDown}
-        onClick={() => inputRef.current?.click()}
+    <DropZone
+      className="dropzone"
+      aria-label={intl.formatMessage({ id: "drop.aria" })}
+      isDisabled={disabled}
+      onDrop={async (e) => {
+        const item = e.items.find((i): i is FileDropItem => i.kind === "file");
+        if (item) onFile(await item.getFile());
+      }}
+    >
+      <Text slot="label" className="dropzone-prompt">
+        {intl.formatMessage({ id: "drop.prompt" })}
+      </Text>
+      <p className="dropzone-or">{intl.formatMessage({ id: "drop.or" })}</p>
+      <FileTrigger
+        acceptedFileTypes={["application/pdf", "image/*"]}
+        onSelect={(files) => {
+          const file = files?.item(0);
+          if (file) onFile(file);
+        }}
       >
-        <p className="dropzone-prompt">Drop your letter here</p>
-        <p className="dropzone-or">or</p>
-        <p className="dropzone-cta">Choose a file</p>
-        <input
-          ref={inputRef}
-          type="file"
-          accept="application/pdf,image/*"
-          capture="environment"
-          className="visually-hidden"
-          onChange={onInputChange}
-        />
-      </div>
-      <p id="dropzone-help" className="dropzone-help">
-        Accepts PDF, JPG, PNG, or HEIC. Your file never leaves this device.
-      </p>
-
-      <output className="dropzone-status" aria-live="polite">
-        {status === "reading" && <span>Reading {fileName}...</span>}
-        {status === "done" && (
-          <span>
-            Loaded {fileName}. Letter parsing is not wired up yet in this scaffold.
-          </span>
-        )}
-        {status === "error" && errorMessage && <span role="alert">{errorMessage}</span>}
-      </output>
-    </div>
+        <Button className="btn btn-primary" isDisabled={disabled}>
+          {intl.formatMessage({ id: "drop.cta" })}
+        </Button>
+      </FileTrigger>
+    </DropZone>
   );
 }

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Coverage Compass">
+  <rect width="512" height="512" rx="96" fill="#1a365d"/>
+  <circle cx="256" cy="256" r="168" fill="none" stroke="#ffffff" stroke-width="20"/>
+  <circle cx="256" cy="256" r="20" fill="#ffffff"/>
+  <!-- compass needle: north (white), south (muted) -->
+  <path d="M256 96 L300 256 L256 232 L212 256 Z" fill="#ffffff"/>
+  <path d="M256 416 L212 256 L256 280 L300 256 Z" fill="#93c5fd"/>
+</svg>
