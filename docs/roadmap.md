@@ -34,10 +34,10 @@ Ships before the first wave of notification letters goes out from HCPF in August
 - [ ] Manual screen-reader pass (NVDA, VoiceOver, keyboard-only)
 - [ ] 10 to 20 real anonymized Colorado letters to validate the classifier
 - [ ] 6th-grade reading-level check enforced in CI
-- [ ] Hosted on a stable URL with SRI and reproducible build
+- [ ] Hosted on a stable URL with SRI and reproducible build (a demo deployment is live at [coverage-compass-6ky.pages.dev](https://coverage-compass-6ky.pages.dev) since 2026-07-01, behind a click-through release; SRI and the reproducible-build story are still pending)
 - [ ] CCDC advocate user test passes
 
-**Exit criteria:** all acceptance criteria in `spec-v0.1.md` pass. The build is done; the remaining items are CCDC content review, validation against real letters, native Spanish review, manual screen-reader testing, and a deploy.
+**Exit criteria:** all acceptance criteria in `spec-v0.1.md` pass. The build is done and a demo is deployed; the remaining items are CCDC content review, validation against real letters, native Spanish review, manual screen-reader testing, and hardening the deploy (SRI, reproducible build, legal review of the release wording).
 
 ## v0.2 Exemption Packet (target: November 2026 to January 2027)
 

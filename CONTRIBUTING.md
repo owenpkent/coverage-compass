@@ -70,8 +70,8 @@ npm run dev        # start the Vite dev server (open http://localhost:5173)
 npm run build      # type-check (tsc --noEmit) then build for production with Vite
 npm run preview    # serve the production build locally
 
-npm run test       # run Vitest in watch mode (includes axe-core a11y checks)
-npm run test:run   # run Vitest once (use this for CI and before opening a PR)
+npm run test       # run Vitest once (includes axe-core a11y checks; use before opening a PR)
+npm run test:watch # run Vitest in watch mode while developing
 
 npm run lint       # ESLint with eslint-plugin-jsx-a11y; warnings fail the run
 npm run format     # Prettier write across src
@@ -80,7 +80,7 @@ npm run format     # Prettier write across src
 Before you open a PR, make sure both of these pass:
 
 ```bash
-npm run test:run
+npm run test
 npm run lint
 ```
 
@@ -93,7 +93,7 @@ See [`web/README.md`](web/README.md) for the source layout, the stack, and the d
 1. **Fork** the repository to your own account, then clone your fork.
 2. **Branch** off `main`. Use a short, descriptive name, for example `fix/dropzone-focus-trap` or `docs/contributing-quickstart`.
 3. **Make one focused change.** Keep pull requests small. A small PR gets reviewed fast and is easy to reason about for privacy and accessibility. If you find yourself doing two things, make two PRs.
-4. **Run the checks** above (`npm run test:run` and `npm run lint`) and fix anything they flag. Accessibility regressions block PRs.
+4. **Run the checks** above (`npm run test` and `npm run lint`) and fix anything they flag. Accessibility regressions block PRs.
 5. **Write a clear commit message.** A short summary line in the imperative mood (for example, "Fix focus trap in letter dropzone"), then a blank line, then a few sentences of why if it is not obvious. No em dashes (use periods, colons, commas, or parentheses).
 6. **Open the pull request** against `main`. The pull-request template will ask you to confirm the privacy, accessibility, rule-library, test, and documentation impacts. Fill out the sections that apply.
 7. **Respond to review.** Maintainers and CCDC reviewers may ask questions, especially on anything that touches privacy, accessibility, or Medicaid rules. That back-and-forth is normal and welcome.

@@ -1,7 +1,7 @@
 # Project status
 
-**Snapshot date:** 2026-06-15
-**Phase:** v0.1 Notice Triage (read side implemented and tested; pending CCDC content review, native Spanish review, manual screen-reader testing, and deploy)
+**Snapshot date:** 2026-07-01
+**Phase:** v0.1 Notice Triage (read side implemented and tested; live demo deployed; pending CCDC content review, native Spanish review, and manual screen-reader testing)
 **Working title:** Coverage Compass
 
 This is a single-page snapshot of where the project stands. For detail, follow the links into `docs/` and `research/`.
@@ -13,7 +13,7 @@ This is a single-page snapshot of where the project stands. For detail, follow t
 - **Built by:** one volunteer software engineer (CCDC member). No funding ask, no revenue model.
 - **Architecture:** Coverage Compass is now re-architected around the proven **CDASS Enroll** engine: a local-first, zero-runtime-network form-autofill engine that is a working proof of concept today. The engine is the foundation, not a future borrow. See [`docs/architecture.md`](docs/architecture.md) and [`docs/form-fill-engine.md`](docs/form-fill-engine.md).
 - **License:** decided. Apache 2.0 (see [`LICENSE`](LICENSE) and [`LICENSE-DECISION.md`](LICENSE-DECISION.md)).
-- **Status:** the v0.1 read side (notice triage) is now implemented in `web/` and works locally: drop a PDF or photo (or paste text), and the app reads it on-device, classifies it against the Colorado rule library, and explains it in plain language with the deadline and next steps, in English or Spanish. It passes unit tests, automated accessibility checks, lint, and a production build. What remains before release is content (CCDC review of the rules, real Colorado sample letters, native Spanish review) and verification (manual NVDA/VoiceOver/keyboard passes, a deploy). The write-side engine remains proven in the sibling proof of concept and is not yet ported into the shell.
+- **Status:** the v0.1 read side (notice triage) is now implemented in `web/` and works locally: drop a PDF or photo (or paste text), and the app reads it on-device, classifies it against the Colorado rule library, and explains it in plain language with the deadline and next steps, in English or Spanish. It passes unit tests, automated accessibility checks, lint, and a production build. What remains before release is content (CCDC review of the rules, real Colorado sample letters, native Spanish review) and verification (manual NVDA/VoiceOver/keyboard passes). A **live demonstration deployment** is up at [coverage-compass-6ky.pages.dev](https://coverage-compass-6ky.pages.dev) behind a bilingual click-through release (session-only, wording pending CCDC legal review), with four clearly-fictional example letters so the flow can be shown without any real document, light/dark mode, and in-app bilingual Terms of Use and Privacy Notice pages carrying the demo's waiver and release language (draft, pending CCDC counsel review). The write-side engine remains proven in the sibling proof of concept and is not yet ported into the shell; its document-library design is now specced in [`docs/document-library.md`](docs/document-library.md).
 - **First ship target:** v0.1 (notice triage) in August 2026, before HCPF starts sending work-requirement letters.
 
 ## What this is
@@ -146,7 +146,8 @@ Full survey: [`research/prior-art.md`](research/prior-art.md). The short version
 - **Appeal template starting point:** Justice in Aging's February 2026 letter with seven mitigation principles.
 - **Exemption-evidence reference:** SHVS medical-frailty toolkit with ICD-10 / CPT crosswalk.
 - **Proven internal foundation:** the CDASS Enroll engine, a working local-first form-autofill proof of concept that Coverage Compass is architected around.
-- **Clear gap:** No one has shipped a Medicaid-specific, client-side, advocate-in-the-loop tool with an advocate-readable rules library. That is this project's lane.
+- **Complementary Colorado neighbor (added 2026-07-01):** MyFriendBen, the Denver-born open-source benefits screener (prospective "what could I get"; no notice, exemption, or appeals functionality and no H.R.1 product as of 2026-07-01). Strongest candidate upstream referral partner: 211 Colorado, Denver Human Services, HCPF, and Colorado Digital Service relationships. Its rules engine, PolicyEngine, is encoding the H.R.1 work-requirement rules with statutory citations, a candidate cross-check oracle for our exemption rules. See `research/prior-art.md` section 2.10.
+- **Clear gap:** No one has shipped a Medicaid-specific, client-side, advocate-in-the-loop tool with an advocate-readable rules library. That is this project's lane. Reconfirmed 2026-07-01 against MyFriendBen and PolicyEngine; exemption *screening* is commoditizing, exemption *demonstration* (our lane) remains open, and an unanswered March 2026 feature request in MyFriendBen's tracker shows live demand for it.
 
 ## Open questions and decisions pending
 

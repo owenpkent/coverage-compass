@@ -27,8 +27,8 @@ npm run preview
 ## Test
 
 ```bash
-npm run test         # watch
-npm run test:run     # CI / one-shot
+npm run test         # one-shot (CI-safe)
+npm run test:watch   # watch mode
 ```
 
 ## Stack
@@ -47,19 +47,26 @@ npm run test:run     # CI / one-shot
 ```
 src/
 |-- main.tsx                 entry; mounts providers and registers the service worker
-|-- App.tsx                  top-level shell (header, hero, footer)
-|-- styles.css               base CSS (no framework)
+|-- App.tsx                  top-level shell (header, consent gate, hash views, footer)
+|-- styles.css               base CSS (no framework); light/dark palettes
 |-- i18n/
 |   |-- en.json, es.json     message catalogs
 |   |-- messages.ts          catalog map + locale detection
 |   `-- LocaleProvider.tsx   IntlProvider + locale context (used by the rules engine too)
 |-- components/
-|   |-- Triage.tsx           orchestrates file/photo/paste -> extract -> classify -> result
+|   |-- Triage.tsx           orchestrates file/photo/paste/example -> extract -> classify -> result
 |   |-- LetterDropzone.tsx   accessible drop-or-pick-or-photo file input
 |   |-- LetterSummary.tsx    result view; download + reset
 |   |-- DeadlineCard.tsx     prominent deadline with days remaining
 |   |-- NextActions.tsx      1-3 next actions with urgency and tel: links
-|   `-- LanguageToggle.tsx   English/Spanish switch
+|   |-- LanguageToggle.tsx   English/Spanish switch
+|   |-- ThemeToggle.tsx      light/dark switch (session-only, follows system by default)
+|   |-- ConsentGate.tsx      click-through release before the tool is usable (session-only)
+|   `-- LegalPage.tsx        renders the Terms of Use / Privacy Notice
+|-- content/
+|   `-- legal.ts             bilingual Terms of Use + Privacy Notice text (draft, pending counsel)
+|-- fixtures/
+|   `-- exampleLetters.ts    fictional demo letters with dates generated relative to today
 |-- lib/
 |   |-- pdf.ts               pdf.js text extraction (encrypted/invalid PDF handling)
 |   |-- ocr.ts               tesseract.js OCR over the vendored assets
@@ -88,8 +95,8 @@ file by hand.
 
 - No Tailwind in v0.1. Plain CSS with custom properties is fast to ship and easier to keep accessible. Revisit if it costs us velocity.
 - No state library. React state and context are sufficient for v0.1.
-- No client-side routing. Single-page flow until v0.2 needs more.
-- The locale is held in memory only (no cookie, no localStorage), consistent with "nothing persists by default" in `../docs/privacy.md`.
+- No client-side routing. Single-page flow until v0.2 needs more; the Terms and Privacy pages are plain hash views (`#terms`, `#privacy`) handled in App, readable before the consent gate is accepted.
+- The locale, the theme override, and consent-gate acceptance are held in memory only (no cookie, no localStorage), consistent with "nothing persists by default" in `../docs/privacy.md`.
 - OCR assets are vendored to our own origin and the production CSP sets `connect-src 'self'`, so the photo path makes no third-party network request. The host should also send the CSP (plus `frame-ancestors 'none'`) as a real header.
 - `noUncheckedIndexedAccess` is on in tsconfig because the prevented class of bugs is exactly the kind we cannot afford in a tool handling someone's coverage status.
 
