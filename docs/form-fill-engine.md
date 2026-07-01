@@ -126,9 +126,15 @@ the schema (CDASS field set; Medicaid additions still to come per step 3) in
 `web/public/forms/` with a registry entry at
 `rules/co/forms/cdass-attendant-packet-2026.yaml`, and the exact-copy Vitest test
 in `web/src/lib/fill/packet2026.test.ts` passes against the real template.
-Remaining: the Medicaid schema sections (step 3, needs CCDC input), capture reuse
-(step 7), the review-and-generate UI (step 9), and the IndexedDB archive
-(step 10). The numbered plan below is kept for the record.
+Steps 9 and 10 followed on the same day: a review-and-generate UI ships as an
+early preview at the `#fill` view (`web/src/components/FormFill.tsx`,
+schema-driven, edit then check-every-answer review then generate, behind the
+same consent gate as triage), and the personal archive persists through the
+single audited storage module `web/src/lib/archive.ts` (IndexedDB, strictly
+opt-in save, one-button delete, scrub-sensitive after generate). Remaining: the
+Medicaid schema sections (step 3, needs CCDC input), capture reuse (step 7),
+CCDC review of the preview, and its Spanish field labels. The numbered plan
+below is kept for the record.
 
 1. Add `pdf-lib` to `web/package.json`. Lazy-import it, like pdf.js and
    tesseract.js, so it loads only when a form is generated.

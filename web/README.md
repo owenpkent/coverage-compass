@@ -62,12 +62,18 @@ src/
 |   |-- LanguageToggle.tsx   English/Spanish switch
 |   |-- ThemeToggle.tsx      light/dark switch (session-only, follows system by default)
 |   |-- ConsentGate.tsx      click-through release before the tool is usable (session-only)
+|   |-- FormFill.tsx         review-and-generate form filler (#fill view, early preview)
 |   `-- LegalPage.tsx        renders the Terms of Use / Privacy Notice
 |-- content/
 |   `-- legal.ts             bilingual Terms of Use + Privacy Notice text (draft, pending counsel)
 |-- fixtures/
 |   `-- exampleLetters.ts    fictional demo letters with dates generated relative to today
 |-- lib/
+|   |-- archive.ts           the SINGLE audited storage module (IndexedDB, opt-in save)
+|   |-- download.ts          local blob-URL download helper
+|   |-- profile/schema.ts    profile schema: drives the fill UI and the form mappings
+|   |-- fill/util.ts         tolerant pdf-lib helpers (missing field -> warning, not crash)
+|   |-- fill/forms/          per-form mappings (CDASS packet 2026, embedded I-9)
 |   |-- pdf.ts               pdf.js text extraction (encrypted/invalid PDF handling)
 |   |-- ocr.ts               tesseract.js OCR over the vendored assets
 |   |-- deadline.ts          bilingual deadline-date extraction

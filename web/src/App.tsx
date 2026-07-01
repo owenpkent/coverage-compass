@@ -5,17 +5,18 @@ import { LanguageToggle } from "./components/LanguageToggle";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { ConsentGate } from "./components/ConsentGate";
 import { LegalPage } from "./components/LegalPage";
+import { FormFill } from "./components/FormFill";
 import { TERMS, PRIVACY } from "./content/legal";
 import { CCDC_PHONE } from "./lib/rules";
 
 const REPO_URL = "https://github.com/owenpkent/coverage-compass";
 const telHref = `tel:+1${CCDC_PHONE.replace(/\D/g, "")}`;
 
-type View = "home" | "terms" | "privacy";
+type View = "home" | "terms" | "privacy" | "fill";
 
 function viewFromHash(): View {
   const h = (typeof window === "undefined" ? "" : window.location.hash).replace(/^#/, "");
-  return h === "terms" || h === "privacy" ? h : "home";
+  return h === "terms" || h === "privacy" || h === "fill" ? h : "home";
 }
 
 export function App() {
@@ -58,7 +59,9 @@ export function App() {
         ? `${intl.formatMessage({ id: "footer.termsLink" })} - ${base}`
         : view === "privacy"
           ? `${intl.formatMessage({ id: "footer.privacyLink" })} - ${base}`
-          : base;
+          : view === "fill"
+            ? `${intl.formatMessage({ id: "fill.title" })} - ${base}`
+            : base;
   }, [view, intl]);
 
   return (
@@ -92,7 +95,12 @@ export function App() {
         ) : view === "privacy" ? (
           <LegalPage doc={PRIVACY} />
         ) : !accepted ? (
+          // The gate covers every view that touches personal documents or data:
+          // the triage home AND the form filler. Only the legal pages above are
+          // readable without accepting.
           <ConsentGate onAccept={() => setAccepted(true)} />
+        ) : view === "fill" ? (
+          <FormFill />
         ) : (
           <>
             <section aria-labelledby="hero-title" className="hero">
@@ -128,6 +136,20 @@ export function App() {
                   <FormattedMessage id="how.step3" />
                 </li>
               </ol>
+            </section>
+
+            <section aria-labelledby="fill-teaser-title" className="how">
+              <h2 id="fill-teaser-title">
+                <FormattedMessage id="fillTeaser.title" />
+              </h2>
+              <p>
+                <FormattedMessage id="fillTeaser.body" />
+              </p>
+              <p>
+                <a href="#fill">
+                  <FormattedMessage id="fillTeaser.link" />
+                </a>
+              </p>
             </section>
           </>
         )}

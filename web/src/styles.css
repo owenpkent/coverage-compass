@@ -629,6 +629,111 @@ p {
   justify-content: flex-end;
 }
 
+/* Form fill (review-and-generate preview) --------------------------------- */
+.fill {
+  padding-block: var(--space-4);
+}
+
+.fill-form-name {
+  font-weight: 700;
+}
+
+.fill-section {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-3) var(--space-4) var(--space-4);
+  margin-block: var(--space-4);
+  min-inline-size: 0;
+}
+
+.fill-section legend {
+  font-weight: 700;
+  padding-inline: var(--space-2);
+}
+
+.fill-section:disabled {
+  opacity: 0.6;
+}
+
+.fill-note {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.fill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-3);
+}
+
+.fill-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.fill-field label {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.fill-field input,
+.fill-field select {
+  font: inherit;
+  font-size: 1rem;
+  padding: var(--space-2);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  min-height: 44px;
+}
+
+.fill-field-checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.fill-field-checkbox input {
+  width: 1.5rem;
+  height: 1.5rem;
+  min-height: 0;
+  accent-color: var(--color-accent);
+}
+
+.fill-field-checkbox label {
+  font-weight: 400;
+}
+
+.fill-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-block: var(--space-3);
+}
+
+.review-list {
+  margin: 0 0 var(--space-4);
+}
+
+.review-row {
+  display: grid;
+  grid-template-columns: minmax(10rem, 18rem) 1fr;
+  gap: var(--space-2);
+  padding-block: var(--space-2);
+  border-block-end: 1px solid var(--color-border);
+}
+
+.review-row dt {
+  font-weight: 600;
+}
+
+.review-row dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
 /* Legal pages (Terms of Use, Privacy Notice) ------------------------------ */
 .legal {
   padding-block: var(--space-4);

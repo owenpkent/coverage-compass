@@ -69,6 +69,20 @@ describe("App", () => {
     expect(screen.getByText(/cannot guarantee privacy or security/i)).toBeInTheDocument();
   });
 
+  it("keeps the form filler behind the consent gate", async () => {
+    window.location.hash = "#fill";
+    renderWithProviders(<App />);
+    // Gate first: the filler handles personal documents.
+    expect(
+      screen.getByRole("heading", { level: 1, name: /before you start/i }),
+    ).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: /i understand and agree/i }));
+    expect(
+      await screen.findByRole("heading", { level: 1, name: /fill a form/i }),
+    ).toBeInTheDocument();
+    expect(screen.getByLabelText("First name")).toBeInTheDocument();
+  });
+
   it("lets the user pin light or dark theme", () => {
     renderWithProviders(<App />);
     const group = screen.getByRole("group", { name: /colors/i });
