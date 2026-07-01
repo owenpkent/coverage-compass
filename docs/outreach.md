@@ -67,6 +67,7 @@ Headline findings:
 - **Exemption-evidence reference:** SHVS medical-frailty toolkit with ICD-10 / CPT crosswalk.
 - **Clearest gap:** No one has shipped a Medicaid-specific, client-side, advocate-in-the-loop tool with an advocate-readable rules library.
 - **Correction to this plan:** the original Phase 3 list referenced "Stanford Legal Design Lab OCR-based notice translator." The survey could not find a specific shipped Stanford project matching that description. Confirm with the Lab directly or treat it as methodological prior art only.
+- **Addendum (2026-07-01):** [MyFriendBen](https://www.myfriendben.org/), the Denver-born open-source benefits screener, added as `research/prior-art.md` section 2.10. Complementary lane (prospective "what could I get" screening, no notice / exemption / appeals functionality, no H.R.1 product as of 2026-07-01), but the strongest candidate upstream referral partner in Colorado: 211 Colorado integration, Denver Human Services partnership, HCPF and Colorado Digital Service relationships, ten-plus languages. Their rules engine, PolicyEngine, is separately encoding the H.R.1 Medicaid work-requirement rules with statutory citations, a candidate cross-check oracle for `rules/co/exemptions.yaml`. New open questions 11 to 14 in the survey cover whether CCDC should open a MyFriendBen conversation.
 
 ## Phase 4: Anthropic outreach (pitch drafted 2026-05-18; sending TBD)
 
@@ -87,6 +88,7 @@ Drafted: see [`pitch-anthropic.md`](pitch-anthropic.md).
 4. Evaluation and red-teaming methodology: what should we borrow from prior CfA work rather than reinvent?
 5. Privacy-local architecture: any concerns with the "model never sees member data without advocate oversight" framing as the safety boundary?
 6. Other state coalitions in the H.R. 1 pipeline. If Anthropic / CfA already knows which states are ready, that informs whether the engine should lift in Q2 2027 or later.
+7. (Added 2026-07-01) Anthropic already funds an embedded Claude Corps fellow at MyFriendBen, the Denver benefits screener (see `research/prior-art.md` section 2.10). Does Anthropic see Coverage Compass as adjacent to that engagement, and is an introduction to MyFriendBen useful in either direction?
 
 ### Path in
 Direct outreach, in parallel with Phase 2. Lead with the pitch as written. Reference the existing CfA partnership as context, not as a gate. If Phase 2 produces a warm intro on Anthropic's side first, take it.

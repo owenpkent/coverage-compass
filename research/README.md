@@ -4,7 +4,7 @@ Working notes, prior-art surveys, and anonymized sample letters.
 
 ## What's here
 
-- [`prior-art.md`](prior-art.md): **complete (2026-05-11).** Survey of existing tools and policy material across Code for America, NHeLP, Justice in Aging, NDRN and state P&As, AAPD, The Arc, KFF, Urban Institute, CBPP, Georgetown CCF, SHVS, Stanford Legal Design Lab, and adjacent appeal-generator tools. Read this before scoping or build work.
+- [`prior-art.md`](prior-art.md): **complete (2026-05-11; MyFriendBen / PolicyEngine addendum added 2026-07-01).** Survey of existing tools and policy material across Code for America, NHeLP, Justice in Aging, NDRN and state P&As, AAPD, The Arc, KFF, Urban Institute, CBPP, Georgetown CCF, SHVS, Stanford Legal Design Lab, adjacent appeal-generator tools, and (section 2.10) MyFriendBen and PolicyEngine. Read this before scoping or build work.
 
 ## Planned
 
