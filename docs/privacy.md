@@ -85,7 +85,7 @@ Two honest notes about hosting that this document's "we collect nothing" princip
 
 - No new dependencies without a deps review (look at the package, its dependency tree, its maintenance status, its license).
 - No code that makes network requests except where explicitly justified and documented.
-- No code that writes to localStorage, sessionStorage, IndexedDB, or cookies without going through a single audited storage module.
+- No code that writes to localStorage, sessionStorage, IndexedDB, or cookies without going through the single audited storage module (`web/src/lib/archive.ts`, whose only write path is the explicit "Save on this device" action). Enforced by a test (`web/src/privacy-guard.test.ts`) that fails the suite if any other source file touches a storage API.
 - No `eval`, `Function()`, dynamic script tags, or other code-loading patterns.
 - Lint rules will enforce as many of these as possible.
 

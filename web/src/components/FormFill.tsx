@@ -13,6 +13,7 @@ import {
   type ProfileField,
 } from "../lib/profile/schema";
 import { fillPacket2026, type FillPacketOptions } from "../lib/fill/forms/packet2026";
+import { importPacket2026 } from "../lib/extract/packet2026";
 import { todayIso } from "../lib/fill/util";
 import { downloadPdfBytes } from "../lib/download";
 import { saveArchive, loadArchive, clearArchive, type ArchiveData } from "../lib/archive";
@@ -126,6 +127,26 @@ export function FormFill() {
     setNotice(intl.formatMessage({ id: "fill.scrubbedNotice" }));
   }
 
+  // Carry-forward: copy the typed answers out of a previously filled packet.
+  // The result lands in the editable form, never straight into generate; the
+  // check-every-answer review still stands between the import and the PDF.
+  async function importFilled(file: File) {
+    setNotice("");
+    try {
+      const bytes = await file.arrayBuffer();
+      const res = await importPacket2026(bytes);
+      if (res.count < 3) {
+        setNotice(intl.formatMessage({ id: "fill.importEmpty" }));
+        return;
+      }
+      setProfile((prev) => ({ ...prev, ...res.profile }) as Profile);
+      setEmployer((prev) => ({ ...prev, ...res.employer }) as Employer);
+      setNotice(intl.formatMessage({ id: "fill.importedNotice" }, { count: res.count }));
+    } catch {
+      setNotice(intl.formatMessage({ id: "fill.importError" }));
+    }
+  }
+
   async function generate() {
     setBusy(true);
     setGenError(false);
@@ -182,6 +203,26 @@ export function FormFill() {
           <p className="fill-note">
             <FormattedMessage id="fill.editHelp" />
           </p>
+
+          <fieldset className="fill-section">
+            <legend>{intl.formatMessage({ id: "fill.importLegend" })}</legend>
+            <p className="fill-note">
+              <FormattedMessage id="fill.importHelp" />
+            </p>
+            <div className="fill-field">
+              <label htmlFor="ff-import">{intl.formatMessage({ id: "fill.importLabel" })}</label>
+              <input
+                id="ff-import"
+                type="file"
+                accept="application/pdf,.pdf"
+                onChange={(e) => {
+                  const f = e.target.files?.[0];
+                  e.target.value = "";
+                  if (f) void importFilled(f);
+                }}
+              />
+            </div>
+          </fieldset>
 
           <fieldset className="fill-section">
             <legend>{intl.formatMessage({ id: "fill.archiveLegend" })}</legend>
