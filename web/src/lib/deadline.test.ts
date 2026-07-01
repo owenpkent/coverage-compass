@@ -70,4 +70,33 @@ describe("extractDeadline", () => {
     const r = extractDeadline("Your coverage is effective 01/01/2026.", { now: NOW });
     expect(r.foundInLetter).toBe(false);
   });
+
+  it("reads a deadline after a bare 'by' when the date follows immediately", () => {
+    const r = extractDeadline("Please return the completed packet by June 30, 2026.", {
+      now: NOW,
+    });
+    expect(r.foundInLetter).toBe(true);
+    expect(r.deadlineISO).toBe("2026-06-30");
+  });
+
+  it("does not treat 'reviewed by <name> on <date>' as a deadline", () => {
+    const r = extractDeadline("Reviewed by John Smith on 06/01/2026.", { now: NOW });
+    expect(r.foundInLetter).toBe(false);
+  });
+
+  it("reads a Spanish deadline after 'para el'", () => {
+    const r = extractDeadline("Devuelva el formulario firmado para el 30 de junio de 2026.", {
+      now: NOW,
+    });
+    expect(r.foundInLetter).toBe(true);
+    expect(r.deadlineISO).toBe("2026-06-30");
+  });
+
+  it("reads a Spanish deadline after 'hasta el'", () => {
+    const r = extractDeadline("Tiene hasta el 15 de agosto de 2026 para responder.", {
+      now: NOW,
+    });
+    expect(r.foundInLetter).toBe(true);
+    expect(r.deadlineISO).toBe("2026-08-15");
+  });
 });

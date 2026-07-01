@@ -7,6 +7,7 @@ import { useLocale } from "../i18n/LocaleProvider";
 import { classifyLetter, type LetterClassification } from "../lib/rules";
 import { extractTextFromPdf, EncryptedPdfError, InvalidPdfError } from "../lib/pdf";
 import { extractTextFromImage, OcrAbortError } from "../lib/ocr";
+import { getExampleLetters } from "../fixtures/exampleLetters";
 
 type Phase = "idle" | "working" | "error";
 type ErrorKind =
@@ -150,6 +151,14 @@ export function Triage() {
     succeed(text, id);
   }
 
+  // A fictional sample letter takes the same path as pasted text.
+  function handleExample(text: string) {
+    const id = ++reqId.current;
+    abortRef.current?.abort();
+    setShowPaste(false);
+    succeed(text, id);
+  }
+
   function reset() {
     abortRef.current?.abort();
     reqId.current++;
@@ -239,6 +248,27 @@ export function Triage() {
             </Button>
           </div>
         )}
+      </div>
+
+      <div className="examples">
+        <h2 className="examples-heading">
+          <FormattedMessage id="examples.heading" />
+        </h2>
+        <p className="examples-note">
+          <FormattedMessage id="examples.note" />
+        </p>
+        <div className="examples-row">
+          {getExampleLetters().map((ex) => (
+            <Button
+              key={ex.id}
+              className="btn btn-secondary"
+              isDisabled={working}
+              onPress={() => handleExample(ex.text)}
+            >
+              {intl.formatMessage({ id: ex.labelKey })}
+            </Button>
+          ))}
+        </div>
       </div>
     </div>
   );

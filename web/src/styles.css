@@ -33,8 +33,27 @@
   --container-max: 48rem;
 }
 
+/* Theme selection. Default follows the system preference; the header toggle
+   pins <html data-theme="light|dark"> for the session (see ThemeToggle.tsx).
+   The two dark blocks below must stay identical: CSS has no mixins, and the
+   manual override needs to win outside the media query. */
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #0f172a;
+  --color-fg: #f1f5f9;
+  --color-muted: #cbd5e1;
+  --color-accent: #93c5fd;
+  --color-accent-fg: #0f172a;
+  --color-focus: #93c5fd;
+  --color-border: #334155;
+  color-scheme: dark;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --color-bg: #0f172a;
     --color-fg: #f1f5f9;
     --color-muted: #cbd5e1;
@@ -42,6 +61,7 @@
     --color-accent-fg: #0f172a;
     --color-focus: #93c5fd;
     --color-border: #334155;
+    color-scheme: dark;
   }
 }
 
@@ -543,4 +563,84 @@ p {
 
 .action-label {
   font-weight: 700;
+}
+
+/* Demo badge -------------------------------------------------------------- */
+.demo-badge {
+  display: inline-block;
+  margin-inline-start: var(--space-1);
+  padding: 0 var(--space-2);
+  background: var(--color-warning);
+  color: #ffffff;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  vertical-align: middle;
+}
+
+/* Consent gate ------------------------------------------------------------ */
+.consent {
+  padding-block: var(--space-5);
+}
+
+.consent-points {
+  padding-inline-start: var(--space-4);
+  margin-block: 0 var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.consent-accept {
+  font-size: 1.15rem;
+}
+
+/* Example letters --------------------------------------------------------- */
+.examples {
+  margin-block: var(--space-5);
+  border-block-start: 1px solid var(--color-border);
+  padding-block-start: var(--space-4);
+}
+
+.examples-heading {
+  font-size: 1.15rem;
+  margin-block: 0 var(--space-1);
+}
+
+.examples-note {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  margin-block: 0 var(--space-3);
+}
+
+.examples-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* Header controls (theme + language) -------------------------------------- */
+.header-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: flex-end;
+}
+
+/* Legal pages (Terms of Use, Privacy Notice) ------------------------------ */
+.legal {
+  padding-block: var(--space-4);
+  max-width: 42rem;
+}
+
+.legal h2 {
+  font-size: 1.2rem;
+  margin-block: var(--space-4) var(--space-2);
+}
+
+.legal-updated {
+  color: var(--color-muted);
+  font-size: 0.95rem;
 }

@@ -66,5 +66,36 @@
 
   "footer.builtWith": "Built with the Colorado Cross-Disability Coalition. Open source.",
   "footer.help": "Need help right now? Call CCDC at {phone}.",
-  "footer.privacyLink": "How your privacy is protected"
+  "footer.privacyLink": "Privacy Notice",
+  "footer.termsLink": "Terms of Use",
+  "footer.sourceLink": "Source code",
+
+  "theme.label": "Colors",
+  "theme.light": "Light",
+  "theme.dark": "Dark",
+
+  "legal.back": "Back to the tool",
+  "legal.updated": "Last updated: {date}",
+  "legal.draftNote": "Draft for the demonstration period. Not yet reviewed by a lawyer.",
+  "consent.legalLinks": "By continuing, you also agree to the {terms} and the {privacy}.",
+
+  "app.demoBadge": "Demo",
+
+  "consent.title": "Before you start",
+  "consent.demoNotice": "This is a demonstration. It is an early version, shown for feedback. It is not yet a public service.",
+  "consent.intro": "Please read this, then agree at the bottom.",
+  "consent.local": "Private by design. Your letter and everything you type stay on this device. There is no server and no account. Nothing you open here is sent anywhere or kept after you close this tab.",
+  "consent.draft": "Draft content. The guidance has not yet been reviewed by CCDC advocates, and the Spanish is awaiting review by a native speaker. A deadline or a step could be wrong.",
+  "consent.notAdvice": "Not legal advice. This tool gives general information. It does not give legal or medical advice, and it does not file anything for you. Always confirm what it says against your letter, your county office, or CCDC.",
+  "consent.yourDocs": "Your documents are your choice. You decide what to open here. Health information on your screen can be seen by people around you. On a shared or public computer, close this tab when you are done.",
+  "consent.noWarranty": "No warranty. This free tool is provided as is. By continuing, you agree that the people and organizations who made it are not responsible for decisions you make based on it, or for any loss connected to using it.",
+  "consent.help": "Questions, or need help right now? Call CCDC at {phone}.",
+  "consent.agree": "I understand and agree",
+
+  "examples.heading": "Just looking? Try an example",
+  "examples.note": "These sample letters are made up for demonstration. They are not about any real person.",
+  "examples.termination": "Coverage ending: missing paperwork",
+  "examples.renewal": "Renewal packet (a letter in Spanish)",
+  "examples.workreq": "New work-reporting notice",
+  "examples.denial": "Exemption denied"
 }

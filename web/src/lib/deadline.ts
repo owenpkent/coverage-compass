@@ -59,6 +59,14 @@ const DEADLINE_KEYWORDS = [
   "terminara el", "termina el", "su cobertura terminara",
 ];
 
+// Bare triggers that read as deadlines only when a date follows immediately:
+// "by June 30, 2026", "para el 30 de junio de 2026", "hasta el 15 de agosto".
+// These words appear constantly in non-deadline prose ("reviewed by John
+// Smith", "para el condado"), so unlike the phrase keywords above they get a
+// near-zero window where triggers are collected. The word boundary and the
+// required whitespace keep "baby" or "nearby" from firing.
+const TIGHT_TRIGGERS = /\b(?:by|para el|hasta el)\s+/g;
+
 /** Lowercase and strip diacritics so "Renovación" and "renovacion" compare equal. */
 export function normalize(text: string): string {
   // Strip combining diacritical marks (U+0300-U+036F) after NFD decomposition.
@@ -71,6 +79,12 @@ interface DateMatch {
   year: number;
   month: number; // 1-based
   day: number;
+}
+
+interface Trigger {
+  pos: number; // position just after the trigger text, where the date usually sits
+  min: number; // how far before `pos` a date may start and still belong to it
+  max: number; // how far after `pos` a date may start and still belong to it
 }
 
 function valid(year: number, month: number, day: number): boolean {
@@ -165,21 +179,25 @@ export function extractDeadline(text: string, options: ExtractDeadlineOptions = 
     return { deadlineISO: null, daysUntilDeadline: null, foundInLetter: false };
   }
 
-  // Locate every deadline keyword occurrence.
-  const keywordPositions: number[] = [];
+  // Window (in characters) within which a date "belongs to" a phrase keyword.
+  const WINDOW = 40;
+
+  // Locate every deadline trigger: phrase keywords get the generous window,
+  // bare triggers ("by", "para el", "hasta el") require the date immediately.
+  const triggers: Trigger[] = [];
   for (const kw of DEADLINE_KEYWORDS) {
     let from = 0;
     for (;;) {
       const at = norm.indexOf(kw, from);
       if (at === -1) break;
       // Record the position just after the keyword (where the date usually sits).
-      keywordPositions.push(at + kw.length);
+      triggers.push({ pos: at + kw.length, min: -4, max: WINDOW });
       from = at + kw.length;
     }
   }
-
-  // Window (in characters) within which a date "belongs to" a deadline keyword.
-  const WINDOW = 40;
+  for (const m of norm.matchAll(TIGHT_TRIGGERS)) {
+    triggers.push({ pos: (m.index ?? 0) + m[0].length, min: 0, max: 2 });
+  }
 
   // Pick the date closest to any keyword, requiring the keyword to come shortly
   // before the date (how deadlines actually read: "respond by <date>"). On an
@@ -189,9 +207,9 @@ export function extractDeadline(text: string, options: ExtractDeadlineOptions = 
   let bestAbs = Infinity;
   let bestSigned = -Infinity;
   for (const d of dates) {
-    for (const kp of keywordPositions) {
-      const distance = d.index - kp;
-      if (distance < -4 || distance > WINDOW) continue;
+    for (const t of triggers) {
+      const distance = d.index - t.pos;
+      if (distance < t.min || distance > t.max) continue;
       const absD = Math.abs(distance);
       const better =
         best === null ||
