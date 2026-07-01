@@ -1,0 +1,27 @@
+# First entry in the document library (docs/document-library.md).
+#
+# For this packet the field map lives in code rather than in this file:
+# the mapping has conditional logic (live-in EVV attestation, direct deposit
+# vs paper check, per-digit routing/account boxes, age-gated attestations)
+# that a flat YAML map cannot express. Flat `fields:` maps will be used for
+# simpler forms. This entry is the registry record: identity, provenance,
+# template hash, status, and where the mapping lives.
+
+id: cdass-attendant-packet-2026
+title:
+  en: CDASS/PPL Attendant Enrollment Packet (2026)
+  es: Paquete de inscripción de asistente CDASS/PPL (2026)
+template: web/public/forms/CO-CDASS-Attendant-Packet-2026.pdf
+source_url: "https://www.publicpartnerships.com/"  # verify the canonical PPL download page with CCDC
+revision: "2026 CFC-and-Waiver"
+sha256: "6d7f4d1e9a34c6ca1627d663a7c68a2029491c49127eb6eea7b2efcc6a3b9d1f"
+status: draft # exact-copy smoke test passes (web/src/lib/fill/packet2026.test.ts); awaiting CCDC advocate review
+reviewed_by: ""
+mapping_module: web/src/lib/fill/forms/packet2026.ts
+signature_policy: never-fabricate
+notes: >
+  Ported from the proven CDASS Enroll mapping (github.com/owenpkent/cdass-enroll).
+  The employer signature image is the only drawn signature, and only from an
+  image the employer explicitly provided; the attendant and all other parties
+  sign by hand. The packet embeds the USCIS I-9 (pages 19-22), mapped in
+  web/src/lib/fill/forms/i9.ts.
