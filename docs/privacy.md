@@ -22,7 +22,7 @@ Nothing.
 
 By default, nothing persists between sessions. The dropped PDF lives in browser memory while the tab is open and is discarded on close.
 
-When v0.2 adds the renewal calendar, deadlines and user-entered notes are stored in IndexedDB on the user's device. This is local-only with no sync. The user can clear all stored data with one button in settings.
+The one exception is explicit and user-initiated: the form filler's personal archive. Pressing "Save on this device" stores the entered profile in IndexedDB through the single audited storage module (`web/src/lib/archive.ts`), local-only with no sync, one record, deletable with one button, with a scrub action that clears sensitive fields after generating. Nothing writes to it except that button, and the privacy-guard test keeps it that way. The planned renewal calendar (v0.2) will use the same audited module under the same opt-in rule.
 
 ## Threat model
 
@@ -72,11 +72,20 @@ Two delivery details matter:
   attempt that tricks a user into acting on a framed copy is the residual gap we
   name rather than hide.
 
+## The hosted demonstration (added 2026-07-01)
+
+A demo deployment is live at [coverage-compass-6ky.pages.dev](https://coverage-compass-6ky.pages.dev), on Cloudflare Pages (chosen because it honors the `_headers` file, so the full CSP and `frame-ancestors 'none'` are sent as real response headers).
+
+Two honest notes about hosting that this document's "we collect nothing" principle needs alongside it:
+
+- **We** collect nothing, but the hosting provider's infrastructure sees standard connection metadata (IP address, user agent) whenever a browser downloads the app's static files. That is true of serving any website from any host and is outside our control. No document content is ever in those requests; the CSP forbids the app from sending anything anywhere.
+- The demo sits behind a bilingual click-through release, and in-app **Terms of Use** and **Privacy Notice** pages (`#terms`, `#privacy`) state the as-is, no-warranty, waiver-and-release terms in plain language. Both are drafts pending CCDC counsel review. Acceptance of the gate is session-only React state: no cookie, no localStorage, so it reappears every visit.
+
 ## What we ask of contributors
 
 - No new dependencies without a deps review (look at the package, its dependency tree, its maintenance status, its license).
 - No code that makes network requests except where explicitly justified and documented.
-- No code that writes to localStorage, sessionStorage, IndexedDB, or cookies without going through a single audited storage module.
+- No code that writes to localStorage, sessionStorage, IndexedDB, or cookies without going through the single audited storage module (`web/src/lib/archive.ts`, whose only write path is the explicit "Save on this device" action). Enforced by a test (`web/src/privacy-guard.test.ts`) that fails the suite if any other source file touches a storage API.
 - No `eval`, `Function()`, dynamic script tags, or other code-loading patterns.
 - Lint rules will enforce as many of these as possible.
 
@@ -84,5 +93,5 @@ Two delivery details matter:
 
 A privacy summary visible from the landing page:
 - "Your documents never leave this device. We don't have a server. We can't see what you upload."
-- A link to this document for the full version.
+- The in-app Privacy Notice (`#privacy`) for the user-facing version, and this document for the engineering version.
 - A link to the GitHub repo for anyone who wants to audit.

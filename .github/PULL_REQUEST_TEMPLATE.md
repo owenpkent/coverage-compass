@@ -41,7 +41,7 @@
 ## Tests
 
 - [ ] Added or updated tests.
-- [ ] `npm run test:run` passes locally.
+- [ ] `npm run test` passes locally.
 - [ ] `npm run lint` passes locally.
 
 ## Documentation

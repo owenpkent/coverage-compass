@@ -4,7 +4,8 @@ Working notes, prior-art surveys, and anonymized sample letters.
 
 ## What's here
 
-- [`prior-art.md`](prior-art.md): **complete (2026-05-11).** Survey of existing tools and policy material across Code for America, NHeLP, Justice in Aging, NDRN and state P&As, AAPD, The Arc, KFF, Urban Institute, CBPP, Georgetown CCF, SHVS, Stanford Legal Design Lab, and adjacent appeal-generator tools. Read this before scoping or build work.
+- [`state-data-access.md`](state-data-access.md): **complete (2026-07-02).** What access to Colorado Medicaid data actually exists: the live member-authorized Patient Access API (SAFHIR), the PEAK Pro / MA-site partner lane, the CBMS notice-template landscape (letters print their template IDs; the 63-template inventory is a requestable record), the legal posture, and the H.R.1 verification context. Feeds [`../docs/proposal-hcpf-data-access.md`](../docs/proposal-hcpf-data-access.md).
+- [`prior-art.md`](prior-art.md): **complete (2026-05-11; MyFriendBen / PolicyEngine addendum added 2026-07-01).** Survey of existing tools and policy material across Code for America, NHeLP, Justice in Aging, NDRN and state P&As, AAPD, The Arc, KFF, Urban Institute, CBPP, Georgetown CCF, SHVS, Stanford Legal Design Lab, adjacent appeal-generator tools, and (section 2.10) MyFriendBen and PolicyEngine. Read this before scoping or build work.
 
 ## Planned
 

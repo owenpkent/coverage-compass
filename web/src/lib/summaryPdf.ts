@@ -126,15 +126,6 @@ export async function downloadSummaryPdf(
   fileName = "coverage-compass-summary.pdf",
 ): Promise<void> {
   const bytes = await buildSummaryPdf(c, s);
-  const blob = new Blob([bytes as BlobPart], { type: "application/pdf" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = fileName;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-  // Revoke on a later tick: revoking synchronously can race the browser's async
-  // download dispatch and produce an empty/failed save in some browsers.
-  setTimeout(() => URL.revokeObjectURL(url), 0);
+  const { downloadPdfBytes } = await import("./download");
+  downloadPdfBytes(bytes, fileName);
 }

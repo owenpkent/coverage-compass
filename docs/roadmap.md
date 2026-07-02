@@ -34,10 +34,10 @@ Ships before the first wave of notification letters goes out from HCPF in August
 - [ ] Manual screen-reader pass (NVDA, VoiceOver, keyboard-only)
 - [ ] 10 to 20 real anonymized Colorado letters to validate the classifier
 - [ ] 6th-grade reading-level check enforced in CI
-- [ ] Hosted on a stable URL with SRI and reproducible build
+- [ ] Hosted on a stable URL with SRI and reproducible build (a demo deployment is live at [coverage-compass-6ky.pages.dev](https://coverage-compass-6ky.pages.dev) since 2026-07-01, behind a click-through release; SRI and the reproducible-build story are still pending)
 - [ ] CCDC advocate user test passes
 
-**Exit criteria:** all acceptance criteria in `spec-v0.1.md` pass. The build is done; the remaining items are CCDC content review, validation against real letters, native Spanish review, manual screen-reader testing, and a deploy.
+**Exit criteria:** all acceptance criteria in `spec-v0.1.md` pass. The build is done and a demo is deployed; the remaining items are CCDC content review, validation against real letters, native Spanish review, manual screen-reader testing, and hardening the deploy (SRI, reproducible build, legal review of the release wording).
 
 ## v0.2 Exemption Packet (target: November 2026 to January 2027)
 
@@ -48,8 +48,8 @@ The write side is already proven. The CDASS Enroll proof of concept is a working
 - [ ] Document classifier for SSA award letters and waiver enrollment letters
 - [ ] Tax-return reader for W-2 / 1099-NEC / Schedule C / Schedule SE (PDF, not IRS API)
 - [ ] Exemption decision tree (SSDI -> HCBS -> LTSS -> Buy-In -> medically frail -> caregiver)
-- [ ] Packet template generator (PDF output with cover letter and labeled exhibits). The PDF form-fill here adopts the proven CDASS Enroll engine and maps it to the Medicaid forms rather than rebuilding it; see [`form-fill-engine.md`](form-fill-engine.md)
-- [ ] Carry-forward pre-fill: keep the archive across years and pre-fill next year's renewal and redetermination from the prior filing, turning a multi-page yearly form into a review-and-correct step
+- [ ] Packet template generator (PDF output with cover letter and labeled exhibits). The engine adoption is done (2026-07-02): the ported fill layer generates the real CDASS packet in the demo's `#fill` preview; what remains here is the Medicaid form mappings and the cover-letter/exhibit assembly; see [`form-fill-engine.md`](form-fill-engine.md)
+- [ ] Carry-forward pre-fill: keep the archive across years and pre-fill next year's renewal and redetermination from the prior filing, turning a multi-page yearly form into a review-and-correct step. The mechanism shipped 2026-07-02 for the CDASS packet (import a previously filled packet, review, generate); extending it to Medicaid renewals awaits the form mappings
 - [ ] CDASS care-hours worksheet pre-fill: carry the itemized minutes-per-task care plan (the IHSS Care Plan) forward from the prior worksheet and the archive
 - [ ] Renewal calendar with deadline tracking (IndexedDB, local only)
 - [ ] Updated CCDC user test
