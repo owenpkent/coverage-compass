@@ -1,6 +1,6 @@
 # Document library (design, v0.2)
 
-Status: **design only** (written 2026-07-01). Nothing here is built yet. The write side it depends on is proven in CDASS Enroll and is being ported into `web/src/lib` per [`form-fill-engine.md`](form-fill-engine.md).
+Status: **first entry live** (design written 2026-07-01; updated 2026-07-02). The write side is ported into `web/src/lib` per [`form-fill-engine.md`](form-fill-engine.md), and the library's first registry entry exists: `rules/co/forms/cdass-attendant-packet-2026.yaml` (status `draft`, exact-copy smoke test passing, carry-forward import working, awaiting CCDC advocate review). The "your own document" tier below remains design.
 
 ## The idea
 

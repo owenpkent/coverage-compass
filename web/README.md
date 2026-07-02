@@ -74,6 +74,7 @@ src/
 |   |-- profile/schema.ts    profile schema: drives the fill UI and the form mappings
 |   |-- fill/util.ts         tolerant pdf-lib helpers (missing field -> warning, not crash)
 |   |-- fill/forms/          per-form mappings (CDASS packet 2026, embedded I-9)
+|   |-- extract/             carry-forward: read typed answers out of a filled packet
 |   |-- pdf.ts               pdf.js text extraction (encrypted/invalid PDF handling)
 |   |-- ocr.ts               tesseract.js OCR over the vendored assets
 |   |-- deadline.ts          bilingual deadline-date extraction

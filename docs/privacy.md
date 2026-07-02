@@ -22,7 +22,7 @@ Nothing.
 
 By default, nothing persists between sessions. The dropped PDF lives in browser memory while the tab is open and is discarded on close.
 
-When v0.2 adds the renewal calendar, deadlines and user-entered notes are stored in IndexedDB on the user's device. This is local-only with no sync. The user can clear all stored data with one button in settings.
+The one exception is explicit and user-initiated: the form filler's personal archive. Pressing "Save on this device" stores the entered profile in IndexedDB through the single audited storage module (`web/src/lib/archive.ts`), local-only with no sync, one record, deletable with one button, with a scrub action that clears sensitive fields after generating. Nothing writes to it except that button, and the privacy-guard test keeps it that way. The planned renewal calendar (v0.2) will use the same audited module under the same opt-in rule.
 
 ## Threat model
 
