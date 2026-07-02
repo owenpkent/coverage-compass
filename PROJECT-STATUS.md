@@ -132,7 +132,7 @@ Denial-letter classifier + structured interview + draft appeal routed to a CCDC 
 | CCDC | Confirmed partner. Scoping conversation held. Owen is a member. | Rule-content review, first anonymized sample letters, and a named advocate reviewer for `rules/**`. |
 | Code for America | Pitch drafted, scoped to Safety Net Innovation Lab and Colorado brigade. | Send. Open with the `work-requirements-self-advocacy-tool` overlap question. |
 | Anthropic | Pitch drafted, scoped to the existing CfA public-benefits collaboration. | Send directly, in parallel with CfA. Reference the CfA partnership as context, not as a gate. |
-| HCPF | No outreach planned in this phase. CCDC owns the HCPF relationship. | Defer until CCDC says otherwise. |
+| HCPF | Data-access proposal drafted 2026-07-02 ([`docs/proposal-hcpf-data-access.md`](docs/proposal-hcpf-data-access.md)): notice-template inventory, Patient Access API registration, optional PEAK Pro advocate access. Research in [`research/state-data-access.md`](research/state-data-access.md). CCDC owns the HCPF relationship. | CCDC reviews the proposal and decides whether to carry it. Meanwhile: join the Member Correspondence Improvements stakeholder meetings and use HCPF's published sample notices as classifier fixtures. |
 | Stanford Legal Design Lab | Outreach plan referenced an "OCR notice translator." Survey did not find a specific shipped project matching. | Treat as methodological prior art unless the Lab confirms otherwise. |
 
 Contact log lives in [`docs/outreach.md`](docs/outreach.md) (currently empty).

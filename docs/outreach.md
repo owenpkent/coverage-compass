@@ -93,6 +93,21 @@ Drafted: see [`pitch-anthropic.md`](pitch-anthropic.md).
 ### Path in
 Direct outreach, in parallel with Phase 2. Lead with the pitch as written. Reference the existing CfA partnership as context, not as a gate. If Phase 2 produces a warm intro on Anthropic's side first, take it.
 
+## Phase 5: HCPF data access (proposal drafted 2026-07-02; sending gated on CCDC)
+
+### Goal
+Get (1) the CBMS notice-template inventory so the classifier identifies letters exactly (CBMS letters print template IDs in their footers), (2) a registration path to Health First Colorado's live, member-authorized Patient Access API so a member can choose to let the tool see their own eligibility status, and (3) if CCDC wants it, PEAK Pro read-only access for CCDC advocates under the CBO user type HCPF's access form already defines.
+
+### The documents
+- Research: [`../research/state-data-access.md`](../research/state-data-access.md) (adversarially verified 2026-07-02).
+- Proposal: [`proposal-hcpf-data-access.md`](proposal-hcpf-data-access.md) (draft; three tiers, Tier 1 is information-only and needs no policy change).
+
+### Path in
+CCDC owns the HCPF relationship, so CCDC reviews the proposal first and decides whether and how to carry it. Independent low-lift openers that need no permission: join HCPF's quarterly Member Correspondence Improvements stakeholder meetings (hcpf_stakeholders@state.co.us; SB 17-121 directs HCPF to seek advocate input), and pull the already-public sample notices (the MAGI renewal packet and the August 2026 work-requirements sample notice) into the classifier fixtures now.
+
+### Key technical question to resolve before any build
+Whether the SAFHIR Colorado tenant supports public (secretless, PKCE) SMART clients. If not, member-authorized status checks would need a token-exchange relay, which is a real change to the zero-server posture and needs its own privacy analysis before we would consider it.
+
 ## Contact log
 
 Format: date, person/org, channel, status, notes.
