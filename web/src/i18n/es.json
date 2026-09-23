@@ -12,7 +12,7 @@
   "drop.or": "o",
   "drop.cta": "Elegir un archivo",
   "drop.help": "Acepta PDF, JPG o PNG. Su archivo nunca sale de este dispositivo.",
-  "drop.aria": "Suelte aquí un PDF o una foto de su carta, o presione Enter para elegir un archivo.",
+  "drop.aria": "Suelte aquí un PDF o una foto de su carta.",
   "drop.reading": "Leyendo {name}…",
   "drop.recognizing": "Leyendo la foto…",
   "paste.toggle": "O pegue el texto en su lugar",

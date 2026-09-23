@@ -12,7 +12,7 @@
   "drop.or": "or",
   "drop.cta": "Choose a file",
   "drop.help": "Accepts PDF, JPG, or PNG. Your file never leaves this device.",
-  "drop.aria": "Drop a PDF or photo of your letter here, or press Enter to choose a file.",
+  "drop.aria": "Drop a PDF or photo of your letter here.",
   "drop.reading": "Reading {name}…",
   "drop.recognizing": "Reading the photo…",
   "paste.toggle": "Or paste the text instead",

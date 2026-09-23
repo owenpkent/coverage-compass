@@ -36,6 +36,14 @@ describe("LetterDropzone", () => {
     expect(visibleFileChooser()).toBeInTheDocument();
   });
 
+  it("does not promise that Enter opens a file chooser, since the drop zone itself has none", () => {
+    renderWithProviders(<LetterDropzone onFile={vi.fn()} />);
+
+    const dropzone = screen.getByLabelText(/drop a pdf or photo of your letter here/i);
+    expect(dropzone).toHaveAccessibleName(/drop a pdf or photo of your letter here/i);
+    expect(dropzone).not.toHaveAccessibleName(/enter/i);
+  });
+
   it("renders the chooser as a native keyboard-focusable button", () => {
     renderWithProviders(<LetterDropzone onFile={vi.fn()} />);
 
