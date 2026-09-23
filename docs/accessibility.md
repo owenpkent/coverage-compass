@@ -30,7 +30,7 @@ The users are disabled. The advocacy organization is disability-led. If the app 
 - Semantic HTML first. ARIA only where semantic HTML doesn't suffice.
 - All form inputs have associated labels.
 - Status changes announced via `aria-live`.
-- Manually tested with NVDA on Windows, VoiceOver on macOS and iOS, TalkBack on Android.
+- To be manually tested with NVDA on Windows, VoiceOver on macOS and iOS, and TalkBack on Android. What has actually run so far is recorded once, under [Manual](#manual) below.
 - React Aria Components is the UI primitives layer because it ships these behaviors by default.
 
 ### Cognitive
@@ -62,13 +62,33 @@ The users are disabled. The advocacy organization is disability-led. If the app 
 - Reading-level check in CI for all user-facing copy.
 
 ### Manual
-- Every release tested with:
-  - NVDA + Firefox on Windows
-  - VoiceOver + Safari on macOS
-  - VoiceOver + Safari on iOS
-  - TalkBack + Chrome on Android
-  - Keyboard-only on Firefox and Chrome
-- Every release reviewed by a CCDC advocate (ideally a disabled tester).
+
+Target for every release:
+- NVDA + Firefox on Windows
+- VoiceOver + Safari on macOS
+- VoiceOver + Safari on iOS
+- TalkBack + Chrome on Android
+- Keyboard-only on Firefox and Chrome
+- Reviewed by a CCDC advocate (ideally a disabled tester)
+
+What has actually run, as of 2026-09-22: one pass, NVDA 2026.2 with Chrome 153
+on Windows 11, real keystrokes, 11 flows (skip link, accepting the release,
+running an example letter, reading the result line by line, "Check another
+letter", pasting text, the form filler link, the Terms of Use link, dark
+theme, Spanish, Enter on the drop zone). Two clean runs with identical
+output. It found two defects, filed as
+[#70](https://github.com/owenpkent/coverage-compass/issues/70) and
+[#71](https://github.com/owenpkent/coverage-compass/issues/71).
+
+It ran against the Vite dev server (`npm run dev`) at commit `57e8120`, not a
+production build, and that mattered once. The form filler link's clean "Your
+information, heading, level 2" came from React StrictMode behavior that only
+exists in dev; a production build would have read the whole view instead
+([#74](https://github.com/owenpkent/coverage-compass/pull/74)). Run future passes
+against `npm run build && npm run preview`.
+
+Not yet run: a pass against a production build, NVDA + Firefox, VoiceOver on
+macOS and iOS, TalkBack, a human keyboard-only pass, and CCDC advocate review.
 
 ## What we won't do
 
