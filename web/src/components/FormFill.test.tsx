@@ -43,6 +43,16 @@ describe("FormFill", () => {
     expect(screen.getByRole("button", { name: /generate the filled pdf/i })).toBeInTheDocument();
   });
 
+  it("leaves focus alone on mount and moves it to the new phase's heading on a phase change", () => {
+    renderWithProviders(<FormFill />);
+    // Entering the view focuses its h1 from App.tsx, above the preview note.
+    expect(document.activeElement).toBe(document.body);
+    fireEvent.click(screen.getByRole("button", { name: /review my answers/i }));
+    expect(document.activeElement).toBe(
+      screen.getByRole("heading", { level: 2, name: /check every answer/i }),
+    );
+  });
+
   it("renders the document-scan inputs (scans stay on-device)", () => {
     renderWithProviders(<FormFill />);
     expect(screen.getByLabelText(/driver's license barcode/i)).toBeInTheDocument();

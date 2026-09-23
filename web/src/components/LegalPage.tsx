@@ -17,7 +17,9 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
       <p>
         <a href="#main">{intl.formatMessage({ id: "legal.back" })}</a>
       </p>
-      <h1>{pickLocale(doc.title, locale)}</h1>
+      <h1 id="legal-title" tabIndex={-1}>
+        {pickLocale(doc.title, locale)}
+      </h1>
       <p className="legal-updated">
         {intl.formatMessage({ id: "legal.updated" }, { date: doc.updated })}
       </p>

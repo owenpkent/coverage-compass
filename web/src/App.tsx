@@ -33,7 +33,11 @@ export function App() {
   // agreeing to). "#main" (the skip link) and unknown hashes stay on home.
   const [view, setView] = useState<View>(viewFromHash);
   const mainRef = useRef<HTMLElement>(null);
-  const skipInitialFocus = useRef(true);
+  // The view focus was last moved for. Compared, not a "skip the first run"
+  // flag: StrictMode runs mount effects twice in dev, so a flag is already
+  // cleared on the second run and focus moves on page load, which a
+  // production build never does.
+  const focusedFor = useRef({ view, accepted });
 
   useEffect(() => {
     const onHash = () => setView(viewFromHash());
@@ -41,14 +45,20 @@ export function App() {
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
-  // Move focus into main when the view changes or the release is accepted, so
-  // keyboard and screen-reader users land on the new content (skip first render).
+  // Move focus to the new view's h1 when the view changes or the release is
+  // accepted, so a screen reader announces just that heading instead of
+  // reading the whole view as one utterance. Not on first load. Each view
+  // marks exactly one h1 with tabIndex={-1} for this: ConsentGate's
+  // "consent-title", the home hero's "hero-title", LegalPage's "legal-title"
+  // and FormFill's "fill-title". <main> is only the fallback.
   useEffect(() => {
-    if (skipInitialFocus.current) {
-      skipInitialFocus.current = false;
-      return;
-    }
-    mainRef.current?.focus();
+    const last = focusedFor.current;
+    if (last.view === view && last.accepted === accepted) return;
+    focusedFor.current = { view, accepted };
+    const container = mainRef.current;
+    if (!container) return;
+    const heading = container.querySelector<HTMLElement>('h1[tabindex="-1"]');
+    (heading ?? container).focus();
   }, [view, accepted]);
 
   // The page title tracks the view (WCAG 2.4.2).
@@ -104,7 +114,7 @@ export function App() {
         ) : (
           <>
             <section aria-labelledby="hero-title" className="hero">
-              <h1 id="hero-title">
+              <h1 id="hero-title" tabIndex={-1}>
                 <FormattedMessage id="hero.title" />
               </h1>
               <p>
