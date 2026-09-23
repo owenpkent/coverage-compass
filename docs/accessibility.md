@@ -36,6 +36,7 @@ The users are disabled. The advocacy organization is disability-led. If the app 
 ### Cognitive
 - Plain language target: 6th grade Flesch-Kincaid, verified by automated tool in CI.
 - One primary action per screen.
+- No all-caps text, including through CSS. Chrome hands `text-transform: uppercase` to screen readers and braille displays as capitals ("DEADLINE"), and all caps is harder to read. `web/src/styles.test.ts` keeps it out.
 - No time pressure (timers, autoplay, auto-redirect).
 - No CAPTCHA.
 - Clear error messages with suggested fixes.

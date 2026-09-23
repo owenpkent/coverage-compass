@@ -419,8 +419,6 @@ p {
   font-size: 1.15rem;
   margin-block: 0 var(--space-2);
   color: var(--color-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
 }
 
 .result-type {
@@ -455,8 +453,6 @@ p {
 
 .deadline-label {
   font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   color: var(--color-muted);
   margin: 0;
 }
@@ -539,8 +535,6 @@ p {
   display: inline-block;
   font-size: 0.85rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
   color: #ffffff;
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius);
@@ -575,8 +569,6 @@ p {
   border-radius: 999px;
   font-size: 0.8rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
   vertical-align: middle;
 }
 
