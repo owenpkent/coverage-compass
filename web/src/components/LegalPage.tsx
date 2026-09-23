@@ -15,7 +15,7 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
   return (
     <article className="legal">
       <p>
-        <a href="#main">{intl.formatMessage({ id: "legal.back" })}</a>
+        <a href="#home">{intl.formatMessage({ id: "legal.back" })}</a>
       </p>
       <h1>{pickLocale(doc.title, locale)}</h1>
       <p className="legal-updated">
@@ -34,7 +34,7 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
         </section>
       ))}
       <p>
-        <a href="#main">{intl.formatMessage({ id: "legal.back" })}</a>
+        <a href="#home">{intl.formatMessage({ id: "legal.back" })}</a>
       </p>
     </article>
   );
