@@ -249,7 +249,7 @@ export function FormFill() {
   return (
     <div className="fill">
       <p>
-        <a href="#main">
+        <a href="#home">
           <FormattedMessage id="legal.back" />
         </a>
       </p>

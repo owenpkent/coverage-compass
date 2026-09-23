@@ -30,7 +30,9 @@ export function App() {
 
   // Hash-based views so the Terms and Privacy pages are linkable and readable
   // BEFORE the release is accepted (people must be able to read what they are
-  // agreeing to). "#main" (the skip link) and unknown hashes stay on home.
+  // agreeing to). "#home" (the back links) and unknown hashes are home.
+  // "#main" is the skip link, not a view: following it keeps the current view,
+  // so skipping to content on the Terms page does not leave the Terms page.
   const [view, setView] = useState<View>(viewFromHash);
   const mainRef = useRef<HTMLElement>(null);
   // The view focus was last moved for. Compared, not a "skip the first run"
@@ -40,7 +42,9 @@ export function App() {
   const focusedFor = useRef({ view, accepted });
 
   useEffect(() => {
-    const onHash = () => setView(viewFromHash());
+    const onHash = () => {
+      if (window.location.hash !== "#main") setView(viewFromHash());
+    };
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);

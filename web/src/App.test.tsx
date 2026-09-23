@@ -106,6 +106,22 @@ describe("App", () => {
     expect(await axeViolations(container, 10)).toEqual([]);
   });
 
+  it("stays on the Terms of Use when the skip link is used there, and goes back to the tool from the back link", async () => {
+    window.location.hash = "#terms";
+    renderWithProviders(<App />);
+    // "#main" is the skip link, not a view: it must not take the user off this page.
+    window.location.hash = "#main";
+    fireEvent(window, new Event("hashchange"));
+    expect(screen.getByRole("heading", { level: 1, name: /terms of use/i })).toBeInTheDocument();
+
+    const back = screen.getAllByRole("link", { name: /back to the tool/i })[0]!;
+    window.location.hash = back.getAttribute("href")!;
+    fireEvent(window, new Event("hashchange"));
+    expect(
+      await screen.findByRole("heading", { level: 1, name: /before you start/i }),
+    ).toBeInTheDocument();
+  });
+
   it("shows the Privacy Notice without requiring acceptance", () => {
     window.location.hash = "#privacy";
     renderWithProviders(<App />);
