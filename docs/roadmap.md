@@ -31,7 +31,7 @@ Ships before the first wave of notification letters goes out from HCPF in August
 - [x] PWA install + offline mode
 - [x] Automated accessibility checks (axe-core) and a jsx-a11y lint gate
 - [ ] Plain-language explanation library reviewed by a CCDC advocate
-- [ ] Manual screen-reader pass (NVDA, VoiceOver, keyboard-only)
+- [ ] Manual screen-reader pass (NVDA, VoiceOver, keyboard-only). NVDA with Chrome ran on 2026-09-22 and its defects are fixed (#70, #71, #72); VoiceOver, keyboard-only and NVDA with Firefox have not run. See `docs/accessibility.md`.
 - [ ] 10 to 20 real anonymized Colorado letters to validate the classifier
 - [ ] 6th-grade reading-level check enforced in CI
 - [ ] Hosted on a stable URL with SRI and reproducible build (a demo deployment is live at [coverage-compass-6ky.pages.dev](https://coverage-compass-6ky.pages.dev) since 2026-07-01, behind a click-through release; SRI and the reproducible-build story are still pending)
