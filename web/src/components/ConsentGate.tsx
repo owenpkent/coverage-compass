@@ -18,7 +18,7 @@ export function ConsentGate({ onAccept }: { onAccept: () => void }) {
   const intl = useIntl();
   return (
     <section aria-labelledby="consent-title" className="consent">
-      <h1 id="consent-title">
+      <h1 id="consent-title" tabIndex={-1}>
         <FormattedMessage id="consent.title" />
       </h1>
       <p className="privacy-note">

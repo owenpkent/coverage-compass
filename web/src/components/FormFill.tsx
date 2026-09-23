@@ -62,7 +62,6 @@ export function FormFill() {
   // The saved archive, held until the user explicitly chooses to load it.
   const pending = useRef<ArchiveData | null>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
-  const firstRender = useRef(true);
 
   useEffect(() => {
     let alive = true;
@@ -81,12 +80,10 @@ export function FormFill() {
     };
   }, []);
 
-  // Keyboard/screen-reader users land on the new phase's heading.
+  // Keyboard/screen-reader users land on this view's heading, both when it
+  // first mounts (App's own view-change focus effect finds no marked h1 here
+  // and leaves this alone; see App.tsx) and on every later phase change.
   useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false;
-      return;
-    }
     headingRef.current?.focus();
   }, [phase]);
 

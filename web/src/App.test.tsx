@@ -37,6 +37,24 @@ describe("App", () => {
     ).toBeInTheDocument();
   });
 
+  it("moves focus to the hero heading after agreeing, not the whole main landmark", async () => {
+    renderWithProviders(<App />);
+    fireEvent.click(screen.getByRole("button", { name: /i understand and agree/i }));
+    const heading = await screen.findByRole("heading", {
+      level: 1,
+      name: /got a letter from health first colorado/i,
+    });
+    expect(document.activeElement).toBe(heading);
+  });
+
+  it("moves focus to the Terms of Use heading when navigating there", async () => {
+    renderWithProviders(<App />);
+    window.location.hash = "#terms";
+    fireEvent(window, new Event("hashchange"));
+    const heading = await screen.findByRole("heading", { level: 1, name: /terms of use/i });
+    expect(document.activeElement).toBe(heading);
+  });
+
   it("has no axe-detectable accessibility violations on the consent gate", async () => {
     const { container } = renderWithProviders(<App />);
     // 26 rules passed when measured; the floor proves axe looked (see test-utils).

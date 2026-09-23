@@ -41,14 +41,29 @@ export function App() {
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
-  // Move focus into main when the view changes or the release is accepted, so
-  // keyboard and screen-reader users land on the new content (skip first render).
+  // Move focus to the new view's heading when the view changes or the release
+  // is accepted, so a screen reader announces just that heading instead of
+  // reading the whole view as one utterance (skip first render). Each view
+  // marks exactly one heading with tabIndex={-1} for this: ConsentGate's
+  // "consent-title", the home hero's "hero-title", and LegalPage's
+  // "legal-title". The form filler view has no such heading here: it focuses
+  // its own "Your information" heading itself, and because child effects run
+  // before parent effects, that focus is already set by the time this effect
+  // runs, so finding no marked heading here means leaving it alone rather
+  // than falling back to <main>.
   useEffect(() => {
     if (skipInitialFocus.current) {
       skipInitialFocus.current = false;
       return;
     }
-    mainRef.current?.focus();
+    const container = mainRef.current;
+    if (!container) return;
+    const heading = container.querySelector<HTMLElement>('h1[tabindex="-1"]');
+    if (heading) {
+      heading.focus();
+    } else if (!container.contains(document.activeElement)) {
+      container.focus();
+    }
   }, [view, accepted]);
 
   // The page title tracks the view (WCAG 2.4.2).
@@ -104,7 +119,7 @@ export function App() {
         ) : (
           <>
             <section aria-labelledby="hero-title" className="hero">
-              <h1 id="hero-title">
+              <h1 id="hero-title" tabIndex={-1}>
                 <FormattedMessage id="hero.title" />
               </h1>
               <p>
