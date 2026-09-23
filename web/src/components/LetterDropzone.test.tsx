@@ -4,6 +4,7 @@ import userEvent from "@testing-library/user-event";
 import { LetterDropzone } from "./LetterDropzone";
 import { Triage } from "./Triage";
 import { renderWithProviders } from "../test-utils";
+import { MESSAGES } from "../i18n/messages";
 import { extractTextFromPdf, type ExtractedText } from "../lib/pdf";
 
 vi.mock("../lib/pdf", () => ({
@@ -35,6 +36,22 @@ describe("LetterDropzone", () => {
     expect(screen.getByText(/drop your letter here/i)).toBeInTheDocument();
     expect(visibleFileChooser()).toBeInTheDocument();
   });
+
+  it("does not promise that Enter opens a file chooser, since the drop zone itself has none", () => {
+    renderWithProviders(<LetterDropzone onFile={vi.fn()} />);
+
+    const dropzone = screen.getByLabelText(/drop a pdf or photo of your letter here/i);
+    expect(dropzone).not.toHaveAccessibleName(/enter/i);
+  });
+
+  // The rendered test above only sees English. Spanish carried the same
+  // promise ("presione Enter"), so check the string in every locale.
+  it.each(Object.entries(MESSAGES))(
+    "keeps Enter out of the %s drop zone label",
+    (_locale, messages) => {
+      expect(messages["drop.aria"]).not.toMatch(/enter/i);
+    },
+  );
 
   it("renders the chooser as a native keyboard-focusable button", () => {
     renderWithProviders(<LetterDropzone onFile={vi.fn()} />);

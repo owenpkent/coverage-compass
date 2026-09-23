@@ -24,7 +24,7 @@ The users are disabled. The advocacy organization is disability-led. If the app 
 - Skip links to main content.
 - No keyboard traps.
 - Esc closes modals; Enter activates; Space toggles.
-- Drag-and-drop file zone also accepts file picker via keyboard (Enter or Space).
+- The drag-and-drop file zone has a keyboard equivalent: the "Choose a file" button inside it opens the file picker with Enter or Space. The zone itself opens nothing, so its label does not say it does.
 
 ### Screen reader
 - Semantic HTML first. ARIA only where semantic HTML doesn't suffice.
