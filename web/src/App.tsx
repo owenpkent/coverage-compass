@@ -33,7 +33,11 @@ export function App() {
   // agreeing to). "#main" (the skip link) and unknown hashes stay on home.
   const [view, setView] = useState<View>(viewFromHash);
   const mainRef = useRef<HTMLElement>(null);
-  const skipInitialFocus = useRef(true);
+  // The view focus was last moved for. Compared, not a "skip the first run"
+  // flag: StrictMode runs mount effects twice in dev, so a flag is already
+  // cleared on the second run and focus moves on page load, which a
+  // production build never does.
+  const focusedFor = useRef({ view, accepted });
 
   useEffect(() => {
     const onHash = () => setView(viewFromHash());
@@ -41,29 +45,20 @@ export function App() {
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
-  // Move focus to the new view's heading when the view changes or the release
-  // is accepted, so a screen reader announces just that heading instead of
-  // reading the whole view as one utterance (skip first render). Each view
-  // marks exactly one heading with tabIndex={-1} for this: ConsentGate's
-  // "consent-title", the home hero's "hero-title", and LegalPage's
-  // "legal-title". The form filler view has no such heading here: it focuses
-  // its own "Your information" heading itself, and because child effects run
-  // before parent effects, that focus is already set by the time this effect
-  // runs, so finding no marked heading here means leaving it alone rather
-  // than falling back to <main>.
+  // Move focus to the new view's h1 when the view changes or the release is
+  // accepted, so a screen reader announces just that heading instead of
+  // reading the whole view as one utterance. Not on first load. Each view
+  // marks exactly one h1 with tabIndex={-1} for this: ConsentGate's
+  // "consent-title", the home hero's "hero-title", LegalPage's "legal-title"
+  // and FormFill's "fill-title". <main> is only the fallback.
   useEffect(() => {
-    if (skipInitialFocus.current) {
-      skipInitialFocus.current = false;
-      return;
-    }
+    const last = focusedFor.current;
+    if (last.view === view && last.accepted === accepted) return;
+    focusedFor.current = { view, accepted };
     const container = mainRef.current;
     if (!container) return;
     const heading = container.querySelector<HTMLElement>('h1[tabindex="-1"]');
-    if (heading) {
-      heading.focus();
-    } else if (!container.contains(document.activeElement)) {
-      container.focus();
-    }
+    (heading ?? container).focus();
   }, [view, accepted]);
 
   // The page title tracks the view (WCAG 2.4.2).

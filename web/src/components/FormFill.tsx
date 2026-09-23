@@ -62,6 +62,9 @@ export function FormFill() {
   // The saved archive, held until the user explicitly chooses to load it.
   const pending = useRef<ArchiveData | null>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  // The phase focus was last moved for. Compared rather than a "skip the first
+  // run" flag, which StrictMode's double-run mount effects defeat in dev.
+  const focusedPhase = useRef(phase);
 
   useEffect(() => {
     let alive = true;
@@ -80,10 +83,12 @@ export function FormFill() {
     };
   }, []);
 
-  // Keyboard/screen-reader users land on this view's heading, both when it
-  // first mounts (App's own view-change focus effect finds no marked h1 here
-  // and leaves this alone; see App.tsx) and on every later phase change.
+  // Keyboard/screen-reader users land on the new phase's heading. Not on
+  // mount: entering the view focuses the h1 from App.tsx, so the preview note
+  // under it is read, not skipped.
   useEffect(() => {
+    if (focusedPhase.current === phase) return;
+    focusedPhase.current = phase;
     headingRef.current?.focus();
   }, [phase]);
 
@@ -248,7 +253,7 @@ export function FormFill() {
           <FormattedMessage id="legal.back" />
         </a>
       </p>
-      <h1>
+      <h1 id="fill-title" tabIndex={-1}>
         <FormattedMessage id="fill.title" />
       </h1>
       <p className="privacy-note">

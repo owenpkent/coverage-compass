@@ -1,3 +1,4 @@
+import { StrictMode } from "react";
 import { describe, it, expect, afterEach } from "vitest";
 import { fireEvent, screen } from "@testing-library/react";
 import { App } from "./App";
@@ -52,6 +53,32 @@ describe("App", () => {
     window.location.hash = "#terms";
     fireEvent(window, new Event("hashchange"));
     const heading = await screen.findByRole("heading", { level: 1, name: /terms of use/i });
+    expect(document.activeElement).toBe(heading);
+  });
+
+  it("moves focus to the form filler's h1 on entering it, so the preview note is not skipped", async () => {
+    renderWithProviders(<App />);
+    fireEvent.click(screen.getByRole("button", { name: /i understand and agree/i }));
+    window.location.hash = "#fill";
+    fireEvent(window, new Event("hashchange"));
+    const heading = await screen.findByRole("heading", { level: 1, name: /fill a form/i });
+    expect(document.activeElement).toBe(heading);
+  });
+
+  it("moves no focus on page load under StrictMode, and still moves it on a view change", async () => {
+    // StrictMode runs mount effects twice in dev. A "skip the first run" flag
+    // did not survive that, so the dev server moved focus on load and a
+    // production build did not.
+    renderWithProviders(
+      <StrictMode>
+        <App />
+      </StrictMode>,
+    );
+    expect(document.activeElement).toBe(document.body);
+    fireEvent.click(screen.getByRole("button", { name: /i understand and agree/i }));
+    window.location.hash = "#fill";
+    fireEvent(window, new Event("hashchange"));
+    const heading = await screen.findByRole("heading", { level: 1, name: /fill a form/i });
     expect(document.activeElement).toBe(heading);
   });
 
