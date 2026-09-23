@@ -34,7 +34,7 @@ The users are disabled. The advocacy organization is disability-led. If the app 
 - React Aria Components is the UI primitives layer because it ships these behaviors by default.
 
 ### Cognitive
-- Plain language target: 6th grade Flesch-Kincaid, verified by automated tool in CI.
+- Plain language target: 6th grade Flesch-Kincaid. CI scores the English member-facing strings in `rules/co/letter-types.yaml` against it, but only warns: six of those ten strings are over target (see `.github/workflows/reading-level.yml`).
 - One primary action per screen.
 - No all-caps text, including through CSS. Chrome hands `text-transform: uppercase` to screen readers and braille displays as capitals ("DEADLINE"), and all caps is harder to read. `web/src/styles.test.ts` keeps it out.
 - No time pressure (timers, autoplay, auto-redirect).
@@ -57,10 +57,10 @@ The users are disabled. The advocacy organization is disability-led. If the app 
 ## Testing approach
 
 ### Automated
-- `axe-core` runs in Vitest on every component.
-- `eslint-plugin-jsx-a11y` runs on every commit.
-- Lighthouse a11y score in CI, required > 95.
-- Reading-level check in CI for all user-facing copy.
+- `axe-core` runs in Vitest on five screens: the consent gate, the home view after accepting, Terms of Use, the result summary, and the form filler's edit phase. Components are covered through those screens, not one by one; the PDF review and the signature dialog are not covered yet.
+- `eslint-plugin-jsx-a11y` runs in CI on every pull request and every push to `main`, and lint fails on any warning.
+- Reading-level check in CI for the English member-facing strings in `rules/co/letter-types.yaml`. It warns and does not fail yet (see Cognitive above).
+- Not wired up yet: a Lighthouse accessibility score above 95 in CI was the target, but no workflow runs Lighthouse.
 
 ### Manual
 

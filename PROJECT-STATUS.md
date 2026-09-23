@@ -1,7 +1,7 @@
 # Project status
 
 **Snapshot date:** 2026-07-03
-**Phase:** v0.1 Notice Triage (read side implemented and tested; live demo deployed; pending CCDC content review, native Spanish review, and manual screen-reader testing)
+**Phase:** v0.1 Notice Triage (read side implemented and tested; live demo deployed; pending CCDC content review, native Spanish review, and most manual screen-reader testing: one NVDA + Chrome pass ran on 2026-09-22 and its defects are fixed)
 **Working title:** Coverage Compass
 
 This is a single-page snapshot of where the project stands. For detail, follow the links into `docs/` and `research/`.
@@ -167,7 +167,7 @@ Full set of open questions: [`research/prior-art.md`](research/prior-art.md) sec
 ## Known risks
 
 - **Schedule risk.** With CCDC confirmed as partner and the scoping conversation held, the August 2026 ship target now depends on the rule-content review and the first sample letters landing soon. Each week of delay compresses build time.
-- **Validation and content risk.** The read side is built and deployed as a demo, but its rule content is unreviewed by CCDC, the classifier is not yet validated against real Colorado letters, the Spanish is machine-drafted, and a manual screen-reader pass remains. The write side is ported and fills the CDASS packet, but its UI is an English-only preview, unreviewed by CCDC, and no Medicaid form is mapped yet. The August target now depends on the CCDC review and the sample-letter validation landing on schedule, not on the build.
+- **Validation and content risk.** The read side is built and deployed as a demo, but its rule content is unreviewed by CCDC, the classifier is not yet validated against real Colorado letters, the Spanish is machine-drafted, and most manual screen-reader testing remains: one NVDA + Chrome pass ran on 2026-09-22 and its three defects are fixed (#70, #71, #72), but VoiceOver, TalkBack, NVDA with Firefox and a pass against a production build have not run. The write side is ported and fills the CDASS packet, but its UI is an English-only preview, unreviewed by CCDC, and no Medicaid form is mapped yet. The August target now depends on the CCDC review and the sample-letter validation landing on schedule, not on the build.
 - **Sample-letter dependency.** v0.1 acceptance criteria require correctly classifying real Colorado letters. We need 10 to 20 anonymized samples from CCDC. Without them, the classifier is unverified.
 - **Stack drift.** Tesseract.js, pdf.js, and pdf-lib are heavy. The architecture target is < 250 KB gzipped bundle and < 3s TTI on a 2019 Chromebook. As of the v0.1 read-side build, pdf.js, tesseract.js, and pdf-lib are each lazy-loaded into their own chunks, so the initial JS is roughly 110 KB gzipped (entry plus React Aria plus react-intl), within budget. TTI on real low-end hardware still needs measuring.
 - **Form-revision drift.** The fill layer maps exact PDF field names per form revision. Colorado can re-issue a form with renamed fields. The engine degrades a missing or renamed field to a logged warning rather than a crash, and the exact-copy smoke test guards regressions, but each new form revision needs a fresh field dump and mapping.
