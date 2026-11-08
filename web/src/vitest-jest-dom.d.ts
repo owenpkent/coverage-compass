@@ -9,7 +9,10 @@ import "vitest";
 import type { TestingLibraryMatchers } from "@testing-library/jest-dom/matchers";
 
 declare module "vitest" {
-  // `R` must keep Vitest's name for the declarations to merge, even though it is unused here.
+  // jest-dom's second argument is the matcher's return type, so it gets `R` (void, or
+  // Promise<void> under .resolves/.rejects), not the received value `T`. `T` is unused but
+  // must keep Vitest's name and position for the declarations to merge.
+  // vitest-jest-dom.typecheck.ts guards this.
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any, @typescript-eslint/no-empty-object-type
-  interface Matchers<R = unknown, T = unknown> extends TestingLibraryMatchers<any, T> {}
+  interface Matchers<R = unknown, T = unknown> extends TestingLibraryMatchers<any, R> {}
 }
