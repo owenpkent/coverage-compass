@@ -29,7 +29,7 @@
     "react-dom": "^19.3.1",
     "react-intl": "^12.1.7",
     "tesseract.js": "^7.0.0",
-    "zxing-wasm": "^3.1.6"
+    "zxing-wasm": "^3.1.7"
   },
   "devDependencies": {
     "@tesseract.js-data/eng": "^1.0.0",
