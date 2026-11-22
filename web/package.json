@@ -27,7 +27,7 @@
     "react": "^19.3.1",
     "react-aria-components": "^1.22.1",
     "react-dom": "^19.3.1",
-    "react-intl": "^12.1.7",
+    "react-intl": "^12.2.0",
     "tesseract.js": "^7.0.0",
     "zxing-wasm": "^3.1.6"
   },
